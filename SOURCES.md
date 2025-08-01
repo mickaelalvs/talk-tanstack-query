@@ -1,0 +1,2 @@
+- [TanStack Query Docs](https://tanstack.com/query/latest/docs/framework/react/overview)
+- [Inside React Query](https://tkdodo.eu/blog/inside-react-query) - Tk Dodo
