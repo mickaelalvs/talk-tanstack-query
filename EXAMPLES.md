@@ -54,6 +54,8 @@ J'ai dans mon application une vue ou mon utilisateur peut voir la liste de ses [
 Permet de montrer un cas un peu présent dans toutes les appli du monde (liste + filtre et recherche) et de montrer que ça facilites les choses et permet de gérer ça en grande partie avec les query key
 ### Notes
 
+Surement un bon scénario pour parler d'autre solution de storage, necessaire pour stocket ces info de filtres / pagination => nuqs / Jotai / nanostore
+
 ---
 
 ## Big Redux codebase
@@ -102,11 +104,11 @@ Permet de mettre en avant les optimistic update, qui permettre une meilleure exp
 
 ---
 
-## Full frontend state application
+## Photopea like
 
 ### Story
 
-"Je gère actuellement tout l'état de mon application coté frontend avec une librairie de store, j'ai commencé à utiliser TanStack Query pour stocker tout ça en faisant des modifications direct dans le cache, est ce que je vais dans le bon sens ?"
+"Je suis le mainteneur d'une enorme application de modification d'image en ligne, quasiement tout l'état de mon application est stocké dans un store Redux, comme les outils en train d'être utilisé, l'état de mon canvas etc ... Est ce que TanStack Query peut m'aider ?"
 
 ### TanStack features highlighted
 
@@ -118,7 +120,9 @@ Ce use case permet de montrer les limites de TanStack Query, qui n'est pas la po
 
 ### Notes
 
-Peut être trop brut / tiré par les cheveux pour passer pour un cas réel ?
+Faire une vannes sur le fait que le mec nous envoie son code et montrer que ça prend 10 ans de DL donc on passe vite au fait que c'est pas TanStack Query qu'il faut
+
+- https://tanstack.com/query/v5/docs/framework/react/guides/does-this-replace-client-state
 
 ---
 
