@@ -1,16 +1,11 @@
 {
   "name": "talk-tanstack-query",
-  "type": "module",
-  "private": true,
   "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --open",
-    "export": "slidev export"
+    "dev": "turbo run dev",
+    "build": "turbo run build"
   },
-  "dependencies": {
-    "@slidev/cli": "^52.0.0",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
-    "vue": "^3.5.17"
-  }
+  "devDependencies": {
+    "turbo": "^2.5.6"
+  },
+  "packageManager": "pnpm@10.5.2"
 }
