@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "slidev build",
-    "dev": "slidev --open --port 4000",
+    "dev": "slidev --open --port 4321",
     "export": "slidev export"
   },
   "dependencies": {
