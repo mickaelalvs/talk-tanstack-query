@@ -18,7 +18,7 @@ export const TripCard = ({ trip }: { trip: Trip }) => {
             <CardTitle className="text-lg">{trip.name}</CardTitle>
             <CardDescription>
               {trip.cities.length} villes • Créé le{" "}
-              {trip.createdAt.toLocaleDateString("fr-FR")}
+              {new Date(trip.createdAt).toLocaleDateString("fr-FR")}
             </CardDescription>
           </CardHeader>
           <CardContent>

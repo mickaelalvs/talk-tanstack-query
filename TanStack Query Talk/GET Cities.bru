@@ -1,0 +1,15 @@
+meta {
+  name: GET Cities
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:3001/api/trip-planner/cities
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

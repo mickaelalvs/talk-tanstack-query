@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import type { City, Trip } from "@/lib/mock-data";
+import type { City } from "@/lib/mock-data";
 
 export const CreateTripBanner = ({
   selectedCities,
@@ -13,23 +13,34 @@ export const CreateTripBanner = ({
   setSelectedCities: (cities: City[]) => void;
 }) => {
   const [newTripName, setNewTripName] = useState("");
-  const [trips, setTrips] = useState<Trip[]>([]);
 
   if (selectedCities.length === 0) {
     return null;
   }
 
-  const createTrip = () => {
+  const createTrip = async () => {
     if (newTripName.trim() && selectedCities.length > 0) {
-      const newTrip: Trip = {
-        id: Date.now().toString(),
-        name: newTripName.trim(),
-        cities: selectedCities,
-        createdAt: new Date(),
-      };
-      setTrips([...trips, newTrip]);
-      setSelectedCities([]);
-      setNewTripName("");
+      try {
+        const response = await fetch('/api/trip-planner/trips', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: newTripName.trim(),
+            cityIds: selectedCities.map(city => city.id),
+          }),
+        });
+
+        if (response.ok) {
+          setSelectedCities([]);
+          setNewTripName("");
+        } else {
+          console.error('Failed to create trip:', await response.text());
+        }
+      } catch (error) {
+        console.error('Error creating trip:', error);
+      }
     }
   };
 
