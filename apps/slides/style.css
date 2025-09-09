@@ -1,0 +1,23 @@
+:root {
+    --theme-color-white: #f8f9fa;
+    --theme-color-oasis: #00B7D8;
+    --theme-color-peachOrange: #FE9503;
+    --theme-color-manhattan: #FB3535;
+    --theme-color-copper: #C73321;
+    --theme-color-persianRed: #4B8F1E;
+    --theme-color-roofTerracotta: #C73321;
+    --theme-color-persianPlum: #101828;
+    --theme-color-geyser: #d1d7e5;
+    --theme-color-cloudBurst: #101828;
+}
+
+.slidev {
+    --slidev-theme-primary: #C73321;
+    --slidev-theme-secondary: #101828;
+    --slidev-theme-background: #f8f9fa;
+    --slidev-theme-text: #101828;
+}
+
+.slidev-slide-content {
+    background-color: var(--theme-color-white) !important;
+}
