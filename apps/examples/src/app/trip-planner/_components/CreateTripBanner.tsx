@@ -21,14 +21,14 @@ export const CreateTripBanner = ({
   const createTrip = async () => {
     if (newTripName.trim() && selectedCities.length > 0) {
       try {
-        const response = await fetch('/api/trip-planner/trips', {
-          method: 'POST',
+        const response = await fetch("/api/trip-planner/trips", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             name: newTripName.trim(),
-            cityIds: selectedCities.map(city => city.id),
+            cityIds: selectedCities.map((city) => city.id),
           }),
         });
 
@@ -36,10 +36,10 @@ export const CreateTripBanner = ({
           setSelectedCities([]);
           setNewTripName("");
         } else {
-          console.error('Failed to create trip:', await response.text());
+          console.error("Failed to create trip:", await response.text());
         }
       } catch (error) {
-        console.error('Error creating trip:', error);
+        console.error("Error creating trip:", error);
       }
     }
   };

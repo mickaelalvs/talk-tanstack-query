@@ -2,13 +2,10 @@
 
 import { Plus } from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
-import { type Trip } from "@/lib/mock-data";
+import { Card, CardContent } from "@/components/ui/card";
+import type { Trip } from "@/lib/mock-data";
 import { Header } from "./_components/Header";
 import { TripCard } from "./_components/TripCard";
 

@@ -1,4 +1,5 @@
-import { MapPin, Thermometer, Loader2 } from "lucide-react";
+import { Loader2, MapPin, Thermometer } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,8 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { type City } from "@/lib/mock-data";
-import { useEffect, useState } from "react";
+import type { City } from "@/lib/mock-data";
 
 export const CitiesList = ({
   searchQuery,
@@ -29,16 +29,16 @@ export const CitiesList = ({
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch('/api/trip-planner/cities');
-        
+        const response = await fetch("/api/trip-planner/cities");
+
         if (!response.ok) {
-          throw new Error('Failed to fetch cities');
+          throw new Error("Failed to fetch cities");
         }
-        
+
         const data = await response.json();
         setCities(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : "An error occurred");
       } finally {
         setLoading(false);
       }
@@ -68,7 +68,9 @@ export const CitiesList = ({
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
-          <p className="text-destructive mb-2">Erreur lors du chargement des villes</p>
+          <p className="text-destructive mb-2">
+            Erreur lors du chargement des villes
+          </p>
           <p className="text-sm text-muted-foreground">{error}</p>
         </div>
       </div>

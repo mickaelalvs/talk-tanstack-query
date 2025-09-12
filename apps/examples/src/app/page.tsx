@@ -8,6 +8,11 @@ export default function Home() {
       description:
         "Découvrez des destinations et planifiez votre voyage parfait.",
     },
+    {
+      href: "/nantes-shop",
+      title: "Shop de Nantes",
+      description: "Découvrez les spécialités de Nantes et commandez en ligne.",
+    },
   ];
 
   return (
