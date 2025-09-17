@@ -38,7 +38,7 @@ const resultIframeClass = computed(() => {
 <template>
   <div class="code-server" style="width: 100%; height: 100%">
     <iframe class="iframe" src="http://localhost:4000" width="100%" height="100%" style="z-index: 2;" />
-    <iframe :class="resultIframeClass" src="http://localhost:3000" width="95%" height="95%" :style="{ zIndex: zIndex }" />
+    <iframe :class="resultIframeClass" src="http://localhost:1234" width="95%" height="95%" :style="{ zIndex: zIndex }" />
   </div>
 </template>
 
