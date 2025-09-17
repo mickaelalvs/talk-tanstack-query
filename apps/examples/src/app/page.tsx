@@ -13,6 +13,11 @@ export default function Home() {
       title: "Shop de Nantes",
       description: "Découvrez les spécialités de Nantes et commandez en ligne.",
     },
+    {
+      href: "water-meter",
+      title: "Gestion de compteur d'eau",
+      description: "Gérez votre compteur d'eau et suivez votre consommation.",
+    },
   ];
 
   return (
