@@ -1,14 +1,14 @@
 "use client"
 
-import type React from "react"
-
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { Search, TableIcon, Loader2 } from "lucide-react"
+import { MetersTableError } from "./_components/MetersTableError"
+import { SortButton } from "./_components/SortButton"
 
 export type WaterMeter = {
   id: string
@@ -22,8 +22,8 @@ export type WaterMeter = {
   statut: "Actif" | "Inactif" | "Maintenance"
 }
 
-type SortField = keyof WaterMeter
-type SortDirection = "asc" | "desc"
+export type SortField = keyof WaterMeter
+export type SortDirection = "asc" | "desc"
 
 // API fetch function
 const fetchMetersData = async (filters: {
@@ -110,38 +110,9 @@ export default function MetersPage() {
   // Data is already filtered and sorted by the API
   const filteredAndSortedData = data
 
-  const SortButton = ({ field, children }: { field: SortField; children: React.ReactNode }) => (
-    <Button
-      variant="ghost"
-      size="sm"
-      className="h-8 px-2 lg:px-3 cursor-pointer justify-start"
-      onClick={() => handleSort(field)}
-    >
-      {children}
-      {sortField === field &&
-        (sortDirection === "asc" ? <span className="ml-2">↑</span> : <span className="ml-2">↓</span>)}
-    </Button>
-  )
-
-  // Error state
   if (error) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-6 max-w-md">
-            <h2 className="text-lg font-semibold text-destructive mb-2">Erreur de chargement</h2>
-            <p className="text-muted-foreground mb-4">
-              {error}
-            </p>
-            <button
-              onClick={() => window.location.reload()}
-              className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
-            >
-              Réessayer
-            </button>
-          </div>
-        </div>
-      </div>
+      <MetersTableError error={error} />
     )
   }
 
@@ -249,28 +220,28 @@ export default function MetersPage() {
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[100px]">
-                    <SortButton field="numero">Numéro</SortButton>
+                    <SortButton field="numero" handleSort={handleSort}>Numéro</SortButton>
                   </TableHead>
                   <TableHead className="w-[80px]">
-                    <SortButton field="etage">Étage</SortButton>
+                    <SortButton field="etage" handleSort={handleSort}>Étage</SortButton>
                   </TableHead>
                   <TableHead className="w-[120px]">
-                    <SortButton field="type">Type</SortButton>
+                    <SortButton field="type" handleSort={handleSort}>Type</SortButton>
                   </TableHead>
                   <TableHead className="w-[200px]">
-                    <SortButton field="proprietaire">Propriétaire</SortButton>
+                    <SortButton field="proprietaire" handleSort={handleSort}>Propriétaire</SortButton>
                   </TableHead>
                   <TableHead className="w-[120px] text-right">
-                    <SortButton field="consommation">Consommation</SortButton>
+                    <SortButton field="consommation" handleSort={handleSort}>Consommation</SortButton>
                   </TableHead>
                   <TableHead className="w-[100px]">
-                    <SortButton field="fuiteDetectee">Fuite</SortButton>
+                    <SortButton field="fuiteDetectee" handleSort={handleSort}>Fuite</SortButton>
                   </TableHead>
                   <TableHead className="w-[120px]">
-                    <SortButton field="dernierReleve">Dernier Relevé</SortButton>
+                    <SortButton field="dernierReleve" handleSort={handleSort}>Dernier Relevé</SortButton>
                   </TableHead>
                   <TableHead className="w-[100px]">
-                    <SortButton field="statut">Statut</SortButton>
+                    <SortButton field="statut" handleSort={handleSort}>Statut</SortButton>
                   </TableHead>
                 </TableRow>
               </TableHeader>

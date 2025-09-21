@@ -1,4 +1,5 @@
 import Link from "next/link";
+import './trip-planner/globals.css'
 
 export default function Home() {
   const pages = [
@@ -18,6 +19,11 @@ export default function Home() {
       title: "Gestion de compteur d'eau",
       description: "Gérez votre compteur d'eau et suivez votre consommation.",
     },
+    {
+      href: "/itinerant-heathcare",
+      title: "Le Docteur Itinérant",
+      description: "Gérez vos rendez-vous avec vos patients.",
+    }
   ];
 
   return (

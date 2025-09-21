@@ -1,4 +1,5 @@
 import { Providers } from "./_components/Providers";
+import { RedirectToHome } from "./_components/RedirectToHome";
 
 export default function RootLayout({
   children,
@@ -9,6 +10,7 @@ export default function RootLayout({
     <html lang="fr">
       <body>
         <Providers>{children}</Providers>
+        <RedirectToHome />
       </body>
     </html>
   );
