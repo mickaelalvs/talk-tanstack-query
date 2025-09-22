@@ -190,6 +190,38 @@ Cependant, je me suis confronté à un problème, dans des milieux ruraux un peu
 Vais-je devoir me passer de TanStack Query ?
 
 ---
+title: Example 5 demo - Optimistic update
+layout: code-server
+transition: view-transition
+---
+
+<CodeServer />
+
+---
+title: Persist query client
+transition: view-transition
+---
+
+Example persist query client pour pouvoir garder les data hors connexion
+
+---
+title: Mutation queue
+transition: view-transition
+---
+
+Mutation queue qui permet de relancer les mutations quand la connexion reviens
+Utilisation du online manager
+
+---
+title: Example 5 conclusion
+transition: view-transition
+---
+
+- Optimistic update simplifié => Single source of truth
+- Persist Query Client => DL les data une seule fois
+- Online Manager + Mutation queue => Ratrapper les mutations
+
+---
 title: Example 6 call - Use with Next
 layout: client-calling
 transition: view-transition
