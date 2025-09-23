@@ -119,7 +119,7 @@ mdc: true
 Lorem Ipsum
 
 ---
-title: Example 1 call - Base React Query Case
+title: Base Case - Call 
 layout: client-calling
 transition: view-transition
 mdc: true
@@ -131,7 +131,7 @@ J'ai une application de préparation de voyage, ou l'on peut créer un voyage à
 Pour l'instant j'ai la liste des villes et des voyages, et j'aimerai bien savoir comment je pourrais inclure TanStack Query dans cette application
 
 ---
-title: Example 2 call - List view
+title: List - Call
 layout: client-calling
 transition: view-transition
 mdc: true
@@ -143,7 +143,7 @@ Je suis le gérant d'un syndic d'immeuble, et j'ai donc à disposition une appli
 J'ai cru comprendre que TanStack Query pourrais m'aider, pouvez vous me guider ?
 
 ---
-title: Example 3 call - Big Redux codebase
+title: Redux - Call 
 layout: client-calling
 transition: view-transition
 mdc: true
@@ -156,7 +156,7 @@ L'application commence à être un peut vieille, on ne devient pas leader en un 
 Bien que nous gardons l'application à jour, nous utilisons un gros store Redux qui nous permet de tout gérer, et j'ai entendu dire que TanStack Query pourrai simplifier tout ça, pouvez vous m'éclairer ?
 
 ---
-title: Example 4 call - Photopea Like
+title: Photopea - Call
 layout: client-calling
 transition: view-transition
 mdc: true
@@ -169,14 +169,14 @@ Je maintient depuis quelques années un outils comme photoshop en ligne, et j'en
 Je ne peux me résoudre à ne pas l'utiliser, pouvez vous m'aider à l'integrer ?
 
 ---
-title: Téléchargement de l'app
+title: Photopea - Téléchargement de l'app
 transition: view-transition
 ---
 
 Faux téléchargement infini
 
 ---
-title: Example 5 call - Big Latency Backend
+title: Big Latency - Call
 layout: client-calling
 transition: view-transition
 mdc: true
@@ -190,7 +190,7 @@ Cependant, je me suis confronté à un problème, dans des milieux ruraux un peu
 Vais-je devoir me passer de TanStack Query ?
 
 ---
-title: Example 5 demo - Optimistic update
+title: Big Latency - Demo - Optimistic update
 layout: code-server
 transition: view-transition
 ---
@@ -198,14 +198,14 @@ transition: view-transition
 <CodeServer />
 
 ---
-title: Persist query client
+title: Big Latency - Persist query client
 transition: view-transition
 ---
 
 Example persist query client pour pouvoir garder les data hors connexion
 
 ---
-title: Mutation queue
+title: Big Latency - Mutation queue
 transition: view-transition
 ---
 
@@ -213,7 +213,7 @@ Mutation queue qui permet de relancer les mutations quand la connexion reviens
 Utilisation du online manager
 
 ---
-title: Example 5 conclusion
+title: Big Latency - Conclusion
 transition: view-transition
 ---
 
@@ -222,7 +222,7 @@ transition: view-transition
 - Online Manager + Mutation queue => Ratrapper les mutations
 
 ---
-title: Example 6 call - Use with Next
+title: Next Js - Call
 layout: client-calling
 transition: view-transition
 mdc: true
@@ -235,7 +235,7 @@ Après plusieurs application uniquement client side, je suis en train de constru
 Dites moi que c'est possible
 
 ---
-title: useSuspenseQuery
+title: Next Js - useSuspenseQuery
 transition: view-transition
 ---
 
@@ -244,7 +244,7 @@ Même si ça ne sert pas qu'a ça
 
 
 ---
-title: Client Hydration
+title: Next Js - Client Hydration
 transition: view-transition
 ---
 
@@ -253,14 +253,14 @@ Utilisation du HydrationBoundaries avec le helper dehydrate pour permettre de fe
 Info importante, possibilité de stream du fait que les query en 'pending' sont serializable 
 
 ---
-title: Experimental - ReactQueryStreamedHydration
+title: Next Js - Experimental ReactQueryStreamedHydration
 transition: view-transition
 ---
 
 Utilisation de ReactQueryStreamedHydration pour une meilleur DX pour faire du fetching de data suspensed coté server (il faut que je creuse la doc j'ai pas full compris encore)
 
 ---
-title: Example 7 call - Tips & Tricks
+title: Tips & Tricks - Call
 layout: client-calling
 transition: view-transition
 mdc: true
