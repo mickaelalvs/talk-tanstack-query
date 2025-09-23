@@ -235,6 +235,31 @@ Après plusieurs application uniquement client side, je suis en train de constru
 Dites moi que c'est possible
 
 ---
+title: useSuspenseQuery
+transition: view-transition
+---
+
+Montrer un exemple avec useSuspenseQuery, qui permet d'intéragir directement avec les `loading.tsx` et `error.tsx` de NextJs
+Même si ça ne sert pas qu'a ça
+
+
+---
+title: Client Hydration
+transition: view-transition
+---
+
+Utilisation du HydrationBoundaries avec le helper dehydrate pour permettre de fetch coté serveur tout en gardant le cache
+
+Info importante, possibilité de stream du fait que les query en 'pending' sont serializable 
+
+---
+title: Experimental - ReactQueryStreamedHydration
+transition: view-transition
+---
+
+Utilisation de ReactQueryStreamedHydration pour une meilleur DX pour faire du fetching de data suspensed coté server (il faut que je creuse la doc j'ai pas full compris encore)
+
+---
 title: Example 7 call - Tips & Tricks
 layout: client-calling
 transition: view-transition
