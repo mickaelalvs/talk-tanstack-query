@@ -270,3 +270,24 @@ mdc: true
 
 Je suis un gros utilisateur de TanStack Query, je l'utilise partout que je peux
 J'ai ouï dire que vous etiez des professionnels, avez vous des petits conseil pour améliorer encore l'utilisation de ce super outil ? 
+
+---
+title: Tips & Tricks - useInfiniteQuery
+transition: view-transition
+---
+
+Utilisation de l'infinite Query pour le scroll infini
+
+---
+title: Tips & Tricks - meta
+transition: view-transition
+---
+
+Utilisation des meta sur le query client pour invalider facilement des query après une mutation
+
+---
+title: Tips & Tricks - query key heritage
+transition: view-transition
+---
+
+Pattern de fichier de clé, pour pouvoir plus facilement invalider plusieurs query d'un coup
