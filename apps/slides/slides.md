@@ -131,6 +131,14 @@ J'ai une application de préparation de voyage, ou l'on peut créer un voyage à
 Pour l'instant j'ai la liste des villes et des voyages, et j'aimerai bien savoir comment je pourrais inclure TanStack Query dans cette application
 
 ---
+title: Base Case - Demo
+layout: code-server
+transition: view-transition
+---
+
+<CodeServer />
+
+---
 title: List - Call
 layout: client-calling
 transition: view-transition
@@ -141,6 +149,14 @@ mdc: true
 
 Je suis le gérant d'un syndic d'immeuble, et j'ai donc à disposition une application que me permet de suivre la consommation des différentes personnes dans l'immeuble, mais le code devient un peu fouillit avec tout les appels réseaux que je doit gérer, et je ne parle même pas des états de chargement qui arrivent de partout
 J'ai cru comprendre que TanStack Query pourrais m'aider, pouvez vous me guider ?
+
+---
+title: List - Demo - Data graph
+layout: code-server
+transition: view-transition
+---
+
+<CodeServer />
 
 ---
 title: Redux - Call 
@@ -154,6 +170,39 @@ mdc: true
 Je suis l'heureux gérant de l'application de e-commerce leader sur la vente de spécialité Nantaises, qui fait fureur en ce moment
 L'application commence à être un peut vieille, on ne devient pas leader en un jour !
 Bien que nous gardons l'application à jour, nous utilisons un gros store Redux qui nous permet de tout gérer, et j'ai entendu dire que TanStack Query pourrai simplifier tout ça, pouvez vous m'éclairer ?
+
+---
+title: Redux - Demo - Remplacement du store de panier
+layout: code-server
+transition: view-transition
+---
+
+<CodeServer />
+
+---
+title: Redux - Faut-il migrer ?
+---
+
+Pas forcément + RTK
+
+---
+title: Redux - Store atomique
+transition: view-transition
+---
+
+L'utilisation de TanStack Query ne veux pas dire plus du tout de stores, certain état doivent être stocké
+=> On peut utiliser une librairie de store atomique / un context react voir l'url (nuqs FTW)
+
+---
+title: Redux - Conclusion
+transition: view-transition
+---
+
+- TanStack Query remplace très bien un Redux / Pinia
+- Si l'application est très historique, pas forcément besoin de migrer
+  - Si ça marche, ça marche
+  - Si vraiment on veux faire quelque chose, des alternatives plus lié a Redux existe comme RTK ou PiniaColada
+- Des librairies de store peuvent toujours être utilisé pour certain état => Context / Store Atomique
 
 ---
 title: Photopea - Call
@@ -174,6 +223,13 @@ transition: view-transition
 ---
 
 Faux téléchargement infini
+
+---
+title: Photopea - Conclusion
+transition: view-transition
+---
+
+Petite conclusion sur cette application, ou on parle rapidement du fait que la majeur partie de cette appli est client side, avec peut d'intéraction au backend, et que donc TanStack Query est inutile
 
 ---
 title: Big Latency - Call
