@@ -17,33 +17,33 @@ interface AddAppointmentDialogProps {
 }
 
 const fairyTalePatients = [
-  "Little Red Riding Hood",
-  "Goldilocks",
-  "Cinderella",
-  "Snow White",
-  "Sleeping Beauty",
-  "Rapunzel",
+  "Le Petit Chaperon Rouge",
+  "Boucle d'Or",
+  "Cendrillon",
+  "Blanche-Neige",
+  "La Belle au Bois Dormant",
+  "Raiponce",
   "Hansel",
   "Gretel",
-  "Jack (Beanstalk)",
-  "Three Little Pigs",
+  "Jack (Haricot Magique)",
+  "Les Trois Petits Cochons",
   "Rumpelstiltskin",
-  "The Gingerbread Man",
+  "Le Bonhomme de Pain d'Épice",
 ]
 
 const fairyTaleLocations = [
-  "Grandmother's Cottage, Enchanted Forest",
-  "Three Bears House, Deep Woods",
-  "Royal Palace, Kingdom Square",
-  "Seven Dwarfs Cottage, Mountain Pass",
-  "Tower in the Clouds, Sky Kingdom",
-  "Witch's Hut, Dark Forest",
-  "Gingerbread House, Candy Lane",
-  "Castle on the Hill, Royal District",
-  "Woodcutter's Cabin, Pine Grove",
-  "Village Square, Storybook Town",
-  "Magic Bean Farm, Giant's Valley",
-  "Spinning Wheel Tower, Fairy Realm",
+  "Cottage de Grand-mère, Forêt Enchantée",
+  "Maison des Trois Ours, Bois Profond",
+  "Palais Royal, Place du Royaume",
+  "Cottage des Sept Nains, Col de Montagne",
+  "Tour dans les Nuages, Royaume Céleste",
+  "Cabane de la Sorcière, Forêt Sombre",
+  "Maison en Pain d'Épice, Allée des Bonbons",
+  "Château sur la Colline, Quartier Royal",
+  "Cabane du Bûcheron, Bosquet de Pins",
+  "Place du Village, Ville des Contes",
+  "Ferme des Haricots Magiques, Vallée des Géants",
+  "Tour du Rouet, Royaume des Fées",
 ]
 
 export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: AddAppointmentDialogProps) {
@@ -81,18 +81,18 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle className="font-[family-name:var(--font-playfair)] text-xl">
-            Schedule New Appointment
+            Planifier un Nouveau Rendez-vous
           </DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="patient" className="text-sm font-medium">
-              Patient Name
+              Nom du Patient
             </Label>
             <Select value={formData.patient} onValueChange={(value) => handleInputChange("patient", value)}>
               <SelectTrigger>
-                <SelectValue placeholder="Select a patient" />
+                <SelectValue placeholder="Sélectionner un patient" />
               </SelectTrigger>
               <SelectContent>
                 {fairyTalePatients.map((patient) => (
@@ -106,11 +106,11 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
 
           <div className="space-y-2">
             <Label htmlFor="location" className="text-sm font-medium">
-              Location
+              Lieu
             </Label>
             <Select value={formData.location} onValueChange={(value) => handleInputChange("location", value)}>
               <SelectTrigger>
-                <SelectValue placeholder="Select a location" />
+                <SelectValue placeholder="Sélectionner un lieu" />
               </SelectTrigger>
               <SelectContent>
                 {fairyTaleLocations.map((location) => (
@@ -138,7 +138,7 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
 
             <div className="space-y-2">
               <Label htmlFor="time" className="text-sm font-medium">
-                Time
+                Heure
               </Label>
               <Input
                 id="time"
@@ -151,30 +151,30 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
 
           <div className="space-y-2">
             <Label htmlFor="type" className="text-sm font-medium">
-              Appointment Type
+              Type de Rendez-vous
             </Label>
             <Select value={formData.type} onValueChange={(value) => handleInputChange("type", value)}>
               <SelectTrigger>
-                <SelectValue placeholder="Select appointment type" />
+                <SelectValue placeholder="Sélectionner le type de rendez-vous" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="Check-up">Check-up</SelectItem>
+                <SelectItem value="Contrôle">Contrôle</SelectItem>
                 <SelectItem value="Consultation">Consultation</SelectItem>
-                <SelectItem value="Follow-up">Follow-up</SelectItem>
-                <SelectItem value="Emergency">Emergency</SelectItem>
+                <SelectItem value="Suivi">Suivi</SelectItem>
+                <SelectItem value="Urgence">Urgence</SelectItem>
                 <SelectItem value="Vaccination">Vaccination</SelectItem>
-                <SelectItem value="Treatment">Treatment</SelectItem>
+                <SelectItem value="Traitement">Traitement</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="notes" className="text-sm font-medium">
-              Notes (Optional)
+              Notes (Optionnel)
             </Label>
             <Textarea
               id="notes"
-              placeholder="Additional notes about the appointment..."
+              placeholder="Notes supplémentaires sur le rendez-vous..."
               value={formData.notes}
               onChange={(e) => handleInputChange("notes", e.target.value)}
               rows={3}
@@ -183,9 +183,9 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
 
           <div className="flex justify-end gap-2 pt-4">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-              Cancel
+              Annuler
             </Button>
-            <Button type="submit">Schedule Appointment</Button>
+            <Button type="submit">Planifier le Rendez-vous</Button>
           </div>
         </form>
       </DialogContent>

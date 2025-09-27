@@ -8,39 +8,39 @@ import { Calendar, Clock, MapPin, User, Plus, CalendarDays } from "lucide-react"
 import { AppointmentCalendar } from "./_components/appointment-calendar"
 import { AddAppointmentDialog } from "./_components/add-appointment-dialog"
 
-// Fairy tale themed mock data
+// Données fictives sur le thème des contes de fées
 const mockAppointments = [
   {
     id: "1",
-    patient: "Little Red Riding Hood",
-    location: "Grandmother's Cottage, Enchanted Forest",
+    patient: "Le Petit Chaperon Rouge",
+    location: "Cottage de Grand-mère, Forêt Enchantée",
     date: "2024-01-20",
     time: "09:00",
-    type: "Check-up",
+    type: "Contrôle",
     status: "confirmed" as const,
   },
   {
     id: "2",
-    patient: "Goldilocks",
-    location: "Three Bears House, Deep Woods",
+    patient: "Boucle d'Or",
+    location: "Maison des Trois Ours, Bois Profond",
     date: "2024-01-20",
     time: "14:30",
-    type: "Emergency",
+    type: "Urgence",
     status: "confirmed" as const,
   },
   {
     id: "3",
-    patient: "Cinderella",
-    location: "Royal Palace, Kingdom Square",
+    patient: "Cendrillon",
+    location: "Palais Royal, Place du Royaume",
     date: "2024-01-21",
     time: "10:00",
-    type: "Follow-up",
+    type: "Suivi",
     status: "pending" as const,
   },
   {
     id: "4",
-    patient: "Snow White",
-    location: "Seven Dwarfs Cottage, Mountain Pass",
+    patient: "Blanche-Neige",
+    location: "Cottage des Sept Nains, Col de Montagne",
     date: "2024-01-22",
     time: "11:00",
     type: "Consultation",
@@ -74,18 +74,18 @@ export default function HomePage() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-foreground font-[family-name:var(--font-playfair)]">
-                {"Dr. Wanderer's Calendar"}
+                {"Calendrier du Dr. Errant"}
               </h1>
-              <p className="text-muted-foreground">Manage your appointments across the realm</p>
+              <p className="text-muted-foreground">Gérez vos rendez-vous à travers le royaume</p>
             </div>
             <div className="flex gap-2">
               <Button variant="outline" onClick={() => setCurrentView("home")} className="flex items-center gap-2">
                 <User className="h-4 w-4" />
-                Home
+                Accueil
               </Button>
               <Button onClick={() => setIsAddDialogOpen(true)} className="flex items-center gap-2">
                 <Plus className="h-4 w-4" />
-                Add Appointment
+                Ajouter un Rendez-vous
               </Button>
             </div>
           </div>
@@ -110,20 +110,20 @@ export default function HomePage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-foreground font-[family-name:var(--font-playfair)]">
-              {"Dr. Wanderer's Practice"}
+              {"Cabinet du Dr. Errant"}
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Bringing healing to every corner of the realm
+              Apporter la guérison dans chaque coin du royaume
             </p>
           </div>
           <div className="flex gap-2">
             <Button variant="outline" onClick={() => setCurrentView("calendar")} className="flex items-center gap-2">
               <CalendarDays className="h-4 w-4" />
-              Calendar View
+              Vue Calendrier
             </Button>
             <Button onClick={() => setIsAddDialogOpen(true)} className="flex items-center gap-2">
               <Plus className="h-4 w-4" />
-              Add Appointment
+              Ajouter un Rendez-vous
             </Button>
           </div>
         </div>
@@ -136,7 +136,7 @@ export default function HomePage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-primary font-[family-name:var(--font-playfair)]">
                 <Clock className="h-5 w-5" />
-                Next Appointment
+                Prochain Rendez-vous
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -152,7 +152,7 @@ export default function HomePage() {
                   <Calendar className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-semibold text-foreground">
-                      {new Date(nextAppointment.date).toLocaleDateString("en-US", {
+                      {new Date(nextAppointment.date).toLocaleDateString("fr-FR", {
                         weekday: "long",
                         year: "numeric",
                         month: "long",
@@ -180,7 +180,7 @@ export default function HomePage() {
         <Card>
           <CardHeader>
             <CardTitle className="font-[family-name:var(--font-playfair)] text-foreground">
-              Upcoming Appointments
+              Rendez-vous à Venir
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -197,7 +197,7 @@ export default function HomePage() {
                     <div className="flex items-center gap-4">
                       <div className="flex flex-col items-center justify-center w-16 h-16 rounded-lg bg-primary/10 text-primary">
                         <span className="text-xs font-medium">
-                          {new Date(appointment.date).toLocaleDateString("en-US", { month: "short" })}
+                          {new Date(appointment.date).toLocaleDateString("fr-FR", { month: "short" })}
                         </span>
                         <span className="text-lg font-bold">{new Date(appointment.date).getDate()}</span>
                       </div>

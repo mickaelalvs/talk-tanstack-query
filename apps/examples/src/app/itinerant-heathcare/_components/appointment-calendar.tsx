@@ -24,21 +24,21 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
   const [currentDate, setCurrentDate] = useState(new Date())
 
   const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Janvier",
+    "Février",
+    "Mars",
+    "Avril",
+    "Mai",
+    "Juin",
+    "Juillet",
+    "Août",
+    "Septembre",
+    "Octobre",
+    "Novembre",
+    "Décembre",
   ]
 
-  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  const daysOfWeek = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"]
 
   const getDaysInMonth = (date: Date) => {
     const year = date.getFullYear()
@@ -101,7 +101,7 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
                 className="flex items-center gap-1"
               >
                 <ChevronLeft className="h-4 w-4" />
-                Previous
+                Précédent
               </Button>
               <Button
                 variant="outline"
@@ -109,7 +109,7 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
                 onClick={() => navigateMonth("next")}
                 className="flex items-center gap-1"
               >
-                Next
+                Suivant
                 <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
@@ -174,7 +174,7 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
       {/* Appointments List for Selected Month */}
       <Card>
         <CardHeader>
-          <CardTitle className="font-[family-name:var(--font-playfair)]">Appointments This Month</CardTitle>
+          <CardTitle className="font-[family-name:var(--font-playfair)]">Rendez-vous ce Mois</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -194,7 +194,7 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
                   <div className="flex items-center gap-4">
                     <div className="flex flex-col items-center justify-center w-16 h-16 rounded-lg bg-primary/10 text-primary">
                       <span className="text-xs font-medium">
-                        {new Date(appointment.date).toLocaleDateString("en-US", { month: "short" })}
+                        {new Date(appointment.date).toLocaleDateString("fr-FR", { month: "short" })}
                       </span>
                       <span className="text-lg font-bold">{new Date(appointment.date).getDate()}</span>
                     </div>
