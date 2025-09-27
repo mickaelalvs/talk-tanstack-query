@@ -90,7 +90,7 @@ export const CitiesList = ({
         >
           <div className="relative overflow-hidden aspect-video">
             <img
-              src={city.image || "/placeholder.svg"}
+              src={`/trip-planner${city.image}` || "/placeholder.svg"}
               alt={city.name}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
