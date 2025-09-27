@@ -1,7 +1,11 @@
+"use client";
+
 import { ShoppingCart, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useAppDispatch } from "@/lib/hooks";
+import { addToCart, optimisticAddToCart } from "@/app/nantes-shop/_stores/cartSlice";
 import type { Product } from "./types";
 
 interface ProductCardProps {
@@ -9,6 +13,17 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(optimisticAddToCart({ 
+      productId: product.id, 
+      quantity: 1, 
+      product: product 
+    }));
+    dispatch(addToCart({ productId: product.id, quantity: 1 }));
+  };
+
   return (
     <div>
       <Card className="overflow-hidden transition-all duration-300 border-0 shadow-md rounded-2xl h-full">
@@ -83,11 +98,12 @@ export function ProductCard({ product }: ProductCardProps) {
               <Button
                 className={`w-full py-2 rounded-lg font-medium text-sm transition-all duration-300 border ${
                   product.inStock
-                    ? "bg-transparent text-gray-900 border-gray-300"
+                    ? "bg-transparent text-gray-900 border-gray-300 hover:bg-gray-50"
                     : "bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200"
                 }`}
                 disabled={!product.inStock}
                 variant="outline"
+                onClick={handleAddToCart}
               >
                 <ShoppingCart className="h-4 w-4 mr-2" />
                 {product.inStock ? "AJOUTER AU PANIER" : "INDISPONIBLE"}

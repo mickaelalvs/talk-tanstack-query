@@ -85,6 +85,31 @@ function initializeTables() {
     )
   `);
 
+  // Create cart table
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS cart (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL,
+      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+
+  // Create cart_items table
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS cart_items (
+      id INTEGER PRIMARY KEY,
+      cart_id TEXT NOT NULL,
+      product_id INTEGER NOT NULL,
+      quantity INTEGER NOT NULL DEFAULT 1,
+      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (cart_id) REFERENCES cart(id) ON DELETE CASCADE,
+      FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+      UNIQUE(cart_id, product_id)
+    )
+  `);
+
   // Insert initial data if tables are empty
   const cityCount = db
     .prepare("SELECT COUNT(*) as count FROM cities")
@@ -136,7 +161,7 @@ function insertInitialData() {
     insertTrip.run(trip.id, trip.name, trip.createdAt.toISOString());
 
     // Insert trip cities
-    trip.cities.forEach((city, index) => {
+    trip.cities.forEach((city: any, index: number) => {
       insertTripCity.run(trip.id, city.id, index);
     });
   }
@@ -305,6 +330,164 @@ export function productFromRow(row: any): Product {
     inStock: Boolean(row.in_stock),
     isPromotion: Boolean(row.is_promotion),
     tags: JSON.parse(row.tags),
+  };
+}
+
+// Cart-related types
+export interface CartItem {
+  id: number;
+  cartId: string;
+  productId: number;
+  quantity: number;
+  product?: Product;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Cart {
+  id: string;
+  userId: string;
+  items: CartItem[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+// Cart functions
+export function getOrCreateCart(userId: string): Cart {
+  const db = getDatabase();
+  
+  // Try to get existing cart
+  let cartRow = db.prepare("SELECT * FROM cart WHERE user_id = ?").get(userId) as any;
+  
+  if (!cartRow) {
+    // Create new cart
+    const cartId = `cart_${userId}_${Date.now()}`;
+    const insertCart = db.prepare("INSERT INTO cart (id, user_id) VALUES (?, ?)");
+    insertCart.run(cartId, userId);
+    
+    cartRow = db.prepare("SELECT * FROM cart WHERE id = ?").get(cartId) as any;
+  }
+  
+  // Get cart items with product details
+  const items = db.prepare(`
+    SELECT ci.*, p.name, p.price, p.original_price, p.category, p.image, 
+           p.rating, p.reviews, p.in_stock, p.is_promotion, p.tags
+    FROM cart_items ci
+    JOIN products p ON ci.product_id = p.id
+    WHERE ci.cart_id = ?
+    ORDER BY ci.created_at
+  `).all(cartRow.id) as any[];
+  
+  return {
+    id: cartRow.id,
+    userId: cartRow.user_id,
+    items: items.map(itemFromRow),
+    createdAt: cartRow.created_at,
+    updatedAt: cartRow.updated_at,
+  };
+}
+
+export function addToCart(cartId: string, productId: number, quantity: number = 1): CartItem | null {
+  const db = getDatabase();
+  
+  // Check if item already exists
+  const existingItem = db.prepare("SELECT * FROM cart_items WHERE cart_id = ? AND product_id = ?").get(cartId, productId) as any;
+  
+  if (existingItem) {
+    // Update quantity
+    const updateItem = db.prepare("UPDATE cart_items SET quantity = quantity + ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?");
+    updateItem.run(quantity, existingItem.id);
+    
+    // Get updated item with product details
+    const updatedItem = db.prepare(`
+      SELECT ci.*, p.name, p.price, p.original_price, p.category, p.image, 
+             p.rating, p.reviews, p.in_stock, p.is_promotion, p.tags
+      FROM cart_items ci
+      JOIN products p ON ci.product_id = p.id
+      WHERE ci.id = ?
+    `).get(existingItem.id) as any;
+    
+    return itemFromRow(updatedItem);
+  } else {
+    // Insert new item
+    const insertItem = db.prepare("INSERT INTO cart_items (cart_id, product_id, quantity) VALUES (?, ?, ?)");
+    const result = insertItem.run(cartId, productId, quantity);
+    
+    // Get new item with product details
+    const newItem = db.prepare(`
+      SELECT ci.*, p.name, p.price, p.original_price, p.category, p.image, 
+             p.rating, p.reviews, p.in_stock, p.is_promotion, p.tags
+      FROM cart_items ci
+      JOIN products p ON ci.product_id = p.id
+      WHERE ci.id = ?
+    `).get(result.lastInsertRowid) as any;
+    
+    return itemFromRow(newItem);
+  }
+}
+
+export function updateCartItemQuantity(cartId: string, productId: number, quantity: number): CartItem | null {
+  const db = getDatabase();
+  
+  if (quantity <= 0) {
+    // Remove item if quantity is 0 or negative
+    return removeFromCart(cartId, productId);
+  }
+  
+  const updateItem = db.prepare("UPDATE cart_items SET quantity = ?, updated_at = CURRENT_TIMESTAMP WHERE cart_id = ? AND product_id = ?");
+  const result = updateItem.run(quantity, cartId, productId);
+  
+  if (result.changes === 0) {
+    return null;
+  }
+  
+  // Get updated item with product details
+  const updatedItem = db.prepare(`
+    SELECT ci.*, p.name, p.price, p.original_price, p.category, p.image, 
+           p.rating, p.reviews, p.in_stock, p.is_promotion, p.tags
+    FROM cart_items ci
+    JOIN products p ON ci.product_id = p.id
+    WHERE ci.cart_id = ? AND ci.product_id = ?
+  `).get(cartId, productId) as any;
+  
+  return itemFromRow(updatedItem);
+}
+
+export function removeFromCart(cartId: string, productId: number): null {
+  const db = getDatabase();
+  const deleteItem = db.prepare("DELETE FROM cart_items WHERE cart_id = ? AND product_id = ?");
+  deleteItem.run(cartId, productId);
+  return null;
+}
+
+export function clearCart(cartId: string): void {
+  const db = getDatabase();
+  const deleteItems = db.prepare("DELETE FROM cart_items WHERE cart_id = ?");
+  deleteItems.run(cartId);
+}
+
+export function itemFromRow(row: any): CartItem {
+  return {
+    id: row.id,
+    cartId: row.cart_id,
+    productId: row.product_id,
+    quantity: row.quantity,
+    product: {
+      id: row.product_id,
+      name: row.name,
+      description: '', // Not included in cart items query
+      price: row.price,
+      originalPrice: row.original_price || undefined,
+      category: row.category,
+      image: row.image,
+      rating: row.rating,
+      reviews: row.reviews,
+      inStock: Boolean(row.in_stock),
+      isPromotion: Boolean(row.is_promotion),
+      tags: JSON.parse(row.tags),
+    },
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
   };
 }
 
