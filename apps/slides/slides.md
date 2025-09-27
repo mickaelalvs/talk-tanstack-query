@@ -33,12 +33,6 @@ Service après ventes des app web
 
 # Qu'est ce que c'est TanStack Query
 
----
-title: Code Server
-transition: view-transition
----
-
-<CodeServer />
 
 ---
 title: Basic slide
@@ -136,7 +130,7 @@ layout: code-server
 transition: view-transition
 ---
 
-<CodeServer />
+<CodeServer path="trip-planner" />
 
 ---
 title: List - Call
@@ -156,7 +150,7 @@ layout: code-server
 transition: view-transition
 ---
 
-<CodeServer />
+<CodeServer path="water-meter" />
 
 ---
 title: Redux - Call 
@@ -177,7 +171,7 @@ layout: code-server
 transition: view-transition
 ---
 
-<CodeServer />
+<CodeServer path="nantes-shop" />
 
 ---
 title: Redux - Faut-il migrer ?
@@ -251,7 +245,7 @@ layout: code-server
 transition: view-transition
 ---
 
-<CodeServer />
+<CodeServer path="itinerant-healthcare" />
 
 ---
 title: Big Latency - Persist query client

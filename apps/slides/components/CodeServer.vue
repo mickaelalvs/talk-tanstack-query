@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
 
+const { path } = defineProps<{
+  path: 'nantes-shop' | 'itinerant-heathcare' | 'trip-planner' | 'water-meter'
+}>()
+
+const url = computed(() => {
+  return `http://localhost:1234/${path}`
+})
+
 const showResultIframe = ref(false)
 const zIndex = ref(1)
 
@@ -38,7 +46,7 @@ const resultIframeClass = computed(() => {
 <template>
   <div class="code-server" style="width: 100%; height: 100%">
     <iframe class="iframe" src="http://localhost:4000" width="100%" height="100%" style="z-index: 2;" />
-    <iframe :class="resultIframeClass" src="http://localhost:1234" width="95%" height="95%" :style="{ zIndex: zIndex }" />
+    <iframe :class="resultIframeClass" :src="url" :style="{ zIndex: zIndex }" />
   </div>
 </template>
 
@@ -56,10 +64,14 @@ const resultIframeClass = computed(() => {
 }
 
 .iframe.result {
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     transition: 0.3s ease-in-out;
+    width: 98%;
+    height: 97%;
+    zoom: 0.75;
 }
 
 .iframe.result.shown {

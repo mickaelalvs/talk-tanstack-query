@@ -20,7 +20,7 @@ export default function Home() {
       description: "Gérez votre compteur d'eau et suivez votre consommation.",
     },
     {
-      href: "/itinerant-heathcare",
+      href: "/itinerant-healthcare",
       title: "Le Docteur Itinérant",
       description: "Gérez vos rendez-vous avec vos patients.",
     }
