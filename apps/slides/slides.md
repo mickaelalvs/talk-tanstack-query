@@ -56,3 +56,7 @@ src: /pages/next-app/slides.md
 ---
 src: /pages/tips/slides.md
 ---
+
+---
+src: /pages/conclusion/slides.md
+---
