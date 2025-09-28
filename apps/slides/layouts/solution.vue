@@ -19,7 +19,6 @@ const slots = useSlots()
     <Background />
     <div class="solution-root">
         <div class="solution-container card">
-            <!-- Header de la solution -->
             <div class="solution-header">
                 <div class="solution-title-section">
                     <h1 class="solution-title">✅ Solution TanStack Query</h1>
@@ -36,17 +35,14 @@ const slots = useSlots()
                 </div>
             </div>
 
-            <!-- Titre de la solution -->
             <div class="solution-title-main">
                 <h2 class="main-title">{{ solutionTitle }}</h2>
             </div>
 
-            <!-- Contenu principal de la solution -->
             <div class="solution-content">
                 <slot name="content" />
             </div>
 
-            <!-- Footer de la solution -->
             <div class="solution-footer">
                 <div class="solution-timestamp">
                     <span class="timestamp-icon">🕒</span>

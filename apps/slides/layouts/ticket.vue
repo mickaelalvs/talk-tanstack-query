@@ -16,7 +16,6 @@ const props = defineProps({
     <Background />
     <div class="ticket-root">
         <div class="ticket-container">
-            <!-- Header du ticket -->
             <div class="ticket-header">
                 <div class="ticket-title">
                     <h1 class="ticket-title-text">🎫 Ticket Support TanStack Query</h1>
@@ -31,10 +30,7 @@ const props = defineProps({
                 </div>
             </div>
 
-            <!-- Contenu principal du ticket -->
             <div class="ticket-content">
-
-                <!-- Message du client -->
                 <div class="message-section">
                     <div class="section-header">
                         <span class="section-icon">💬</span>
@@ -47,7 +43,6 @@ const props = defineProps({
                     </div>
                 </div>
 
-                <!-- Problématique identifiée -->
                 <div class="problem-section">
                     <div class="section-header">
                         <span class="section-icon">🔍</span>
@@ -61,7 +56,6 @@ const props = defineProps({
                 </div>
             </div>
 
-            <!-- Footer du ticket -->
             <div class="ticket-footer">
                 <div class="ticket-timestamp">
                     <span class="timestamp-icon">🕒</span>

@@ -11,7 +11,6 @@ transition: fade
     preserveAspectRatio="none"
     style="filter: drop-shadow(0 50px 50px rgb(255,255,255));"
   >
-    <!-- Desk shape (straight table, no arc) -->
     <rect
       x="0"
       y="100"
@@ -19,7 +18,6 @@ transition: fade
       height="100"
       fill="#101828"
     />
-    <!-- Black border (straight line) -->
     <line
       x1="0"
       y1="100"
