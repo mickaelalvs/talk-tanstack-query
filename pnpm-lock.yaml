@@ -118,13 +118,16 @@ importers:
         version: 2.1.1
       geist:
         specifier: latest
-        version: 1.5.1(next@15.5.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
+        version: 1.5.1(next@15.5.0(@babel/core@7.28.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
+      jotai:
+        specifier: ^2.15.0
+        version: 2.15.0(@babel/core@7.28.3)(@babel/template@7.27.2)(@types/react@19.1.11)(react@19.1.0)
       lucide-react:
         specifier: ^0.542.0
         version: 0.542.0(react@19.1.0)
       next:
         specifier: 15.5.0
-        version: 15.5.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 15.5.0(@babel/core@7.28.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react:
         specifier: 19.1.0
         version: 19.1.0
@@ -3238,6 +3241,24 @@ packages:
   jiti@2.5.1:
     resolution: {integrity: sha512-twQoecYPiVA5K/h6SxtORw/Bs3ar+mLUtoPSc7iMXzQzK8d7eJ/R09wmTwAjiamETn1cXYPGfNnu7DMoHgu12w==}
     hasBin: true
+
+  jotai@2.15.0:
+    resolution: {integrity: sha512-nbp/6jN2Ftxgw0VwoVnOg0m5qYM1rVcfvij+MZx99Z5IK13eGve9FJoCwGv+17JvVthTjhSmNtT5e1coJnr6aw==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@babel/core': '>=7.0.0'
+      '@babel/template': '>=7.0.0'
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@babel/template':
+        optional: true
+      '@types/react':
+        optional: true
+      react:
+        optional: true
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -7854,9 +7875,9 @@ snapshots:
 
   fzf@0.5.2: {}
 
-  geist@1.5.1(next@15.5.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)):
+  geist@1.5.1(next@15.5.0(@babel/core@7.28.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)):
     dependencies:
-      next: 15.5.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      next: 15.5.0(@babel/core@7.28.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
   gensync@1.0.0-beta.2: {}
 
@@ -8061,6 +8082,13 @@ snapshots:
   isexe@2.0.0: {}
 
   jiti@2.5.1: {}
+
+  jotai@2.15.0(@babel/core@7.28.3)(@babel/template@7.27.2)(@types/react@19.1.11)(react@19.1.0):
+    optionalDependencies:
+      '@babel/core': 7.28.3
+      '@babel/template': 7.27.2
+      '@types/react': 19.1.11
+      react: 19.1.0
 
   js-tokens@4.0.0: {}
 
@@ -8585,7 +8613,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next@15.5.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  next@15.5.0(@babel/core@7.28.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@next/env': 15.5.0
       '@swc/helpers': 0.5.15
@@ -8593,7 +8621,7 @@ snapshots:
       postcss: 8.4.31
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
-      styled-jsx: 5.1.6(react@19.1.0)
+      styled-jsx: 5.1.6(@babel/core@7.28.3)(react@19.1.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.5.0
       '@next/swc-darwin-x64': 15.5.0
@@ -9170,10 +9198,12 @@ snapshots:
       hey-listen: 1.0.8
       tslib: 2.4.0
 
-  styled-jsx@5.1.6(react@19.1.0):
+  styled-jsx@5.1.6(@babel/core@7.28.3)(react@19.1.0):
     dependencies:
       client-only: 0.0.1
       react: 19.1.0
+    optionalDependencies:
+      '@babel/core': 7.28.3
 
   stylis@4.3.6: {}
 

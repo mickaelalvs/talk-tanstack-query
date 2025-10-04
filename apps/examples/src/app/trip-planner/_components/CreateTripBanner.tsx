@@ -3,37 +3,32 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import type { City } from "@/lib/mock-data";
+import { useCitySelection } from "@/lib/hooks";
+import { createTrip } from "../_services/create-trip";
 
-export const CreateTripBanner = ({
-  selectedCities,
-  setSelectedCities,
-}: {
-  selectedCities: City[];
-  setSelectedCities: (cities: City[]) => void;
-}) => {
+export const CreateTripBanner = () => {
+  const {
+    selectedCities,
+    removeCityFromSelection,
+    clearSelectedCities,
+    hasSelectedCities,
+  } = useCitySelection();
   const [newTripName, setNewTripName] = useState("");
 
-  if (selectedCities.length === 0) {
+  if (!hasSelectedCities) {
     return null;
   }
 
-  const createTrip = async () => {
-    if (newTripName.trim() && selectedCities.length > 0) {
+  const onSubmit = async () => {
+    if (newTripName.trim() && hasSelectedCities) {
       try {
-        const response = await fetch("/api/trip-planner/trips", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: newTripName.trim(),
-            cityIds: selectedCities.map((city) => city.id),
-          }),
+        const response = await createTrip({
+          name: newTripName.trim(),
+          cityIds: selectedCities.map((city) => city.id),
         });
 
         if (response.ok) {
-          setSelectedCities([]);
+          clearSelectedCities();
           setNewTripName("");
         } else {
           console.error("Failed to create trip:", await response.text());
@@ -42,10 +37,6 @@ export const CreateTripBanner = ({
         console.error("Error creating trip:", error);
       }
     }
-  };
-
-  const removeCityFromSelection = (cityId: string) => {
-    setSelectedCities(selectedCities.filter((c) => c.id !== cityId));
   };
 
   return (
@@ -81,8 +72,8 @@ export const CreateTripBanner = ({
             </div>
 
             <Button
-              onClick={createTrip}
-              disabled={!newTripName.trim() || selectedCities.length === 0}
+              onClick={onSubmit}
+              disabled={!newTripName.trim() || !hasSelectedCities}
               className="bg-primary hover:bg-primary/90"
             >
               Créer

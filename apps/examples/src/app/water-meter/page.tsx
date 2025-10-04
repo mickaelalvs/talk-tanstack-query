@@ -1,4 +1,5 @@
 import { AlertTriangle, BarChart3, Droplets, Table } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -7,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -34,67 +34,63 @@ export default function HomePage() {
       <main className="container mx-auto px-4 py-8">
         <div className="grid gap-6 md:grid-cols-2 mb-8">
           <Link href="/water-meter/meters">
-          <Card
-            className="hover:shadow-lg transition-all duration-200 cursor-pointer group"
-          >
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                  <Table className="h-5 w-5 text-primary" />
-                </div>
-                Compteurs d'Eau
-              </CardTitle>
-              <CardDescription>
-                Visualisez et gérez tous les compteurs d'eau du bâtiment avec
-                tri et filtrage avancés
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center justify-between">
-                <div className="text-sm text-muted-foreground">
-                  24 compteurs • 2 fuites détectées
-                </div>
-                <Button
-                  size="sm"
-                  className="group-hover:bg-primary/90 cursor-pointer"
-                >
-                  Accéder
-                </Button>
+            <Card className="hover:shadow-lg transition-all duration-200 cursor-pointer group">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                    <Table className="h-5 w-5 text-primary" />
+                  </div>
+                  Compteurs d'Eau
+                </CardTitle>
+                <CardDescription>
+                  Visualisez et gérez tous les compteurs d'eau du bâtiment avec
+                  tri et filtrage avancés
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-muted-foreground">
+                    24 compteurs • 2 fuites détectées
+                  </div>
+                  <Button
+                    size="sm"
+                    className="group-hover:bg-primary/90 cursor-pointer"
+                  >
+                    Accéder
+                  </Button>
                 </div>
               </CardContent>
             </Card>
           </Link>
 
           <Link href="/water-meter/graph">
-          <Card
-            className="hover:shadow-lg transition-all duration-200 cursor-pointer group"
-            >
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                  <BarChart3 className="h-5 w-5 text-primary" />
-                </div>
-                Graphiques de Consommation
-              </CardTitle>
-              <CardDescription>
-                Analysez les tendances de consommation avec des graphiques
-                interactifs et des filtres temporels
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center justify-between">
-                <div className="text-sm text-muted-foreground">
-                  Analyse temps réel • Historique complet
-                </div>
-                <Button
-                  size="sm"
-                  className="group-hover:bg-primary/90 cursor-pointer"
+            <Card className="hover:shadow-lg transition-all duration-200 cursor-pointer group">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                    <BarChart3 className="h-5 w-5 text-primary" />
+                  </div>
+                  Graphiques de Consommation
+                </CardTitle>
+                <CardDescription>
+                  Analysez les tendances de consommation avec des graphiques
+                  interactifs et des filtres temporels
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-muted-foreground">
+                    Analyse temps réel • Historique complet
+                  </div>
+                  <Button
+                    size="sm"
+                    className="group-hover:bg-primary/90 cursor-pointer"
                   >
-                  Analyser
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+                    Analyser
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </Link>
         </div>
 

@@ -2,7 +2,7 @@
 
 import { Plus } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Trip } from "@/lib/mock-data";
@@ -12,17 +12,17 @@ import { TripCard } from "./_components/TripCard";
 export default function TripsPage() {
   const [trips, setTrips] = useState<Trip[]>();
 
-  const fetchTrips = async () => {
+  const fetchTrips = useCallback(async () => {
     const trips = await fetch("/api/trip-planner/trips");
     setTrips(await trips.json());
-  };
+  }, []);
 
   useEffect(() => {
     fetchTrips();
-  }, []);
+  }, [fetchTrips]);
 
   const handleDeleteTrip = (tripId: string) => {
-    setTrips(trips?.filter(trip => trip.id !== tripId));
+    setTrips(trips?.filter((trip) => trip.id !== tripId));
   };
 
   return (
@@ -49,7 +49,11 @@ export default function TripsPage() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {trips?.map((trip) => (
-                  <TripCard key={trip.id} trip={trip} onDelete={handleDeleteTrip} />
+                  <TripCard
+                    key={trip.id}
+                    trip={trip}
+                    onDelete={handleDeleteTrip}
+                  />
                 ))}
               </div>
             )}

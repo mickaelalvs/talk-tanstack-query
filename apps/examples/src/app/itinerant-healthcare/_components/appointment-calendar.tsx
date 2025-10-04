@@ -1,27 +1,29 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react"
+import { ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
+import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface Appointment {
-  id: string
-  patient: string
-  location: string
-  date: string
-  time: string
-  type: string
-  status: "confirmed" | "pending"
+  id: string;
+  patient: string;
+  location: string;
+  date: string;
+  time: string;
+  type: string;
+  status: "confirmed" | "pending";
 }
 
 interface AppointmentCalendarProps {
-  appointments: Appointment[]
+  appointments: Appointment[];
 }
 
-export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) {
-  const [currentDate, setCurrentDate] = useState(new Date())
+export function AppointmentCalendar({
+  appointments,
+}: AppointmentCalendarProps) {
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const monthNames = [
     "Janvier",
@@ -36,53 +38,53 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
     "Octobre",
     "Novembre",
     "Décembre",
-  ]
+  ];
 
-  const daysOfWeek = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"]
+  const daysOfWeek = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
 
   const getDaysInMonth = (date: Date) => {
-    const year = date.getFullYear()
-    const month = date.getMonth()
-    const firstDay = new Date(year, month, 1)
-    const lastDay = new Date(year, month + 1, 0)
-    const daysInMonth = lastDay.getDate()
-    const startingDayOfWeek = firstDay.getDay()
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const daysInMonth = lastDay.getDate();
+    const startingDayOfWeek = firstDay.getDay();
 
-    const days = []
+    const days = [];
 
     // Add empty cells for days before the first day of the month
     for (let i = 0; i < startingDayOfWeek; i++) {
-      days.push(null)
+      days.push(null);
     }
 
     // Add days of the month
     for (let day = 1; day <= daysInMonth; day++) {
-      days.push(day)
+      days.push(day);
     }
 
-    return days
-  }
+    return days;
+  };
 
   const getAppointmentsForDate = (day: number | null) => {
-    if (!day) return []
+    if (!day) return [];
 
-    const dateStr = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
-    return appointments.filter((apt) => apt.date === dateStr)
-  }
+    const dateStr = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    return appointments.filter((apt) => apt.date === dateStr);
+  };
 
   const navigateMonth = (direction: "prev" | "next") => {
     setCurrentDate((prev) => {
-      const newDate = new Date(prev)
+      const newDate = new Date(prev);
       if (direction === "prev") {
-        newDate.setMonth(prev.getMonth() - 1)
+        newDate.setMonth(prev.getMonth() - 1);
       } else {
-        newDate.setMonth(prev.getMonth() + 1)
+        newDate.setMonth(prev.getMonth() + 1);
       }
-      return newDate
-    })
-  }
+      return newDate;
+    });
+  };
 
-  const days = getDaysInMonth(currentDate)
+  const days = getDaysInMonth(currentDate);
 
   return (
     <div className="space-y-6">
@@ -119,7 +121,10 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
           {/* Days of week header */}
           <div className="grid grid-cols-7 gap-2 mb-4">
             {daysOfWeek.map((day) => (
-              <div key={day} className="p-2 text-center font-semibold text-muted-foreground">
+              <div
+                key={day}
+                className="p-2 text-center font-semibold text-muted-foreground"
+              >
                 {day}
               </div>
             ))}
@@ -127,24 +132,28 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
 
           {/* Calendar grid */}
           <div className="grid grid-cols-7 gap-2">
-            {days.map((day, index) => {
-              const dayAppointments = getAppointmentsForDate(day)
+            {days.map((day) => {
+              const dayAppointments = getAppointmentsForDate(day);
               const isToday =
                 day &&
                 new Date().getDate() === day &&
                 new Date().getMonth() === currentDate.getMonth() &&
-                new Date().getFullYear() === currentDate.getFullYear()
+                new Date().getFullYear() === currentDate.getFullYear();
 
               return (
                 <div
-                  key={index}
+                  key={day}
                   className={`min-h-[120px] p-2 border border-border rounded-lg ${
-                    day ? "bg-card hover:bg-muted/30 transition-colors" : "bg-muted/20"
+                    day
+                      ? "bg-card hover:bg-muted/30 transition-colors"
+                      : "bg-muted/20"
                   } ${isToday ? "ring-2 ring-primary ring-offset-2" : ""}`}
                 >
                   {day && (
                     <>
-                      <div className={`text-sm font-semibold mb-2 ${isToday ? "text-primary" : "text-foreground"}`}>
+                      <div
+                        className={`text-sm font-semibold mb-2 ${isToday ? "text-primary" : "text-foreground"}`}
+                      >
                         {day}
                       </div>
                       <div className="space-y-1">
@@ -165,7 +174,7 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
                     </>
                   )}
                 </div>
-              )
+              );
             })}
           </div>
         </CardContent>
@@ -174,18 +183,25 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
       {/* Appointments List for Selected Month */}
       <Card>
         <CardHeader>
-          <CardTitle className="font-[family-name:var(--font-playfair)]">Rendez-vous ce Mois</CardTitle>
+          <CardTitle className="font-[family-name:var(--font-playfair)]">
+            Rendez-vous ce Mois
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {appointments
               .filter((apt) => {
-                const aptDate = new Date(apt.date)
+                const aptDate = new Date(apt.date);
                 return (
-                  aptDate.getMonth() === currentDate.getMonth() && aptDate.getFullYear() === currentDate.getFullYear()
-                )
+                  aptDate.getMonth() === currentDate.getMonth() &&
+                  aptDate.getFullYear() === currentDate.getFullYear()
+                );
               })
-              .sort((a, b) => new Date(`${a.date}T${a.time}`).getTime() - new Date(`${b.date}T${b.time}`).getTime())
+              .sort(
+                (a, b) =>
+                  new Date(`${a.date}T${a.time}`).getTime() -
+                  new Date(`${b.date}T${b.time}`).getTime(),
+              )
               .map((appointment) => (
                 <div
                   key={appointment.id}
@@ -194,23 +210,38 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
                   <div className="flex items-center gap-4">
                     <div className="flex flex-col items-center justify-center w-16 h-16 rounded-lg bg-primary/10 text-primary">
                       <span className="text-xs font-medium">
-                        {new Date(appointment.date).toLocaleDateString("fr-FR", { month: "short" })}
+                        {new Date(appointment.date).toLocaleDateString(
+                          "fr-FR",
+                          { month: "short" },
+                        )}
                       </span>
-                      <span className="text-lg font-bold">{new Date(appointment.date).getDate()}</span>
+                      <span className="text-lg font-bold">
+                        {new Date(appointment.date).getDate()}
+                      </span>
                     </div>
                     <div className="space-y-1">
-                      <p className="font-semibold text-foreground">{appointment.patient}</p>
+                      <p className="font-semibold text-foreground">
+                        {appointment.patient}
+                      </p>
                       <p className="text-sm text-muted-foreground flex items-center gap-1">
                         <Clock className="h-3 w-3" />
                         {appointment.time} • {appointment.type}
                       </p>
                       <p className="text-sm text-muted-foreground flex items-center gap-1">
                         <MapPin className="h-3 w-3" />
-                        <span className="text-balance">{appointment.location}</span>
+                        <span className="text-balance">
+                          {appointment.location}
+                        </span>
                       </p>
                     </div>
                   </div>
-                  <Badge variant={appointment.status === "confirmed" ? "default" : "secondary"}>
+                  <Badge
+                    variant={
+                      appointment.status === "confirmed"
+                        ? "default"
+                        : "secondary"
+                    }
+                  >
                     {appointment.status}
                   </Badge>
                 </div>
@@ -219,5 +250,5 @@ export function AppointmentCalendar({ appointments }: AppointmentCalendarProps) 
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

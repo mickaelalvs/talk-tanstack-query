@@ -1,25 +1,14 @@
-import { Loader2, MapPin, Thermometer } from "lucide-react";
+import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import type { City } from "@/lib/mock-data";
+import { selectedCitiesAtom } from "@/lib/store";
+import { listCities } from "../_services/list-cities";
+import { CitiesListError } from "./CitiesListError";
+import { CitiesListSkeleton } from "./CitiesListSkeleton";
+import { CityCard } from "./CityCard";
 
-export const CitiesList = ({
-  searchQuery,
-  selectedCities,
-  addCityToSelection,
-}: {
-  searchQuery: string;
-  selectedCities: City[];
-  addCityToSelection: (city: City) => void;
-}) => {
+export const CitiesList = ({ searchQuery }: { searchQuery: string }) => {
+  const [selectedCities] = useAtom(selectedCitiesAtom);
   const [cities, setCities] = useState<City[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,7 +18,7 @@ export const CitiesList = ({
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch("/api/trip-planner/cities");
+        const response = await listCities();
 
         if (!response.ok) {
           throw new Error("Failed to fetch cities");
@@ -54,27 +43,11 @@ export const CitiesList = ({
   );
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center py-12">
-        <div className="flex items-center gap-2 text-muted-foreground">
-          <Loader2 className="w-5 h-5 animate-spin" />
-          <span>Chargement des villes...</span>
-        </div>
-      </div>
-    );
+    return <CitiesListSkeleton />;
   }
 
   if (error) {
-    return (
-      <div className="flex items-center justify-center py-12">
-        <div className="text-center">
-          <p className="text-destructive mb-2">
-            Erreur lors du chargement des villes
-          </p>
-          <p className="text-sm text-muted-foreground">{error}</p>
-        </div>
-      </div>
-    );
+    return <CitiesListError error={error} />;
   }
 
   return (
@@ -84,72 +57,7 @@ export const CitiesList = ({
       }`}
     >
       {filteredCities.map((city) => (
-        <Card
-          key={city.id}
-          className="overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col h-full pt-0"
-        >
-          <div className="relative overflow-hidden aspect-video">
-            <img
-              src={`/trip-planner${city.image}` || "/placeholder.svg"}
-              alt={city.name}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center gap-2 group-hover:bg-white/95 transition-colors">
-              <span className="text-lg">{city.weather.icon}</span>
-              <span className="font-medium">{city.weather.temperature}°C</span>
-            </div>
-          </div>
-          <div className="flex flex-col flex-1">
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <CardTitle className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-primary" />
-                  {city.name}
-                </CardTitle>
-                <Badge variant="secondary">{city.country}</Badge>
-              </div>
-              <CardDescription>{city.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col flex-1">
-              <div className="space-y-3 flex-1">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Thermometer className="w-4 h-4" />
-                  {city.weather.condition}
-                </div>
-                <div className="flex flex-wrap gap-1">
-                  {city.attractions.slice(0, 3).map((attraction) => (
-                    <Badge
-                      key={attraction}
-                      variant="outline"
-                      className="text-xs"
-                    >
-                      {attraction}
-                    </Badge>
-                  ))}
-                  {city.attractions.length > 3 && (
-                    <Badge variant="outline" className="text-xs">
-                      +{city.attractions.length - 3} more
-                    </Badge>
-                  )}
-                </div>
-              </div>
-              <Button
-                onClick={() => addCityToSelection(city)}
-                disabled={selectedCities.some((c) => c.id === city.id)}
-                className="w-full mt-4 group-hover:shadow-md transition-all duration-200"
-                variant={
-                  selectedCities.some((c) => c.id === city.id)
-                    ? "secondary"
-                    : "default"
-                }
-              >
-                {selectedCities.some((c) => c.id === city.id)
-                  ? "Ajouté au voyage"
-                  : "Ajouter au voyage"}
-              </Button>
-            </CardContent>
-          </div>
-        </Card>
+        <CityCard key={city.id} city={city} />
       ))}
     </div>
   );

@@ -355,29 +355,35 @@ export interface Cart {
 // Cart functions
 export function getOrCreateCart(userId: string): Cart {
   const db = getDatabase();
-  
+
   // Try to get existing cart
-  let cartRow = db.prepare("SELECT * FROM cart WHERE user_id = ?").get(userId) as any;
-  
+  let cartRow = db
+    .prepare("SELECT * FROM cart WHERE user_id = ?")
+    .get(userId) as any;
+
   if (!cartRow) {
     // Create new cart
     const cartId = `cart_${userId}_${Date.now()}`;
-    const insertCart = db.prepare("INSERT INTO cart (id, user_id) VALUES (?, ?)");
+    const insertCart = db.prepare(
+      "INSERT INTO cart (id, user_id) VALUES (?, ?)",
+    );
     insertCart.run(cartId, userId);
-    
+
     cartRow = db.prepare("SELECT * FROM cart WHERE id = ?").get(cartId) as any;
   }
-  
+
   // Get cart items with product details
-  const items = db.prepare(`
+  const items = db
+    .prepare(`
     SELECT ci.*, p.name, p.price, p.original_price, p.category, p.image, 
            p.rating, p.reviews, p.in_stock, p.is_promotion, p.tags
     FROM cart_items ci
     JOIN products p ON ci.product_id = p.id
     WHERE ci.cart_id = ?
     ORDER BY ci.created_at
-  `).all(cartRow.id) as any[];
-  
+  `)
+    .all(cartRow.id) as any[];
+
   return {
     id: cartRow.id,
     userId: cartRow.user_id,
@@ -387,75 +393,99 @@ export function getOrCreateCart(userId: string): Cart {
   };
 }
 
-export function addToCart(cartId: string, productId: number, quantity: number = 1): CartItem | null {
+export function addToCart(
+  cartId: string,
+  productId: number,
+  quantity: number = 1,
+): CartItem | null {
   const db = getDatabase();
-  
+
   // Check if item already exists
-  const existingItem = db.prepare("SELECT * FROM cart_items WHERE cart_id = ? AND product_id = ?").get(cartId, productId) as any;
-  
+  const existingItem = db
+    .prepare("SELECT * FROM cart_items WHERE cart_id = ? AND product_id = ?")
+    .get(cartId, productId) as any;
+
   if (existingItem) {
     // Update quantity
-    const updateItem = db.prepare("UPDATE cart_items SET quantity = quantity + ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?");
+    const updateItem = db.prepare(
+      "UPDATE cart_items SET quantity = quantity + ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+    );
     updateItem.run(quantity, existingItem.id);
-    
+
     // Get updated item with product details
-    const updatedItem = db.prepare(`
+    const updatedItem = db
+      .prepare(`
       SELECT ci.*, p.name, p.price, p.original_price, p.category, p.image, 
              p.rating, p.reviews, p.in_stock, p.is_promotion, p.tags
       FROM cart_items ci
       JOIN products p ON ci.product_id = p.id
       WHERE ci.id = ?
-    `).get(existingItem.id) as any;
-    
+    `)
+      .get(existingItem.id) as any;
+
     return itemFromRow(updatedItem);
   } else {
     // Insert new item
-    const insertItem = db.prepare("INSERT INTO cart_items (cart_id, product_id, quantity) VALUES (?, ?, ?)");
+    const insertItem = db.prepare(
+      "INSERT INTO cart_items (cart_id, product_id, quantity) VALUES (?, ?, ?)",
+    );
     const result = insertItem.run(cartId, productId, quantity);
-    
+
     // Get new item with product details
-    const newItem = db.prepare(`
+    const newItem = db
+      .prepare(`
       SELECT ci.*, p.name, p.price, p.original_price, p.category, p.image, 
              p.rating, p.reviews, p.in_stock, p.is_promotion, p.tags
       FROM cart_items ci
       JOIN products p ON ci.product_id = p.id
       WHERE ci.id = ?
-    `).get(result.lastInsertRowid) as any;
-    
+    `)
+      .get(result.lastInsertRowid) as any;
+
     return itemFromRow(newItem);
   }
 }
 
-export function updateCartItemQuantity(cartId: string, productId: number, quantity: number): CartItem | null {
+export function updateCartItemQuantity(
+  cartId: string,
+  productId: number,
+  quantity: number,
+): CartItem | null {
   const db = getDatabase();
-  
+
   if (quantity <= 0) {
     // Remove item if quantity is 0 or negative
     return removeFromCart(cartId, productId);
   }
-  
-  const updateItem = db.prepare("UPDATE cart_items SET quantity = ?, updated_at = CURRENT_TIMESTAMP WHERE cart_id = ? AND product_id = ?");
+
+  const updateItem = db.prepare(
+    "UPDATE cart_items SET quantity = ?, updated_at = CURRENT_TIMESTAMP WHERE cart_id = ? AND product_id = ?",
+  );
   const result = updateItem.run(quantity, cartId, productId);
-  
+
   if (result.changes === 0) {
     return null;
   }
-  
+
   // Get updated item with product details
-  const updatedItem = db.prepare(`
+  const updatedItem = db
+    .prepare(`
     SELECT ci.*, p.name, p.price, p.original_price, p.category, p.image, 
            p.rating, p.reviews, p.in_stock, p.is_promotion, p.tags
     FROM cart_items ci
     JOIN products p ON ci.product_id = p.id
     WHERE ci.cart_id = ? AND ci.product_id = ?
-  `).get(cartId, productId) as any;
-  
+  `)
+    .get(cartId, productId) as any;
+
   return itemFromRow(updatedItem);
 }
 
 export function removeFromCart(cartId: string, productId: number): null {
   const db = getDatabase();
-  const deleteItem = db.prepare("DELETE FROM cart_items WHERE cart_id = ? AND product_id = ?");
+  const deleteItem = db.prepare(
+    "DELETE FROM cart_items WHERE cart_id = ? AND product_id = ?",
+  );
   deleteItem.run(cartId, productId);
   return null;
 }
@@ -475,7 +505,7 @@ export function itemFromRow(row: any): CartItem {
     product: {
       id: row.product_id,
       name: row.name,
-      description: '', // Not included in cart items query
+      description: "", // Not included in cart items query
       price: row.price,
       originalPrice: row.original_price || undefined,
       category: row.category,

@@ -1,5 +1,6 @@
+import { Loader2, Trash2 } from "lucide-react";
 import Image from "next/image";
-import { Trash2, Loader2 } from "lucide-react";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,12 +20,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import type { Trip } from "@/lib/mock-data";
-import { useState } from "react";
 
-export const TripCard = ({ 
-  trip, 
-  onDelete 
-}: { 
+export const TripCard = ({
+  trip,
+  onDelete,
+}: {
   trip: Trip;
   onDelete: (tripId: string) => void;
 }) => {
@@ -51,7 +51,7 @@ export const TripCard = ({
 
   return (
     <Card key={trip.id} className="hover:shadow-md transition-shadow">
-      <div className="flex">
+      <div className="flex h-full">
         <div className="flex-1 flex flex-col gap-2">
           <CardHeader>
             <div className="flex justify-between items-start">
@@ -64,9 +64,9 @@ export const TripCard = ({
               </div>
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
+                  <Button
+                    variant="ghost"
+                    size="sm"
                     disabled={isDeleting}
                     className="text-red-500 hover:text-red-700 hover:bg-red-50 disabled:opacity-50"
                   >
@@ -81,15 +81,15 @@ export const TripCard = ({
                   <DialogHeader>
                     <DialogTitle>Supprimer le voyage</DialogTitle>
                     <DialogDescription>
-                      Êtes-vous sûr de vouloir supprimer le voyage "{trip.name}" ? 
-                      Cette action est irréversible.
+                      Êtes-vous sûr de vouloir supprimer le voyage "{trip.name}"
+                      ? Cette action est irréversible.
                     </DialogDescription>
                   </DialogHeader>
                   <DialogFooter>
                     <Button variant="outline" disabled={isDeleting}>
                       Annuler
                     </Button>
-                    <Button 
+                    <Button
                       onClick={handleDelete}
                       disabled={isDeleting}
                       className="bg-red-500 hover:bg-red-600 disabled:opacity-50"
@@ -128,7 +128,7 @@ export const TripCard = ({
                 start + (spread / (total > 1 ? total - 1 : 1)) * idx;
               const offset = idx * 8;
               return (
-                <img
+                <Image
                   key={city.id}
                   src={`/trip-planner${city.image}`}
                   alt={city.name}

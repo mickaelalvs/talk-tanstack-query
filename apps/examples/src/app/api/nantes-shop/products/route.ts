@@ -1,5 +1,4 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { Product } from "@/app/nantes-shop/_components/types";
 import { createProduct, getAllProducts } from "@/lib/database";
 
 export async function GET(request: NextRequest) {
@@ -14,8 +13,8 @@ export async function GET(request: NextRequest) {
     const sortBy = searchParams.get("sortBy") || "name";
     const showPromotions = searchParams.get("showPromotions") === "true";
     const showInStock = searchParams.get("showInStock") === "true";
-    const page = parseInt(searchParams.get("page") || "1");
-    const limit = parseInt(searchParams.get("limit") || "6");
+    const page = parseInt(searchParams.get("page") || "1", 10);
+    const limit = parseInt(searchParams.get("limit") || "6", 10);
 
     // Get all products from database
     const allProducts = getAllProducts();
@@ -50,7 +49,6 @@ export async function GET(request: NextRequest) {
           return b.price - a.price;
         case "rating":
           return b.rating - a.rating;
-        case "name":
         default:
           return a.name.localeCompare(b.name);
       }

@@ -7,6 +7,7 @@ export const ErrorPage = ({ error }: { error: string }) => {
         </h2>
         <p className="text-muted-foreground mb-4">{error}</p>
         <button
+          type="button"
           onClick={() => window.location.reload()}
           className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
         >

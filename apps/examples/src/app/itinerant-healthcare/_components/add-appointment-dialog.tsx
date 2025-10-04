@@ -1,19 +1,39 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+
+export type Appointment = {
+  patient: string;
+  location: string;
+  date: string;
+  time: string;
+  type: string;
+  notes: string;
+};
 
 interface AddAppointmentDialogProps {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-  onAddAppointment: (appointment: any) => void
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onAddAppointment: (appointment: Appointment) => void;
 }
 
 const fairyTalePatients = [
@@ -29,7 +49,7 @@ const fairyTalePatients = [
   "Les Trois Petits Cochons",
   "Rumpelstiltskin",
   "Le Bonhomme de Pain d'Épice",
-]
+];
 
 const fairyTaleLocations = [
   "Cottage de Grand-mère, Forêt Enchantée",
@@ -44,9 +64,13 @@ const fairyTaleLocations = [
   "Place du Village, Ville des Contes",
   "Ferme des Haricots Magiques, Vallée des Géants",
   "Tour du Rouet, Royaume des Fées",
-]
+];
 
-export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: AddAppointmentDialogProps) {
+export function AddAppointmentDialog({
+  open,
+  onOpenChange,
+  onAddAppointment,
+}: AddAppointmentDialogProps) {
   const [formData, setFormData] = useState({
     patient: "",
     location: "",
@@ -54,12 +78,18 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
     time: "",
     type: "",
     notes: "",
-  })
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (formData.patient && formData.location && formData.date && formData.time && formData.type) {
-      onAddAppointment(formData)
+    e.preventDefault();
+    if (
+      formData.patient &&
+      formData.location &&
+      formData.date &&
+      formData.time &&
+      formData.type
+    ) {
+      onAddAppointment(formData);
       setFormData({
         patient: "",
         location: "",
@@ -67,14 +97,14 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
         time: "",
         type: "",
         notes: "",
-      })
-      onOpenChange(false)
+      });
+      onOpenChange(false);
     }
-  }
+  };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -90,7 +120,10 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
             <Label htmlFor="patient" className="text-sm font-medium">
               Nom du Patient
             </Label>
-            <Select value={formData.patient} onValueChange={(value) => handleInputChange("patient", value)}>
+            <Select
+              value={formData.patient}
+              onValueChange={(value) => handleInputChange("patient", value)}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Sélectionner un patient" />
               </SelectTrigger>
@@ -108,7 +141,10 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
             <Label htmlFor="location" className="text-sm font-medium">
               Lieu
             </Label>
-            <Select value={formData.location} onValueChange={(value) => handleInputChange("location", value)}>
+            <Select
+              value={formData.location}
+              onValueChange={(value) => handleInputChange("location", value)}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Sélectionner un lieu" />
               </SelectTrigger>
@@ -153,7 +189,10 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
             <Label htmlFor="type" className="text-sm font-medium">
               Type de Rendez-vous
             </Label>
-            <Select value={formData.type} onValueChange={(value) => handleInputChange("type", value)}>
+            <Select
+              value={formData.type}
+              onValueChange={(value) => handleInputChange("type", value)}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Sélectionner le type de rendez-vous" />
               </SelectTrigger>
@@ -182,7 +221,11 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
           </div>
 
           <div className="flex justify-end gap-2 pt-4">
-            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => onOpenChange(false)}
+            >
               Annuler
             </Button>
             <Button type="submit">Planifier le Rendez-vous</Button>
@@ -190,5 +233,5 @@ export function AddAppointmentDialog({ open, onOpenChange, onAddAppointment }: A
         </form>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

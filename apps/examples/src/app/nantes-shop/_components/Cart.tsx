@@ -1,13 +1,18 @@
 "use client";
 
+import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
+import Image from "next/image";
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { fetchCart, updateCartItemQuantity, removeFromCart, clearCart } from "@/app/nantes-shop/_stores/cartSlice";
+import {
+  clearCart,
+  fetchCart,
+  removeFromCart,
+  updateCartItemQuantity,
+} from "@/app/nantes-shop/_stores/cartSlice";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Trash2, Plus, Minus, ShoppingCart } from "lucide-react";
-import Image from "next/image";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
 export const Cart = () => {
   const dispatch = useAppDispatch();
@@ -94,7 +99,10 @@ export const Cart = () => {
         ) : (
           <div className="space-y-4">
             {cart.items.map((item) => (
-              <div key={item.id} className="flex items-center gap-3 p-3 border rounded-lg">
+              <div
+                key={item.id}
+                className="flex items-center gap-3 p-3 border rounded-lg"
+              >
                 <div className="relative w-12 h-12 flex-shrink-0">
                   <Image
                     src={item.product?.image || "/placeholder.jpg"}
@@ -118,7 +126,9 @@ export const Cart = () => {
                   <Button
                     size="sm"
                     variant="outline"
-                    onClick={() => handleUpdateQuantity(item.productId, item.quantity - 1)}
+                    onClick={() =>
+                      handleUpdateQuantity(item.productId, item.quantity - 1)
+                    }
                     disabled={item.quantity <= 1}
                   >
                     <Minus className="h-3 w-3" />
@@ -129,7 +139,9 @@ export const Cart = () => {
                   <Button
                     size="sm"
                     variant="outline"
-                    onClick={() => handleUpdateQuantity(item.productId, item.quantity + 1)}
+                    onClick={() =>
+                      handleUpdateQuantity(item.productId, item.quantity + 1)
+                    }
                   >
                     <Plus className="h-3 w-3" />
                   </Button>
@@ -144,7 +156,7 @@ export const Cart = () => {
                 </div>
               </div>
             ))}
-            
+
             <div className="border-t pt-4">
               <div className="flex justify-between items-center mb-4">
                 <span className="font-semibold">Total:</span>

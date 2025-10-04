@@ -1,5 +1,5 @@
 import Link from "next/link";
-import './trip-planner/globals.css'
+import "./trip-planner/globals.css";
 
 export default function Home() {
   const pages = [
@@ -23,7 +23,7 @@ export default function Home() {
       href: "/itinerant-healthcare",
       title: "Le Docteur Itinérant",
       description: "Gérez vos rendez-vous avec vos patients.",
-    }
+    },
   ];
 
   return (

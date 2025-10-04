@@ -1,5 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
-import { addToCart, updateCartItemQuantity, removeFromCart, getOrCreateCart } from "@/lib/database";
+import { type NextRequest, NextResponse } from "next/server";
+import {
+  addToCart,
+  getOrCreateCart,
+  removeFromCart,
+  updateCartItemQuantity,
+} from "@/lib/database";
 
 // POST /api/nantes-shop/cart/items - Add item to cart
 export async function POST(request: NextRequest) {
@@ -10,7 +15,7 @@ export async function POST(request: NextRequest) {
     if (!productId) {
       return NextResponse.json(
         { error: "Product ID is required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -20,7 +25,7 @@ export async function POST(request: NextRequest) {
     if (!cartItem) {
       return NextResponse.json(
         { error: "Failed to add item to cart" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -29,7 +34,7 @@ export async function POST(request: NextRequest) {
     console.error("Error adding item to cart:", error);
     return NextResponse.json(
       { error: "Failed to add item to cart" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -43,7 +48,7 @@ export async function PUT(request: NextRequest) {
     if (!productId || quantity === undefined) {
       return NextResponse.json(
         { error: "Product ID and quantity are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -55,7 +60,7 @@ export async function PUT(request: NextRequest) {
     console.error("Error updating cart item:", error);
     return NextResponse.json(
       { error: "Failed to update cart item" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -70,19 +75,19 @@ export async function DELETE(request: NextRequest) {
     if (!productId) {
       return NextResponse.json(
         { error: "Product ID is required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const cart = getOrCreateCart(userId);
-    removeFromCart(cart.id, parseInt(productId));
+    removeFromCart(cart.id, parseInt(productId, 10));
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Error removing item from cart:", error);
     return NextResponse.json(
       { error: "Failed to remove item from cart" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

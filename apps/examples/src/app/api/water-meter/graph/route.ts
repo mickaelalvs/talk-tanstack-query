@@ -16,7 +16,12 @@ const generateMockData = (period: string): ConsumptionData[] => {
         period: `${i}h`,
         consommation: Math.floor(Math.random() * 50) + 20,
         moyenne: 35,
-        date: new Date(now.getFullYear(), now.getMonth(), now.getDate(), i).toISOString(),
+        date: new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+          i,
+        ).toISOString(),
       }));
 
     case "week":
@@ -70,7 +75,7 @@ export async function GET(request: NextRequest) {
     if (!validPeriods.includes(period)) {
       return NextResponse.json(
         { error: `Invalid period. Must be one of: ${validPeriods.join(", ")}` },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -78,11 +83,18 @@ export async function GET(request: NextRequest) {
     const data = generateMockData(period);
 
     // Calculate summary statistics
-    const totalConsumption = data.reduce((sum, item) => sum + item.consommation, 0);
+    const totalConsumption = data.reduce(
+      (sum, item) => sum + item.consommation,
+      0,
+    );
     const averageConsumption = totalConsumption / data.length;
-    const previousPeriodAverage = data.reduce((sum, item) => sum + item.moyenne, 0) / data.length;
+    const previousPeriodAverage =
+      data.reduce((sum, item) => sum + item.moyenne, 0) / data.length;
     const trend = averageConsumption > previousPeriodAverage ? "up" : "down";
-    const trendPercentage = Math.abs(((averageConsumption - previousPeriodAverage) / previousPeriodAverage) * 100);
+    const trendPercentage = Math.abs(
+      ((averageConsumption - previousPeriodAverage) / previousPeriodAverage) *
+        100,
+    );
 
     return NextResponse.json({
       data,
@@ -99,7 +111,7 @@ export async function GET(request: NextRequest) {
     console.error("Error fetching graph data:", error);
     return NextResponse.json(
       { error: "Failed to fetch graph data" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

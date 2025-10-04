@@ -1,13 +1,12 @@
+import { useAtom } from "jotai";
 import { Plane } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { selectedCitiesCountAtom } from "@/lib/store";
 
-export const Header = ({
-  selectedCitiesLength,
-}: {
-  selectedCitiesLength: number;
-}) => {
+export const Header = () => {
+  const [selectedCitiesLength] = useAtom(selectedCitiesCountAtom);
   return (
     <header className="border-b bg-card">
       <div className="container mx-auto px-4 py-6">

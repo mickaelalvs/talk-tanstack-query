@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { cityFromRow, getDatabase } from "@/lib/database";
-import { City } from "@/lib/mock-data";
 
 export async function GET() {
   try {

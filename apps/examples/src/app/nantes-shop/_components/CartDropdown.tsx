@@ -1,24 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { 
-  fetchCart, 
-  updateCartItemQuantity, 
-  removeFromCart, 
-  clearCart,
-  optimisticUpdateQuantity,
-  optimisticRemoveFromCart,
-  optimisticClearCart
-} from "@/app/nantes-shop/_stores/cartSlice";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Trash2, Plus, Minus, ShoppingCart, X } from "lucide-react";
+import { Minus, Plus, ShoppingCart, Trash2, X } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import {
+  clearCart,
+  fetchCart,
+  optimisticClearCart,
+  optimisticRemoveFromCart,
+  optimisticUpdateQuantity,
+  removeFromCart,
+  updateCartItemQuantity,
+} from "@/app/nantes-shop/_stores/cartSlice";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
 export const CartDropdown = () => {
   const dispatch = useAppDispatch();
-  const { cart, loading, error } = useAppSelector((state) => state.cart);
+  const { cart, error } = useAppSelector((state) => state.cart);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -69,8 +69,8 @@ export const CartDropdown = () => {
         <ShoppingCart className="h-4 w-4 mr-2" />
         Panier
         {getTotalItems() > 0 && (
-          <Badge 
-            variant="destructive" 
+          <Badge
+            variant="destructive"
             className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
           >
             {getTotalItems()}
@@ -81,11 +81,12 @@ export const CartDropdown = () => {
       {isOpen && (
         <>
           {/* Backdrop */}
-          <div 
-            className="fixed inset-0 z-40" 
+          <button
+            type="button"
+            className="fixed inset-0 z-40"
             onClick={() => setIsOpen(false)}
           />
-          
+
           {/* Dropdown */}
           <div className="absolute right-0 top-full mt-2 w-96 bg-card border border-border rounded-lg shadow-lg z-50 max-h-96 overflow-hidden">
             <div className="p-4 border-b border-border">
@@ -103,9 +104,7 @@ export const CartDropdown = () => {
 
             <div className="max-h-64 overflow-y-auto">
               {error ? (
-                <div className="p-4 text-center text-red-500">
-                  {error}
-                </div>
+                <div className="p-4 text-center text-red-500">{error}</div>
               ) : !cart || cart.items.length === 0 ? (
                 <div className="p-8 text-center text-muted-foreground">
                   Votre panier est vide
@@ -113,7 +112,10 @@ export const CartDropdown = () => {
               ) : (
                 <div className="p-4 space-y-3">
                   {cart.items.map((item) => (
-                    <div key={item.id} className="flex items-center gap-3 p-2 border rounded-lg">
+                    <div
+                      key={item.id}
+                      className="flex items-center gap-3 p-2 border rounded-lg"
+                    >
                       <div className="relative w-10 h-10 flex-shrink-0">
                         <Image
                           src={item.product?.image || "/placeholder.jpg"}
@@ -138,7 +140,12 @@ export const CartDropdown = () => {
                           size="sm"
                           variant="outline"
                           className="h-6 w-6 p-0"
-                          onClick={() => handleUpdateQuantity(item.productId, item.quantity - 1)}
+                          onClick={() =>
+                            handleUpdateQuantity(
+                              item.productId,
+                              item.quantity - 1,
+                            )
+                          }
                           disabled={item.quantity <= 1}
                         >
                           <Minus className="h-3 w-3" />
@@ -150,7 +157,12 @@ export const CartDropdown = () => {
                           size="sm"
                           variant="outline"
                           className="h-6 w-6 p-0"
-                          onClick={() => handleUpdateQuantity(item.productId, item.quantity + 1)}
+                          onClick={() =>
+                            handleUpdateQuantity(
+                              item.productId,
+                              item.quantity + 1,
+                            )
+                          }
                         >
                           <Plus className="h-3 w-3" />
                         </Button>

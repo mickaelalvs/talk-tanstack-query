@@ -16,9 +16,9 @@ export async function GET() {
       GROUP BY t.id
       ORDER BY t.created_at DESC
     `)
-      .all();
+      .all() as { city_ids: string; city_orders: string }[];
 
-    const trips = tripRows.map((tripRow: any) => {
+    const trips = tripRows.map((tripRow) => {
       const cityIds = tripRow.city_ids ? tripRow.city_ids.split(",") : [];
       const cityOrders = tripRow.city_orders
         ? tripRow.city_orders.split(",").map(Number)
@@ -85,9 +85,7 @@ export async function POST(request: Request) {
     });
 
     // Get the created trip with cities
-    const tripRow = db
-      .prepare("SELECT * FROM trips WHERE id = ?")
-      .get(tripId) as any;
+    const tripRow = db.prepare("SELECT * FROM trips WHERE id = ?").get(tripId);
     const cityRows = db
       .prepare(`
       SELECT c.* FROM cities c

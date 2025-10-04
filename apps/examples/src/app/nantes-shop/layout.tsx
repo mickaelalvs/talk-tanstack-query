@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <div className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <Suspense fallback={null}>{children}</Suspense>
-      </div>
+    <div className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+      <Suspense fallback={null}>{children}</Suspense>
+    </div>
   );
 }

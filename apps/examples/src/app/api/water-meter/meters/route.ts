@@ -115,22 +115,24 @@ export async function GET(request: NextRequest) {
     const fuiteDetectee = searchParams.get("fuiteDetectee");
     const sortBy = searchParams.get("sortBy") || "numero";
     const sortDirection = searchParams.get("sortDirection") || "asc";
-    const page = parseInt(searchParams.get("page") || "1");
-    const limit = parseInt(searchParams.get("limit") || "10");
+    const page = parseInt(searchParams.get("page") || "1", 10);
+    const limit = parseInt(searchParams.get("limit") || "10", 10);
 
     // Filter meters based on query parameters
-    let filteredMeters = mockData.filter((meter) => {
+    const filteredMeters = mockData.filter((meter) => {
       const matchesSearch =
         search === "" ||
         meter.numero.toLowerCase().includes(search.toLowerCase()) ||
         meter.proprietaire.toLowerCase().includes(search.toLowerCase());
-      
+
       const matchesType = type === "" || type === "all" || meter.type === type;
-      const matchesStatut = statut === "" || statut === "all" || meter.statut === statut;
-      const matchesEtage = etage === "" || etage === "all" || meter.etage.toString() === etage;
-      const matchesFuiteDetectee = 
-        fuiteDetectee === null || 
-        fuiteDetectee === "" || 
+      const matchesStatut =
+        statut === "" || statut === "all" || meter.statut === statut;
+      const matchesEtage =
+        etage === "" || etage === "all" || meter.etage.toString() === etage;
+      const matchesFuiteDetectee =
+        fuiteDetectee === null ||
+        fuiteDetectee === "" ||
         fuiteDetectee === "all" ||
         (fuiteDetectee === "oui" && meter.fuiteDetectee) ||
         (fuiteDetectee === "non" && !meter.fuiteDetectee);
@@ -146,8 +148,8 @@ export async function GET(request: NextRequest) {
 
     // Sort meters
     filteredMeters.sort((a, b) => {
-      let aValue: any = a[sortBy as keyof WaterMeter];
-      let bValue: any = b[sortBy as keyof WaterMeter];
+      let aValue = a[sortBy as keyof WaterMeter];
+      let bValue = b[sortBy as keyof WaterMeter];
 
       // Handle string comparison
       if (typeof aValue === "string") {
@@ -157,8 +159,8 @@ export async function GET(request: NextRequest) {
 
       // Handle date comparison
       if (sortBy === "dernierReleve") {
-        aValue = new Date(aValue).getTime();
-        bValue = new Date(bValue).getTime();
+        aValue = new Date(aValue as string).getTime();
+        bValue = new Date(bValue as string).getTime();
       }
 
       // Apply sort direction
@@ -175,10 +177,17 @@ export async function GET(request: NextRequest) {
     const paginatedMeters = filteredMeters.slice(startIndex, endIndex);
 
     // Calculate summary statistics
-    const totalConsumption = filteredMeters.reduce((sum, meter) => sum + meter.consommation, 0);
+    const totalConsumption = filteredMeters.reduce(
+      (sum, meter) => sum + meter.consommation,
+      0,
+    );
     const averageConsumption = totalConsumption / filteredMeters.length;
-    const activeMeters = filteredMeters.filter(meter => meter.statut === "Actif").length;
-    const metersWithLeaks = filteredMeters.filter(meter => meter.fuiteDetectee).length;
+    const activeMeters = filteredMeters.filter(
+      (meter) => meter.statut === "Actif",
+    ).length;
+    const metersWithLeaks = filteredMeters.filter(
+      (meter) => meter.fuiteDetectee,
+    ).length;
 
     return NextResponse.json({
       meters: paginatedMeters,
@@ -195,7 +204,12 @@ export async function GET(request: NextRequest) {
         type,
         statut,
         etage,
-        fuiteDetectee: fuiteDetectee === "true" ? true : fuiteDetectee === "false" ? false : null,
+        fuiteDetectee:
+          fuiteDetectee === "true"
+            ? true
+            : fuiteDetectee === "false"
+              ? false
+              : null,
         sortBy,
       },
       summary: {
@@ -210,7 +224,7 @@ export async function GET(request: NextRequest) {
     console.error("Error fetching water meters:", error);
     return NextResponse.json(
       { error: "Failed to fetch water meters" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

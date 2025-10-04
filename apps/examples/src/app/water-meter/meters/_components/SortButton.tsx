@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { SortField } from "../page";
+import type { SortField } from "../page";
 
 interface SortButtonProps {
   field: SortField;
@@ -7,7 +7,11 @@ interface SortButtonProps {
   handleSort: (field: SortField) => void;
 }
 
-export const SortButton = ({ field, children, handleSort }: SortButtonProps) => (
+export const SortButton = ({
+  field,
+  children,
+  handleSort,
+}: SortButtonProps) => (
   <Button
     variant="ghost"
     size="sm"
@@ -17,4 +21,3 @@ export const SortButton = ({ field, children, handleSort }: SortButtonProps) => 
     {children}
   </Button>
 );
-

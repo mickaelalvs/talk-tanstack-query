@@ -1,9 +1,9 @@
 "use client";
 
 import { BarChart3, Droplets, Home, Table } from "lucide-react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -32,11 +32,7 @@ export function Navigation() {
                 <Link href={`/water-meter/${item.path}`} key={item.path}>
                   <Button
                     key={item.path}
-                    variant={
-                      page === item.path
-                        ? "default"
-                        : "ghost"
-                    }
+                    variant={page === item.path ? "default" : "ghost"}
                     size="sm"
                     className="flex items-center gap-2 cursor-pointer"
                   >

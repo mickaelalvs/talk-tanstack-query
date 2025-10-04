@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { cityFromRow, getDatabase, tripFromRow } from "@/lib/database";
 
 export async function GET(
-  request: Request,
+  _request: Request,
   { params }: { params: { id: string } },
 ) {
   try {
@@ -40,7 +40,7 @@ export async function GET(
 }
 
 export async function DELETE(
-  request: Request,
+  _request: Request,
   { params }: { params: { id: string } },
 ) {
   try {

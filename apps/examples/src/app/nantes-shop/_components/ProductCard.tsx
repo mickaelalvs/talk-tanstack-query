@@ -1,11 +1,15 @@
 "use client";
 
 import { ShoppingCart, Star } from "lucide-react";
+import Image from "next/image";
+import {
+  addToCart,
+  optimisticAddToCart,
+} from "@/app/nantes-shop/_stores/cartSlice";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useAppDispatch } from "@/lib/hooks";
-import { addToCart, optimisticAddToCart } from "@/app/nantes-shop/_stores/cartSlice";
 import type { Product } from "./types";
 
 interface ProductCardProps {
@@ -16,11 +20,13 @@ export function ProductCard({ product }: ProductCardProps) {
   const dispatch = useAppDispatch();
 
   const handleAddToCart = () => {
-    dispatch(optimisticAddToCart({ 
-      productId: product.id, 
-      quantity: 1, 
-      product: product 
-    }));
+    dispatch(
+      optimisticAddToCart({
+        productId: product.id,
+        quantity: 1,
+        product: product,
+      }),
+    );
     dispatch(addToCart({ productId: product.id, quantity: 1 }));
   };
 
@@ -30,7 +36,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="flex h-full">
           {/* Left Image Section - Compact */}
           <div className="w-32 sm:w-36 h-48 relative overflow-hidden flex-shrink-0">
-            <img
+            <Image
               src={`/nantes-shop/${product.image}` || "/placeholder.svg"}
               alt={product.name}
               className="w-full h-full object-cover transition-transform duration-500"

@@ -1,12 +1,22 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, MapPin, User, Plus, CalendarDays } from "lucide-react"
-import { AppointmentCalendar } from "./_components/appointment-calendar"
-import { AddAppointmentDialog } from "./_components/add-appointment-dialog"
+import {
+  Calendar,
+  CalendarDays,
+  Clock,
+  MapPin,
+  Plus,
+  User,
+} from "lucide-react";
+import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  AddAppointmentDialog,
+  type Appointment,
+} from "./_components/add-appointment-dialog";
+import { AppointmentCalendar } from "./_components/appointment-calendar";
 
 // Données fictives sur le thème des contes de fées
 const mockAppointments = [
@@ -46,26 +56,30 @@ const mockAppointments = [
     type: "Consultation",
     status: "confirmed" as const,
   },
-]
+];
 
 export default function HomePage() {
-  const [currentView, setCurrentView] = useState<"home" | "calendar">("home")
-  const [appointments, setAppointments] = useState(mockAppointments)
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
+  const [currentView, setCurrentView] = useState<"home" | "calendar">("home");
+  const [appointments, setAppointments] = useState(mockAppointments);
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
 
   // Get next appointment
   const nextAppointment = appointments
     .filter((apt) => new Date(`${apt.date}T${apt.time}`) > new Date())
-    .sort((a, b) => new Date(`${a.date}T${a.time}`).getTime() - new Date(`${b.date}T${b.time}`).getTime())[0]
+    .sort(
+      (a, b) =>
+        new Date(`${a.date}T${a.time}`).getTime() -
+        new Date(`${b.date}T${b.time}`).getTime(),
+    )[0];
 
-  const handleAddAppointment = (newAppointment: any) => {
+  const handleAddAppointment = (newAppointment: Appointment) => {
     const appointment = {
       ...newAppointment,
       id: Date.now().toString(),
       status: "confirmed" as const,
-    }
-    setAppointments([...appointments, appointment])
-  }
+    };
+    setAppointments([...appointments, appointment]);
+  };
 
   if (currentView === "calendar") {
     return (
@@ -76,14 +90,23 @@ export default function HomePage() {
               <h1 className="text-2xl font-bold text-foreground font-[family-name:var(--font-playfair)]">
                 {"Calendrier du Dr. Errant"}
               </h1>
-              <p className="text-muted-foreground">Gérez vos rendez-vous à travers le royaume</p>
+              <p className="text-muted-foreground">
+                Gérez vos rendez-vous à travers le royaume
+              </p>
             </div>
             <div className="flex gap-2">
-              <Button variant="outline" onClick={() => setCurrentView("home")} className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                onClick={() => setCurrentView("home")}
+                className="flex items-center gap-2"
+              >
                 <User className="h-4 w-4" />
                 Accueil
               </Button>
-              <Button onClick={() => setIsAddDialogOpen(true)} className="flex items-center gap-2">
+              <Button
+                onClick={() => setIsAddDialogOpen(true)}
+                className="flex items-center gap-2"
+              >
                 <Plus className="h-4 w-4" />
                 Ajouter un Rendez-vous
               </Button>
@@ -101,7 +124,7 @@ export default function HomePage() {
           onAddAppointment={handleAddAppointment}
         />
       </div>
-    )
+    );
   }
 
   return (
@@ -117,11 +140,18 @@ export default function HomePage() {
             </p>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" onClick={() => setCurrentView("calendar")} className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              onClick={() => setCurrentView("calendar")}
+              className="flex items-center gap-2"
+            >
               <CalendarDays className="h-4 w-4" />
               Vue Calendrier
             </Button>
-            <Button onClick={() => setIsAddDialogOpen(true)} className="flex items-center gap-2">
+            <Button
+              onClick={() => setIsAddDialogOpen(true)}
+              className="flex items-center gap-2"
+            >
               <Plus className="h-4 w-4" />
               Ajouter un Rendez-vous
             </Button>
@@ -144,29 +174,46 @@ export default function HomePage() {
                 <div className="flex items-center gap-3">
                   <User className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="font-semibold text-foreground">{nextAppointment.patient}</p>
-                    <p className="text-sm text-muted-foreground">{nextAppointment.type}</p>
+                    <p className="font-semibold text-foreground">
+                      {nextAppointment.patient}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {nextAppointment.type}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Calendar className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-semibold text-foreground">
-                      {new Date(nextAppointment.date).toLocaleDateString("fr-FR", {
-                        weekday: "long",
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
+                      {new Date(nextAppointment.date).toLocaleDateString(
+                        "fr-FR",
+                        {
+                          weekday: "long",
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        },
+                      )}
                     </p>
-                    <p className="text-sm text-muted-foreground">{nextAppointment.time}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {nextAppointment.time}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="font-semibold text-foreground text-balance">{nextAppointment.location}</p>
-                    <Badge variant={nextAppointment.status === "confirmed" ? "default" : "secondary"}>
+                    <p className="font-semibold text-foreground text-balance">
+                      {nextAppointment.location}
+                    </p>
+                    <Badge
+                      variant={
+                        nextAppointment.status === "confirmed"
+                          ? "default"
+                          : "secondary"
+                      }
+                    >
                       {nextAppointment.status}
                     </Badge>
                   </div>
@@ -186,8 +233,14 @@ export default function HomePage() {
           <CardContent>
             <div className="space-y-4">
               {appointments
-                .filter((apt) => new Date(`${apt.date}T${apt.time}`) > new Date())
-                .sort((a, b) => new Date(`${a.date}T${a.time}`).getTime() - new Date(`${b.date}T${b.time}`).getTime())
+                .filter(
+                  (apt) => new Date(`${apt.date}T${apt.time}`) > new Date(),
+                )
+                .sort(
+                  (a, b) =>
+                    new Date(`${a.date}T${a.time}`).getTime() -
+                    new Date(`${b.date}T${b.time}`).getTime(),
+                )
                 .slice(0, 5)
                 .map((appointment) => (
                   <div
@@ -197,23 +250,38 @@ export default function HomePage() {
                     <div className="flex items-center gap-4">
                       <div className="flex flex-col items-center justify-center w-16 h-16 rounded-lg bg-primary/10 text-primary">
                         <span className="text-xs font-medium">
-                          {new Date(appointment.date).toLocaleDateString("fr-FR", { month: "short" })}
+                          {new Date(appointment.date).toLocaleDateString(
+                            "fr-FR",
+                            { month: "short" },
+                          )}
                         </span>
-                        <span className="text-lg font-bold">{new Date(appointment.date).getDate()}</span>
+                        <span className="text-lg font-bold">
+                          {new Date(appointment.date).getDate()}
+                        </span>
                       </div>
                       <div className="space-y-1">
-                        <p className="font-semibold text-foreground">{appointment.patient}</p>
+                        <p className="font-semibold text-foreground">
+                          {appointment.patient}
+                        </p>
                         <p className="text-sm text-muted-foreground flex items-center gap-1">
                           <Clock className="h-3 w-3" />
                           {appointment.time} • {appointment.type}
                         </p>
                         <p className="text-sm text-muted-foreground flex items-center gap-1">
                           <MapPin className="h-3 w-3" />
-                          <span className="text-balance">{appointment.location}</span>
+                          <span className="text-balance">
+                            {appointment.location}
+                          </span>
                         </p>
                       </div>
                     </div>
-                    <Badge variant={appointment.status === "confirmed" ? "default" : "secondary"}>
+                    <Badge
+                      variant={
+                        appointment.status === "confirmed"
+                          ? "default"
+                          : "secondary"
+                      }
+                    >
                       {appointment.status}
                     </Badge>
                   </div>
@@ -229,5 +297,5 @@ export default function HomePage() {
         onAddAppointment={handleAddAppointment}
       />
     </div>
-  )
+  );
 }

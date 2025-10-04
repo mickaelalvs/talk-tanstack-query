@@ -2,13 +2,13 @@ import { type NextRequest, NextResponse } from "next/server";
 import { deleteProduct, getProductById, updateProduct } from "@/lib/database";
 
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: { id: string } },
 ) {
   try {
-    const productId = parseInt(params.id);
+    const productId = parseInt(params.id, 10);
 
-    if (isNaN(productId)) {
+    if (Number.isNaN(productId)) {
       return NextResponse.json(
         { error: "Invalid product ID" },
         { status: 400 },
@@ -36,9 +36,9 @@ export async function PUT(
   { params }: { params: { id: string } },
 ) {
   try {
-    const productId = parseInt(params.id);
+    const productId = parseInt(params.id, 10);
 
-    if (isNaN(productId)) {
+    if (Number.isNaN(productId)) {
       return NextResponse.json(
         { error: "Invalid product ID" },
         { status: 400 },
@@ -65,13 +65,13 @@ export async function PUT(
 }
 
 export async function DELETE(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: { id: string } },
 ) {
   try {
-    const productId = parseInt(params.id);
+    const productId = parseInt(params.id, 10);
 
-    if (isNaN(productId)) {
+    if (Number.isNaN(productId)) {
       return NextResponse.json(
         { error: "Invalid product ID" },
         { status: 400 },
