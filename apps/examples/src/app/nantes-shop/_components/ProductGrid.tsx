@@ -75,14 +75,13 @@ export function ProductGrid({
         </div>
       )}
 
-      {/* Pagination Controls */}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={onPageChange}
       />
 
-      {products.length === 0 && (
+      {products.length === 0 && !loading && (
         <div className="text-center py-12">
           <p className="text-muted-foreground text-lg">Aucun produit trouvé</p>
           <p className="text-muted-foreground">

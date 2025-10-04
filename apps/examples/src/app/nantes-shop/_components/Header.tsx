@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { CartDropdown } from "./CartDropdown";
+import { Cart } from "./Cart/Cart";
 
 interface HeaderProps {
   searchTerm: string;
@@ -15,7 +15,7 @@ export function Header({ searchTerm, setSearchTerm }: HeaderProps) {
           <h1 className="text-2xl font-bold text-primary">
             Spécialités Nantaises vraiment bien
           </h1>
-          <CartDropdown />
+          <Cart />
         </div>
 
         <div className="relative max-w-md">

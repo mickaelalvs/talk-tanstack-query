@@ -12,17 +12,3 @@ export interface Product {
   isPromotion: boolean;
   tags: string[];
 }
-
-export const categories = [
-  "Tous",
-  "Vins",
-  "Biscuits",
-  "Pâtisseries",
-  "Fromages",
-  "Confiseries",
-  "Légumes",
-  "Sauces",
-  "Monuments",
-  "Transport",
-  "Parcs",
-];

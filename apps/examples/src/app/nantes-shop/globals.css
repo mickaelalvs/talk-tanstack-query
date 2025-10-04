@@ -17,7 +17,7 @@
   --secondary-foreground: oklch(1 0 0); /* White text on secondary */
   --muted: oklch(0.96 0 0); /* Light gray muted background (#f1f5f9) */
   --muted-foreground: oklch(0.45 0 0); /* Medium gray muted text (#6b7280) */
-  --accent: oklch(0.65 0.25 340); /* Pink accent for highlights (#ec4899) */
+  --accent: oklch(0.60 0.04 85); /* Slightly deeper beige accent to complement card (#f5e9c8) */
   --accent-foreground: oklch(1 0 0); /* White text on accent */
   --destructive: oklch(0.5 0.22 15); /* Red for warnings (#be123c) */
   --destructive-foreground: oklch(1 0 0); /* White text on destructive */

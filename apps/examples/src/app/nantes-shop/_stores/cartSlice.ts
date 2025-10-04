@@ -4,6 +4,10 @@ import {
   type PayloadAction,
 } from "@reduxjs/toolkit";
 import type { Cart } from "@/lib/database";
+import { addItemToCart } from "../_services/add-item-to-cart";
+import { deleteCartItem } from "../_services/delete-cart-item";
+import { getCart } from "../_services/get-cart";
+import { updateCart } from "../_services/update-cart";
 
 interface CartState {
   cart: Cart | null;
@@ -17,40 +21,20 @@ const initialState: CartState = {
   error: null,
 };
 
-// Async thunks
-export const fetchCart = createAsyncThunk(
-  "cart/fetchCart",
-  async (userId: string = "default_user") => {
-    const response = await fetch(`/api/nantes-shop/cart?userId=${userId}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch cart");
-    }
-    return response.json();
-  },
-);
+export const fetchCart = createAsyncThunk("cart/fetchCart", async () => {
+  return await getCart();
+});
 
 export const addToCart = createAsyncThunk(
   "cart/addToCart",
   async ({
-    userId = "default_user",
     productId,
     quantity = 1,
   }: {
-    userId?: string;
     productId: number;
     quantity?: number;
   }) => {
-    const response = await fetch("/api/nantes-shop/cart/items", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId, productId, quantity }),
-    });
-    if (!response.ok) {
-      throw new Error("Failed to add item to cart");
-    }
-    return response.json();
+    return await addItemToCart(productId, quantity);
   },
 );
 
@@ -65,54 +49,26 @@ export const updateCartItemQuantity = createAsyncThunk(
     productId: number;
     quantity: number;
   }) => {
-    const response = await fetch("/api/nantes-shop/cart/items", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId, productId, quantity }),
-    });
-    if (!response.ok) {
-      throw new Error("Failed to update cart item");
-    }
-    return response.json();
+    return await updateCart({ userId, productId, quantity });
   },
 );
 
 export const removeFromCart = createAsyncThunk(
   "cart/removeFromCart",
-  async ({
-    userId = "default_user",
-    productId,
-  }: {
-    userId?: string;
-    productId: number;
-  }) => {
-    const response = await fetch(
-      `/api/nantes-shop/cart/items?userId=${userId}&productId=${productId}`,
-      {
-        method: "DELETE",
-      },
-    );
-    if (!response.ok) {
-      throw new Error("Failed to remove item from cart");
-    }
-    return { productId };
+  async ({ productId }: { productId: number }) => {
+    return await deleteCartItem(productId);
   },
 );
 
-export const clearCart = createAsyncThunk(
-  "cart/clearCart",
-  async (userId: string = "default_user") => {
-    const response = await fetch(`/api/nantes-shop/cart?userId=${userId}`, {
-      method: "DELETE",
-    });
-    if (!response.ok) {
-      throw new Error("Failed to clear cart");
-    }
-    return true;
-  },
-);
+export const clearCart = createAsyncThunk("cart/clearCart", async () => {
+  const response = await fetch(`/api/nantes-shop/cart?userId=default_user`, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    throw new Error("Failed to clear cart");
+  }
+  return true;
+});
 
 const cartSlice = createSlice({
   name: "cart",
@@ -123,69 +79,6 @@ const cartSlice = createSlice({
     },
     clearError: (state) => {
       state.error = null;
-    },
-    // Optimistic updates - these update the UI immediately
-    optimisticAddToCart: (
-      state,
-      action: PayloadAction<{
-        productId: number;
-        quantity: number;
-        // biome-ignore lint/suspicious/noExplicitAny: please
-        product: any;
-      }>,
-    ) => {
-      if (!state.cart) return;
-
-      const { productId, quantity, product } = action.payload;
-      const existingItemIndex = state.cart.items.findIndex(
-        (item) => item.productId === productId,
-      );
-
-      if (existingItemIndex >= 0) {
-        state.cart.items[existingItemIndex].quantity += quantity;
-      } else {
-        state.cart.items.push({
-          id: Date.now(), // Temporary ID
-          cartId: state.cart.id,
-          productId,
-          quantity,
-          product,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        });
-      }
-    },
-    optimisticUpdateQuantity: (
-      state,
-      action: PayloadAction<{ productId: number; quantity: number }>,
-    ) => {
-      if (!state.cart) return;
-
-      const { productId, quantity } = action.payload;
-      const existingItemIndex = state.cart.items.findIndex(
-        (item) => item.productId === productId,
-      );
-
-      if (existingItemIndex >= 0) {
-        if (quantity <= 0) {
-          state.cart.items.splice(existingItemIndex, 1);
-        } else {
-          state.cart.items[existingItemIndex].quantity = quantity;
-        }
-      }
-    },
-    optimisticRemoveFromCart: (state, action: PayloadAction<number>) => {
-      if (!state.cart) return;
-
-      const productId = action.payload;
-      state.cart.items = state.cart.items.filter(
-        (item) => item.productId !== productId,
-      );
-    },
-    optimisticClearCart: (state) => {
-      if (!state.cart) return;
-
-      state.cart.items = [];
     },
   },
   extraReducers: (builder) => {
@@ -203,7 +96,7 @@ const cartSlice = createSlice({
         state.loading = false;
         state.error = action.error.message || "Failed to fetch cart";
       })
-      // Add to cart - no loading state, just sync with server
+      // Add to cart - sync with server response
       .addCase(addToCart.fulfilled, (state, action) => {
         if (state.cart) {
           // Update the cart with the server response
@@ -219,9 +112,8 @@ const cartSlice = createSlice({
       })
       .addCase(addToCart.rejected, (state, action) => {
         state.error = action.error.message || "Failed to add item to cart";
-        // Revert optimistic update by refetching cart
       })
-      // Update cart item quantity - no loading state
+      // Update cart item quantity - sync with server response
       .addCase(updateCartItemQuantity.fulfilled, (state, action) => {
         if (state.cart && action.payload) {
           const existingItemIndex = state.cart.items.findIndex(
@@ -234,33 +126,23 @@ const cartSlice = createSlice({
       })
       .addCase(updateCartItemQuantity.rejected, (state, action) => {
         state.error = action.error.message || "Failed to update cart item";
-        // Revert optimistic update by refetching cart
       })
-      // Remove from cart - no loading state
+      // Remove from cart - server already confirmed removal
       .addCase(removeFromCart.fulfilled, (_state, _action) => {
         // Server already confirmed removal, no need to update state
       })
       .addCase(removeFromCart.rejected, (state, action) => {
         state.error = action.error.message || "Failed to remove item from cart";
-        // Revert optimistic update by refetching cart
       })
-      // Clear cart - no loading state
+      // Clear cart - server already confirmed clear
       .addCase(clearCart.fulfilled, (_state, _action) => {
         // Server already confirmed clear, no need to update state
       })
       .addCase(clearCart.rejected, (state, action) => {
         state.error = action.error.message || "Failed to clear cart";
-        // Revert optimistic update by refetching cart
       });
   },
 });
 
-export const {
-  setCart,
-  clearError,
-  optimisticAddToCart,
-  optimisticUpdateQuantity,
-  optimisticRemoveFromCart,
-  optimisticClearCart,
-} = cartSlice.actions;
+export const { setCart, clearError } = cartSlice.actions;
 export default cartSlice.reducer;

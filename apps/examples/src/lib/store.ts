@@ -1,12 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { atom } from "jotai";
 import cartReducer from "../app/nantes-shop/_stores/cartSlice";
+import { optimisticCartMiddleware } from "../app/nantes-shop/_middleware/optimisticCartMiddleware";
 import type { City } from "./mock-data";
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().prepend(optimisticCartMiddleware.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
