@@ -26,6 +26,8 @@ export const CityCard = ({ city }: { city: City }) => {
           src={`/trip-planner${city.image}` || "/placeholder.svg"}
           alt={city.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          width={128}
+          height={128}
         />
         <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center gap-2 group-hover:bg-white/95 transition-colors">
           <span className="text-lg">{city.weather.icon}</span>

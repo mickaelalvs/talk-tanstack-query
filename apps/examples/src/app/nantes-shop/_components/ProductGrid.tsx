@@ -55,8 +55,9 @@ export function ProductGrid({
 
       {loading ? (
         <div className="grid grid-cols-2 gap-6">
-          {Array.from({ length: 6 }).map((number) => (
-            <div key={number as number} className="animate-pulse">
+          {Array.from({ length: 6 }).map((_, index) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: nothing better
+            <div key={index} className="animate-pulse">
               <div className="bg-muted rounded-lg h-48 mb-4"></div>
               <div className="space-y-2">
                 <div className="bg-muted h-4 rounded w-3/4"></div>

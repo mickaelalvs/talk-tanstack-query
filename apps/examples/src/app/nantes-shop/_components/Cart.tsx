@@ -105,7 +105,9 @@ export const Cart = () => {
               >
                 <div className="relative w-12 h-12 flex-shrink-0">
                   <Image
-                    src={item.product?.image || "/placeholder.jpg"}
+                    src={
+                      `/nantes-shop${item.product?.image}` || "/placeholder.jpg"
+                    }
                     alt={item.product?.name || ""}
                     fill
                     className="object-cover rounded"

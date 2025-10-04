@@ -10,9 +10,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 export const CitiesListSkeleton = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {Array.from({ length: 6 }).map((number) => (
+      {Array.from({ length: 6 }).map((_, index) => (
         <Card
-          key={number as number}
+          // biome-ignore lint/suspicious/noArrayIndexKey: nothing better
+          key={index}
           className="overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col h-full pt-0"
         >
           <div className="relative overflow-hidden aspect-video">

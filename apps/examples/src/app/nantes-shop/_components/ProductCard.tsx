@@ -37,9 +37,11 @@ export function ProductCard({ product }: ProductCardProps) {
           {/* Left Image Section - Compact */}
           <div className="w-32 sm:w-36 h-48 relative overflow-hidden flex-shrink-0">
             <Image
-              src={`/nantes-shop/${product.image}` || "/placeholder.svg"}
+              src={`/nantes-shop${product.image}` || "/placeholder.svg"}
               alt={product.name}
               className="w-full h-full object-cover transition-transform duration-500"
+              width={128}
+              height={128}
             />
             {/* Badges positioned on image */}
             <div className="absolute top-3 left-3 flex flex-col gap-2">

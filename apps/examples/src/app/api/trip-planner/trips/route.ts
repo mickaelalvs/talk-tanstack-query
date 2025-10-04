@@ -5,6 +5,8 @@ export async function GET() {
   try {
     const db = getDatabase();
 
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     // Get all trips with their cities
     const tripRows = db
       .prepare(`
