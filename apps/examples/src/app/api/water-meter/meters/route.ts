@@ -107,6 +107,8 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
 
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     // Extract query parameters
     const search = searchParams.get("search") || "";
     const type = searchParams.get("type") || "";

@@ -1,140 +1,22 @@
 "use client";
 
-import { Loader2, Search, TableIcon } from "lucide-react";
-import { useEffect, useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { TableIcon } from "lucide-react";
+import { Table } from "@/components/ui/table";
+import { useWaterMetersQuery } from "../_hooks/useWaterMetersQuery";
+import { MetersFilters } from "./_components/MetersFilters";
+import { MetersTableBody } from "./_components/MetersTableBody";
 import { MetersTableError } from "./_components/MetersTableError";
-import { SortButton } from "./_components/SortButton";
-
-export type WaterMeter = {
-  id: string;
-  numero: string;
-  etage: number;
-  type: "Résidentiel" | "Commercial" | "Commun";
-  proprietaire: string;
-  consommation: number;
-  fuiteDetectee: boolean;
-  dernierReleve: string;
-  statut: "Actif" | "Inactif" | "Maintenance";
-};
-
-export type SortField = keyof WaterMeter;
-export type SortDirection = "asc" | "desc";
-
-// API fetch function
-const fetchMetersData = async (filters: {
-  search: string;
-  type: string;
-  etage: string;
-  fuite: string;
-  sortField: string;
-  sortDirection: string;
-}): Promise<WaterMeter[]> => {
-  const params = new URLSearchParams();
-  if (filters.search) params.append("search", filters.search);
-  if (filters.type && filters.type !== "all")
-    params.append("type", filters.type);
-  if (filters.etage && filters.etage !== "all")
-    params.append("etage", filters.etage);
-  if (filters.fuite && filters.fuite !== "all")
-    params.append("fuiteDetectee", filters.fuite);
-  if (filters.sortField) params.append("sortBy", filters.sortField);
-  if (filters.sortDirection)
-    params.append("sortDirection", filters.sortDirection);
-
-  const response = await fetch(`/api/water-meter/meters?${params.toString()}`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch meters data");
-  }
-  const data = await response.json();
-  return data.meters || [];
-};
+import { MetersTableHeader } from "./_components/MetersTableHeader";
 
 export default function MetersPage() {
-  const [searchInput, setSearchInput] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [typeFilter, setTypeFilter] = useState<string>("all");
-  const [etageFilter, setEtageFilter] = useState<string>("all");
-  const [fuiteFilter, setFuiteFilter] = useState<string>("all");
-  const [sortField, setSortField] = useState<SortField>("numero");
-  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
-
-  // API state
-  const [data, setData] = useState<WaterMeter[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  // Debounce search input
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSearchTerm(searchInput);
-    }, 300); // 300ms debounce
-
-    return () => clearTimeout(timer);
-  }, [searchInput]);
-
-  // Fetch data when filters change
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-        const metersData = await fetchMetersData({
-          search: searchTerm,
-          type: typeFilter,
-          etage: etageFilter,
-          fuite: fuiteFilter,
-          sortField,
-          sortDirection,
-        });
-        setData(metersData);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load data");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadData();
-  }, [
-    searchTerm,
-    typeFilter,
-    etageFilter,
-    fuiteFilter,
-    sortField,
-    sortDirection,
-  ]);
-
-  const handleSort = (field: SortField) => {
-    if (sortField === field) {
-      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
-    } else {
-      setSortField(field);
-      setSortDirection("asc");
-    }
-  };
-
-  // Data is already filtered and sorted by the API
-  const filteredAndSortedData = data;
+  const { data: waterMeters, isLoading, error } = useWaterMetersQuery();
 
   if (error) {
-    return <MetersTableError error={error} />;
+    return (
+      <MetersTableError
+        error={error instanceof Error ? error.message : "Failed to load data"}
+      />
+    );
   }
 
   return (
@@ -159,194 +41,16 @@ export default function MetersPage() {
 
       <main className="container mx-auto px-4 py-6">
         <div className="mb-6">
-          <div className="bg-primary/5 p-6 rounded-lg border border-primary/20 mb-6">
-            <h3 className="text-lg font-semibold mb-4 text-foreground flex items-center gap-2">
-              <Search className="h-5 w-5 text-primary" />
-              Filtres de recherche
-            </h3>
-            <div className="flex flex-col gap-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Rechercher par numéro ou propriétaire..."
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Select value={typeFilter} onValueChange={setTypeFilter}>
-                  <SelectTrigger className="w-[160px] cursor-pointer bg-white border-2">
-                    <SelectValue placeholder="Type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all" className="cursor-pointer">
-                      Tous types
-                    </SelectItem>
-                    <SelectItem value="Résidentiel" className="cursor-pointer">
-                      Résidentiel
-                    </SelectItem>
-                    <SelectItem value="Commercial" className="cursor-pointer">
-                      Commercial
-                    </SelectItem>
-                    <SelectItem value="Commun" className="cursor-pointer">
-                      Commun
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-
-                <Select value={etageFilter} onValueChange={setEtageFilter}>
-                  <SelectTrigger className="w-[140px] cursor-pointer bg-white border-2">
-                    <SelectValue placeholder="Étage" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all" className="cursor-pointer">
-                      Tous étages
-                    </SelectItem>
-                    <SelectItem value="1" className="cursor-pointer">
-                      Étage 1
-                    </SelectItem>
-                    <SelectItem value="2" className="cursor-pointer">
-                      Étage 2
-                    </SelectItem>
-                    <SelectItem value="3" className="cursor-pointer">
-                      Étage 3
-                    </SelectItem>
-                    <SelectItem value="4" className="cursor-pointer">
-                      Étage 4
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-
-                <Select value={fuiteFilter} onValueChange={setFuiteFilter}>
-                  <SelectTrigger className="w-[140px] cursor-pointer bg-white border-2">
-                    <SelectValue placeholder="Fuite" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all" className="cursor-pointer">
-                      Toutes
-                    </SelectItem>
-                    <SelectItem value="oui" className="cursor-pointer">
-                      Avec fuite
-                    </SelectItem>
-                    <SelectItem value="non" className="cursor-pointer">
-                      Sans fuite
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </div>
-
+          <MetersFilters />
           <div className="w-full overflow-hidden rounded-md border bg-background">
             <Table className="w-full">
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-[100px]">
-                    <SortButton field="numero" handleSort={handleSort}>
-                      Numéro
-                    </SortButton>
-                  </TableHead>
-                  <TableHead className="w-[80px]">
-                    <SortButton field="etage" handleSort={handleSort}>
-                      Étage
-                    </SortButton>
-                  </TableHead>
-                  <TableHead className="w-[120px]">
-                    <SortButton field="type" handleSort={handleSort}>
-                      Type
-                    </SortButton>
-                  </TableHead>
-                  <TableHead className="w-[200px]">
-                    <SortButton field="proprietaire" handleSort={handleSort}>
-                      Propriétaire
-                    </SortButton>
-                  </TableHead>
-                  <TableHead className="w-[120px] text-right">
-                    <SortButton field="consommation" handleSort={handleSort}>
-                      Consommation
-                    </SortButton>
-                  </TableHead>
-                  <TableHead className="w-[100px]">
-                    <SortButton field="fuiteDetectee" handleSort={handleSort}>
-                      Fuite
-                    </SortButton>
-                  </TableHead>
-                  <TableHead className="w-[120px]">
-                    <SortButton field="dernierReleve" handleSort={handleSort}>
-                      Dernier Relevé
-                    </SortButton>
-                  </TableHead>
-                  <TableHead className="w-[100px]">
-                    <SortButton field="statut" handleSort={handleSort}>
-                      Statut
-                    </SortButton>
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {isLoading ? (
-                  <TableRow>
-                    <TableCell colSpan={8} className="text-center py-8">
-                      <div className="flex items-center justify-center gap-2">
-                        <Loader2 className="h-5 w-5 animate-spin text-primary" />
-                        <span className="text-muted-foreground">
-                          Chargement des compteurs...
-                        </span>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  filteredAndSortedData.map((meter) => (
-                    <TableRow key={meter.id}>
-                      <TableCell className="font-medium">
-                        {meter.numero}
-                      </TableCell>
-                      <TableCell>{meter.etage}</TableCell>
-                      <TableCell>
-                        <Badge variant="outline">{meter.type}</Badge>
-                      </TableCell>
-                      <TableCell>{meter.proprietaire}</TableCell>
-                      <TableCell className="text-right">
-                        {meter.consommation.toFixed(1)} L
-                      </TableCell>
-                      <TableCell>
-                        {meter.fuiteDetectee ? (
-                          <Badge variant="destructive">Détectée</Badge>
-                        ) : (
-                          <Badge variant="secondary">Aucune</Badge>
-                        )}
-                      </TableCell>
-                      <TableCell>
-                        {new Date(meter.dernierReleve).toLocaleDateString(
-                          "fr-FR",
-                        )}
-                      </TableCell>
-                      <TableCell>
-                        <Badge
-                          variant={
-                            meter.statut === "Actif"
-                              ? "default"
-                              : meter.statut === "Maintenance"
-                                ? "secondary"
-                                : "outline"
-                          }
-                        >
-                          {meter.statut}
-                        </Badge>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                )}
-              </TableBody>
+              <MetersTableHeader />
+              <MetersTableBody
+                isLoading={isLoading}
+                waterMeters={waterMeters ?? []}
+              />
             </Table>
           </div>
-
-          {!isLoading && filteredAndSortedData.length === 0 && (
-            <div className="text-center py-8 text-muted-foreground">
-              Aucun compteur ne correspond aux critères de recherche.
-            </div>
-          )}
         </div>
       </main>
     </div>

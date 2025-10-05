@@ -2,8 +2,8 @@
 
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CartDropdownContent } from "./CartDropdownContent";
 import { CartDropdownActions } from "./CartDropdownActions";
+import { CartDropdownContent } from "./CartDropdownContent";
 
 interface CartDropdownProps {
   setIsOpen: (isOpen: boolean) => void;
