@@ -110,12 +110,36 @@ function initializeTables() {
     )
   `);
 
+  // Create appointments table
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS appointments (
+      id TEXT PRIMARY KEY,
+      patient TEXT NOT NULL,
+      location TEXT NOT NULL,
+      date TEXT NOT NULL,
+      time TEXT NOT NULL,
+      type TEXT NOT NULL CHECK (type IN ('Contrôle', 'Urgence', 'Suivi', 'Consultation', 'Vaccination', 'Traitement')),
+      status TEXT NOT NULL DEFAULT 'confirmed' CHECK (status IN ('confirmed', 'pending')),
+      notes TEXT,
+      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+
   // Insert initial data if tables are empty
   const cityCount = db
     .prepare("SELECT COUNT(*) as count FROM cities")
     .get() as { count: number };
+  const appointmentCount = db
+    .prepare("SELECT COUNT(*) as count FROM appointments")
+    .get() as { count: number };
+  
   if (cityCount.count === 0) {
     insertInitialData();
+  }
+  
+  if (appointmentCount.count === 0) {
+    insertInitialAppointments();
   }
 }
 
@@ -164,6 +188,69 @@ function insertInitialData() {
     trip.cities.forEach((city: any, index: number) => {
       insertTripCity.run(trip.id, city.id, index);
     });
+  }
+}
+
+function insertInitialAppointments() {
+  if (!db) return;
+
+  // Données fictives sur le thème des contes de fées
+  const mockAppointments = [
+    {
+      id: "apt_1",
+      patient: "Le Petit Chaperon Rouge",
+      location: "Cottage de Grand-mère, Forêt Enchantée",
+      date: "2024-01-20",
+      time: "09:00",
+      type: "Contrôle",
+      status: "confirmed",
+    },
+    {
+      id: "apt_2",
+      patient: "Boucle d'Or",
+      location: "Maison des Trois Ours, Bois Profond",
+      date: "2024-01-20",
+      time: "14:30",
+      type: "Urgence",
+      status: "confirmed",
+    },
+    {
+      id: "apt_3",
+      patient: "Cendrillon",
+      location: "Palais Royal, Place du Royaume",
+      date: "2024-01-21",
+      time: "10:00",
+      type: "Suivi",
+      status: "pending",
+    },
+    {
+      id: "apt_4",
+      patient: "Blanche-Neige",
+      location: "Cottage des Sept Nains, Col de Montagne",
+      date: "2024-01-22",
+      time: "11:00",
+      type: "Consultation",
+      status: "confirmed",
+    },
+  ];
+
+  const insertAppointment = db.prepare(`
+    INSERT INTO appointments (
+      id, patient, location, date, time, type, status, notes
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `);
+
+  for (const appointment of mockAppointments) {
+    insertAppointment.run(
+      appointment.id,
+      appointment.patient,
+      appointment.location,
+      appointment.date,
+      appointment.time,
+      appointment.type,
+      appointment.status,
+      null // notes
+    );
   }
 }
 
@@ -516,6 +603,145 @@ export function itemFromRow(row: any): CartItem {
       isPromotion: Boolean(row.is_promotion),
       tags: JSON.parse(row.tags),
     },
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+  };
+}
+
+// Appointment-related types
+export interface Appointment {
+  id: string;
+  patient: string;
+  location: string;
+  date: string;
+  time: string;
+  type: "Contrôle" | "Urgence" | "Suivi" | "Consultation" | "Vaccination" | "Traitement";
+  status: "confirmed" | "pending";
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateAppointmentRequest {
+  patient: string;
+  location: string;
+  date: string;
+  time: string;
+  type: string;
+  notes?: string;
+}
+
+// Appointment functions
+export function getAllAppointments(): Appointment[] {
+  const db = getDatabase();
+  const rows = db.prepare("SELECT * FROM appointments ORDER BY date, time").all() as any[];
+  return rows.map(appointmentFromRow);
+}
+
+export function getAppointmentById(id: string): Appointment | null {
+  const db = getDatabase();
+  const row = db.prepare("SELECT * FROM appointments WHERE id = ?").get(id) as any;
+  return row ? appointmentFromRow(row) : null;
+}
+
+export function createAppointment(appointment: CreateAppointmentRequest): Appointment {
+  const db = getDatabase();
+  const id = `apt_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  
+  const insertAppointment = db.prepare(`
+    INSERT INTO appointments (
+      id, patient, location, date, time, type, status, notes
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `);
+
+  insertAppointment.run(
+    id,
+    appointment.patient,
+    appointment.location,
+    appointment.date,
+    appointment.time,
+    appointment.type,
+    "confirmed", // Default status
+    appointment.notes || null
+  );
+
+  return getAppointmentById(id)!;
+}
+
+export function updateAppointment(
+  id: string,
+  updates: Partial<CreateAppointmentRequest & { status?: "confirmed" | "pending" }>
+): Appointment | null {
+  const db = getDatabase();
+
+  // Build dynamic update query
+  const updateFields = [];
+  const values = [];
+
+  if (updates.patient !== undefined) {
+    updateFields.push("patient = ?");
+    values.push(updates.patient);
+  }
+  if (updates.location !== undefined) {
+    updateFields.push("location = ?");
+    values.push(updates.location);
+  }
+  if (updates.date !== undefined) {
+    updateFields.push("date = ?");
+    values.push(updates.date);
+  }
+  if (updates.time !== undefined) {
+    updateFields.push("time = ?");
+    values.push(updates.time);
+  }
+  if (updates.type !== undefined) {
+    updateFields.push("type = ?");
+    values.push(updates.type);
+  }
+  if (updates.status !== undefined) {
+    updateFields.push("status = ?");
+    values.push(updates.status);
+  }
+  if (updates.notes !== undefined) {
+    updateFields.push("notes = ?");
+    values.push(updates.notes);
+  }
+
+  if (updateFields.length === 0) {
+    return getAppointmentById(id);
+  }
+
+  updateFields.push("updated_at = CURRENT_TIMESTAMP");
+  values.push(id);
+
+  const updateQuery = `UPDATE appointments SET ${updateFields.join(", ")} WHERE id = ?`;
+  const updateStmt = db.prepare(updateQuery);
+  const result = updateStmt.run(...values);
+
+  if (result.changes === 0) {
+    return null;
+  }
+
+  return getAppointmentById(id);
+}
+
+export function deleteAppointment(id: string): boolean {
+  const db = getDatabase();
+  const deleteStmt = db.prepare("DELETE FROM appointments WHERE id = ?");
+  const result = deleteStmt.run(id);
+  return result.changes > 0;
+}
+
+export function appointmentFromRow(row: any): Appointment {
+  return {
+    id: row.id,
+    patient: row.patient,
+    location: row.location,
+    date: row.date,
+    time: row.time,
+    type: row.type,
+    status: row.status,
+    notes: row.notes || undefined,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   };

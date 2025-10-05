@@ -5,16 +5,7 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-interface Appointment {
-  id: string;
-  patient: string;
-  location: string;
-  date: string;
-  time: string;
-  type: string;
-  status: "confirmed" | "pending";
-}
+import type { Appointment } from "@/lib/database";
 
 interface AppointmentCalendarProps {
   appointments: Appointment[];
@@ -118,7 +109,6 @@ export function AppointmentCalendar({
           </div>
         </CardHeader>
         <CardContent>
-          {/* Days of week header */}
           <div className="grid grid-cols-7 gap-2 mb-4">
             {daysOfWeek.map((day) => (
               <div
@@ -130,9 +120,8 @@ export function AppointmentCalendar({
             ))}
           </div>
 
-          {/* Calendar grid */}
           <div className="grid grid-cols-7 gap-2">
-            {days.map((day) => {
+            {days.map((day, index) => {
               const dayAppointments = getAppointmentsForDate(day);
               const isToday =
                 day &&
@@ -142,7 +131,8 @@ export function AppointmentCalendar({
 
               return (
                 <div
-                  key={day}
+                  // biome-ignore lint/suspicious/noArrayIndexKey: nothing better
+                  key={index}
                   className={`min-h-[120px] p-2 border border-border rounded-lg ${
                     day
                       ? "bg-card hover:bg-muted/30 transition-colors"

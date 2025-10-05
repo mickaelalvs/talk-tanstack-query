@@ -20,6 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { useCreateAppointmentMutation } from "../hooks/useCreateAppointmentMutation";
 
 export type Appointment = {
   patient: string;
@@ -27,13 +28,12 @@ export type Appointment = {
   date: string;
   time: string;
   type: string;
-  notes: string;
+  notes?: string;
 };
 
 interface AddAppointmentDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onAddAppointment: (appointment: Appointment) => void;
 }
 
 const fairyTalePatients = [
@@ -69,7 +69,6 @@ const fairyTaleLocations = [
 export function AddAppointmentDialog({
   open,
   onOpenChange,
-  onAddAppointment,
 }: AddAppointmentDialogProps) {
   const [formData, setFormData] = useState({
     patient: "",
@@ -80,6 +79,9 @@ export function AddAppointmentDialog({
     notes: "",
   });
 
+  const { mutate: createAppointment, isPending } =
+    useCreateAppointmentMutation();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (
@@ -89,14 +91,17 @@ export function AddAppointmentDialog({
       formData.time &&
       formData.type
     ) {
-      onAddAppointment(formData);
-      setFormData({
-        patient: "",
-        location: "",
-        date: "",
-        time: "",
-        type: "",
-        notes: "",
+      createAppointment(formData, {
+        onSuccess: () => {
+          setFormData({
+            patient: "",
+            location: "",
+            date: "",
+            time: "",
+            type: "",
+            notes: "",
+          });
+        },
       });
       onOpenChange(false);
     }
@@ -228,7 +233,9 @@ export function AddAppointmentDialog({
             >
               Annuler
             </Button>
-            <Button type="submit">Planifier le Rendez-vous</Button>
+            <Button type="submit" disabled={isPending}>
+              {isPending ? "Planification..." : "Planifier le Rendez-vous"}
+            </Button>
           </div>
         </form>
       </DialogContent>
