@@ -5,12 +5,22 @@ import {
   Clock,
   MapPin,
   Plus,
+  // Trash2,
   User,
 } from "lucide-react";
 import { useState } from "react";
+import { useDeleteAppointmentMutation } from "@/app/itinerant-healthcare/hooks/useDeleteAppointmentMutation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import type { Appointment } from "@/lib/database";
 import { AddAppointmentDialog } from "./AddAppointmentDialog";
 
@@ -28,6 +38,9 @@ export const HomeView = ({
   appointments,
 }: HomeViewProps) => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [appointmentToDelete, setAppointmentToDelete] =
+    useState<Appointment | null>(null);
+  const deleteAppointmentMutation = useDeleteAppointmentMutation();
 
   const lastMutationState = useMutationState({
     filters: {
@@ -45,6 +58,17 @@ export const HomeView = ({
         new Date(`${a.date}T${a.time}`).getTime() -
         new Date(`${b.date}T${b.time}`).getTime(),
     )[0];
+
+  const handleDeleteAppointment = async () => {
+    if (!appointmentToDelete) return;
+
+    try {
+      await deleteAppointmentMutation.mutateAsync(appointmentToDelete.id);
+      setAppointmentToDelete(null);
+    } catch (error) {
+      console.error("Failed to delete appointment:", error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -205,15 +229,25 @@ export const HomeView = ({
                             </p>
                           </div>
                         </div>
-                        <Badge
-                          variant={
-                            appointment.status === "confirmed"
-                              ? "default"
-                              : "secondary"
-                          }
-                        >
-                          {appointment.status}
-                        </Badge>
+                        <div className="flex items-center gap-2">
+                          <Badge
+                            variant={
+                              appointment.status === "confirmed"
+                                ? "default"
+                                : "secondary"
+                            }
+                          >
+                            {appointment.status}
+                          </Badge>
+                          {/* <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setAppointmentToDelete(appointment)}
+                            className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button> */}
+                        </div>
                       </div>
                     ))}
                 </div>
@@ -227,6 +261,43 @@ export const HomeView = ({
         open={isAddDialogOpen}
         onOpenChange={setIsAddDialogOpen}
       />
+
+      {/* Delete Confirmation Dialog */}
+      <Dialog
+        open={!!appointmentToDelete}
+        onOpenChange={() => setAppointmentToDelete(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Supprimer le rendez-vous</DialogTitle>
+            <DialogDescription>
+              Êtes-vous sûr de vouloir supprimer le rendez-vous de{" "}
+              <strong>{appointmentToDelete?.patient}</strong> du{" "}
+              {appointmentToDelete?.date} à {appointmentToDelete?.time} ?
+              <br />
+              Cette action est irréversible.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setAppointmentToDelete(null)}
+              disabled={deleteAppointmentMutation.isPending}
+            >
+              Annuler
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={handleDeleteAppointment}
+              disabled={deleteAppointmentMutation.isPending}
+            >
+              {deleteAppointmentMutation.isPending
+                ? "Suppression..."
+                : "Supprimer"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

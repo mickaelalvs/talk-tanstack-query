@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import {
   type CreateAppointmentRequest,
   createAppointment,
+  deleteAppointment,
   getAllAppointments,
 } from "@/lib/database";
 
@@ -64,6 +65,48 @@ export async function POST(request: Request) {
       {
         success: false,
         error: "Failed to create appointment",
+      },
+      { status: 500 },
+    );
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Missing appointment ID",
+        },
+        { status: 400 },
+      );
+    }
+
+    const deleted = deleteAppointment(id);
+
+    if (!deleted) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Appointment not found",
+        },
+        { status: 404 },
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: "Appointment deleted successfully",
+    });
+  } catch (_error) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Failed to delete appointment",
       },
       { status: 500 },
     );
