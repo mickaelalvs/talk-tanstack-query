@@ -16,27 +16,39 @@ mdc: true
     <div class="feedback-section">
       <div class="qr-container pop-in-delay-1">
         <div class="qr-placeholder">
-          <img src="https://placehold.co/500x500" alt="QR Code OpenFeedback" class="qr-code" />
+          <img src="../assets/openfeedback.png" alt="QR Code OpenFeedback" class="qr-code" />
         </div>
         <p class="qr-label">Scannez pour donner votre feedback 🗳️</p>
       </div>
       <div class="feedback-info">
-        <div class="feedback-item pop-in-delay-2">
-          <span class="feedback-icon">💬</span>
-          <span class="feedback-text">Posez vos questions</span>
-        </div>
-        <div class="feedback-item pop-in-delay-3">
-          <span class="feedback-icon">⭐</span>
-          <span class="feedback-text">Donnez nous votre avis</span>
+        <div class="feedback-items-row">
+          <div class="feedback-item pop-in-delay-2">
+            <span class="feedback-icon">💬</span>
+            <span class="feedback-text">Posez vos questions</span>
+          </div>
+          <div class="feedback-item pop-in-delay-3">
+            <span class="feedback-icon">⭐</span>
+            <span class="feedback-text">Donnez nous votre avis</span>
+          </div>
         </div>
         <div class="contact-cards pop-in-delay-4">
           <div class="contact-card">
-            <img src="https://github.com/Slocaly.png" alt="Lucas Audart" class="contact-avatar" />
-            <span class="contact-handle">@Slocaly</span>
+            <div class="contact-info">
+              <img src="https://github.com/Slocaly.png" alt="Lucas Audart" class="contact-avatar" />
+              <span class="contact-handle">@Slocaly</span>
+            </div>
+            <div class="contact-qr">
+              <img src="../assets/lucas.png" alt="QR Code Lucas" class="qr-small" />
+            </div>
           </div>
           <div class="contact-card">
-            <img src="https://github.com/CruuzAzul.png" alt="Mickaël Alves" class="contact-avatar" />
-            <span class="contact-handle">@CruuzAzul</span>
+            <div class="contact-info">
+              <img src="https://github.com/CruuzAzul.png" alt="Mickaël Alves" class="contact-avatar" />
+              <span class="contact-handle">@CruuzAzul</span>
+            </div>
+            <div class="contact-qr">
+              <img src="../assets/micka.png" alt="QR Code Mickaël" class="qr-small" />
+            </div>
           </div>
         </div>
       </div>
@@ -124,11 +136,17 @@ mdc: true
   gap: 1.5rem;
 }
 
+.feedback-items-row {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+}
+
 .feedback-item {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 2.5rem;
+  padding: 1rem 1.5rem;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -149,45 +167,67 @@ mdc: true
 .contact-cards {
   display: flex;
   gap: 1rem;
+  justify-content: center;
 }
 
 .contact-card {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.9);
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border: 2px solid transparent;
+  flex: 1;
+  max-width: 300px;
+  min-height: 60px;
 }
 
-.contact-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  border-color: var(--theme-color-oasis);
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.contact-avatar {
-  width: 32px;
-  height: 32px;
+.contact-card .contact-avatar {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.contact-handle {
-  font-size: 0.9rem;
+.contact-card .contact-handle {
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--theme-color-cloudBurst);
+  text-align: center;
 }
 
+.contact-qr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.qr-small {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+
 .contact-info {
-  margin-top: 2rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 12px;
-  border-left: 4px solid var(--theme-color-peachOrange);
 }
 
 .contact-text {

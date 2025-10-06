@@ -19,6 +19,31 @@ transition: view-transition
 ---
 
 ---
+src: /pages/explanations/slides/cache/cache-intro.md
+transition: view-transition
+---
+
+---
+src: /pages/explanations/slides/cache/cache-lifetime.md
+transition: view-transition
+---
+
+---
+src: /pages/explanations/slides/cache/cache-strategies.md
+transition: view-transition
+--- 
+
+---
+src: /pages/explanations/slides/states/states-intro.md
+transition: view-transition
+---
+
+---
+src: /pages/explanations/slides/states/states-lifecycle.md
+transition: view-transition
+---
+
+---
 src: /pages/explanations/slides/code-example.md
 transition: view-transition
 ---
