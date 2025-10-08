@@ -34,7 +34,7 @@ export const addToCart = createAsyncThunk(
     productId: number;
     quantity?: number;
   }) => {
-    return await addItemToCart(productId, quantity);
+    return await addItemToCart({productId, quantity});
   },
 );
 
