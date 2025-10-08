@@ -67,11 +67,16 @@ const slots = useSlots()
     width: 100%;
     height: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
 }
 
 .solution-container {
     width: 100%;
-    margin: auto 100px;
+    max-width: 1000px;
+    height: 480px;
+    margin: 0 100px;
     background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
     border-radius: 20px;
     box-shadow:
@@ -84,6 +89,8 @@ const slots = useSlots()
     backdrop-filter: blur(10px);
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header de la solution */
@@ -189,6 +196,8 @@ const slots = useSlots()
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex: 1;
+    overflow-y: auto;
 }
 
 /* Footer de la solution */
@@ -219,8 +228,13 @@ const slots = useSlots()
 
 /* Responsive */
 @media (max-width: 768px) {
+    .solution-root {
+        padding: 40px 0;
+    }
+
     .solution-container {
-        margin: auto 20px;
+        height: 400px;
+        margin: 0 20px;
     }
 
     .solution-header {

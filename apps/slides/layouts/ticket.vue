@@ -76,11 +76,16 @@ const props = defineProps({
     width: 100%;
     height: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
 }
 
 .ticket-container {
     width: 100%;
-    margin: auto 100px;
+    max-width: 1000px;
+    height: 480px;
+    margin: 0 100px;
     background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
     border-radius: 20px;
     box-shadow:
@@ -93,6 +98,8 @@ const props = defineProps({
     backdrop-filter: blur(10px);
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header du ticket */
@@ -194,6 +201,8 @@ const props = defineProps({
     display: flex;
     flex-direction: column;
     gap: 16px;
+    flex: 1;
+    overflow-y: auto;
 }
 
 
@@ -206,6 +215,7 @@ const props = defineProps({
     box-shadow: 0 3px 8px rgba(16, 24, 40, 0.05);
     overflow: hidden;
     flex: 1;
+    min-height: 0;
 }
 
 .section-header {
@@ -233,7 +243,8 @@ const props = defineProps({
     padding: 16px;
     min-height: 80px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    flex: 1;
 }
 
 .client-message {
@@ -294,6 +305,15 @@ const props = defineProps({
 
 /* Responsive */
 @media (max-width: 768px) {
+    .ticket-root {
+        padding: 40px 0;
+    }
+
+    .ticket-container {
+        height: 500px;
+        margin: 0 20px;
+    }
+
     .ticket-header {
         flex-direction: column;
         gap: 16px;
