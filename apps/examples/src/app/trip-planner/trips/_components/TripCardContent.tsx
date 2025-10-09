@@ -1,13 +1,13 @@
 import { Loader2, Trash2 } from "lucide-react";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from "../../../../components/ui/badge";
+import { Button } from "../../../../components/ui/button";
 import {
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "../../../../components/ui/card";
 import {
   Dialog,
   DialogClose,
@@ -17,8 +17,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import type { Trip } from "@/lib/mock-data";
+} from "../../../../components/ui/dialog";
+import type { Trip } from "../../../../lib/mock-data";
 
 interface TripCardContentProps {
   trip: Trip;

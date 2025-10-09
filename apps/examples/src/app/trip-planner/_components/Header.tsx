@@ -1,9 +1,9 @@
 import { useAtom } from "jotai";
 import { Plane } from "lucide-react";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { selectedCitiesCountAtom } from "@/lib/store";
+import { Badge } from "../../../components/ui/badge";
+import { Button } from "../../../components/ui/button";
+import { selectedCitiesCountAtom } from "../../../lib/store";
 
 export const Header = () => {
   const [selectedCitiesLength] = useAtom(selectedCitiesCountAtom);

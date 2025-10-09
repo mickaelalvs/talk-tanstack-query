@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import type { Trip } from "@/lib/mock-data";
 import { deleteTrip } from "../../trip-planner/_services/delete-trip";
+import { Trip } from "../../../lib/mock-data";
 
 export const useDeleteTripMutation = () => {
   return useMutation({

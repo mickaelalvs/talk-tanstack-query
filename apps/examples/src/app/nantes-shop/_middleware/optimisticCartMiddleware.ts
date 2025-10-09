@@ -1,5 +1,5 @@
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
-import type { Cart } from "@/lib/database";
+import type { Cart } from "../../../../lib/database";
 import type { Product } from "../_components/types";
 import {
   addToCart,

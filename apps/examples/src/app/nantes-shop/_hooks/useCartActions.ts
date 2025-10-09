@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import type { AppDispatch } from "@/lib/store";
+import type { AppDispatch } from "../../../../lib/store";
 import type { Product } from "../_components/types";
 import {
   addToCart,

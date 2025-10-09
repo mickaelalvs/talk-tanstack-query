@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { Trip } from "@/lib/mock-data";
+import type { Trip } from "../../../../lib/mock-data";
 import { listTrips } from "../../_services/list-trips";
 import { Header } from "./Header";
 import { TripCard } from "./TripCard";

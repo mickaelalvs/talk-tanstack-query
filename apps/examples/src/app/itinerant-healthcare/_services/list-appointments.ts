@@ -1,4 +1,4 @@
-import type { Appointment } from "@/lib/database";
+import type { Appointment } from "../../../lib/database";
 
 type ApiResponse<T> = {
   success: boolean;

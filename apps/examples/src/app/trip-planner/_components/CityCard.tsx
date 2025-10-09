@@ -1,17 +1,17 @@
 import { useAtom } from "jotai";
 import { MapPin, Thermometer } from "lucide-react";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from "../../../components/ui/badge";
+import { Button } from "../../../components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import type { City } from "@/lib/mock-data";
-import { addCityToSelectionAtom, selectedCitiesAtom } from "@/lib/store";
+} from "../../../components/ui/card";
+import type { City } from "../../../lib/mock-data";
+import { addCityToSelectionAtom, selectedCitiesAtom } from "../../../lib/store";
 
 export const CityCard = ({ city }: { city: City }) => {
   const [selectedCities] = useAtom(selectedCitiesAtom);

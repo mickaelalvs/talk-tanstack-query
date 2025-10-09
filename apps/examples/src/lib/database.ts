@@ -1,6 +1,6 @@
 import Database from "better-sqlite3";
 import path from "path";
-import type { Product } from "@/app/nantes-shop/_components/types";
+import type { Product } from "../app/nantes-shop/_components/types";
 import type { City, Trip } from "./mock-data";
 
 // Database file path

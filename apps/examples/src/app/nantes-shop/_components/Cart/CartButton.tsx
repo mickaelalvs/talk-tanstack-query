@@ -1,6 +1,6 @@
 import { ShoppingCart } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from "../../../../components/ui/badge";
+import { Button } from "../../../../components/ui/button";
 
 interface CartButtonProps {
   setIsOpen: (isOpen: (isOpen: boolean) => boolean) => void;

@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Input } from "../../../components/ui/input";
 import { Cart } from "./Cart/Cart";
 
 interface HeaderProps {
@@ -13,7 +13,7 @@ export function Header({ searchTerm, setSearchTerm }: HeaderProps) {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-2xl font-bold text-primary">
-            Spécialités Nantaises vraiment bien
+            Spécialités Nantaises
           </h1>
           <Cart />
         </div>

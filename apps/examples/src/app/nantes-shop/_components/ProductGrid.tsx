@@ -4,7 +4,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "../../../components/ui/select";
 import { Pagination } from "./Pagination";
 import { ProductCard } from "./ProductCard";
 import type { Product } from "./types";

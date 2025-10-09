@@ -2,10 +2,10 @@
 
 import { ChevronLeft, ChevronRight, Clock, MapPin, Trash2 } from "lucide-react";
 import { useState } from "react";
-import { useDeleteAppointmentMutation } from "@/app/itinerant-healthcare/hooks/useDeleteAppointmentMutation";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useDeleteAppointmentMutation } from "../hooks/useDeleteAppointmentMutation";
+import { Badge } from "../../../components/ui/badge";
+import { Button } from "../../../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -13,8 +13,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import type { Appointment } from "@/lib/database";
+} from "../../../components/ui/dialog";
+import type { Appointment } from "../../../lib/database";
 
 interface AppointmentCalendarProps {
   appointments: Appointment[];

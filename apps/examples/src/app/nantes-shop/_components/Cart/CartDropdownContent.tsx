@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/lib/hooks";
+import { useAppSelector } from "../../../../lib/hooks";
 import { CartCard } from "./CartCard";
 
 export const CartDropdownContent = () => {

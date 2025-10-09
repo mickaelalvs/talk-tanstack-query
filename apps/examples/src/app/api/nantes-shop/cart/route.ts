@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { clearCart, getOrCreateCart } from "@/lib/database";
+import { clearCart, getOrCreateCart } from "../../../../lib/database";
 
 export async function GET(request: NextRequest) {
   try {

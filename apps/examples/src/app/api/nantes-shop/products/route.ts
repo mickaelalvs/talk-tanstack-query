@@ -1,11 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { createProduct, getAllProducts } from "@/lib/database";
+import { createProduct, getAllProducts } from "../../../../lib/database";
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
 
-    // Extract query parameters
     const search = searchParams.get("search") || "";
     const category = searchParams.get("category") || "Tous";
     const minPrice = parseFloat(searchParams.get("minPrice") || "0");
@@ -16,10 +15,8 @@ export async function GET(request: NextRequest) {
     const page = parseInt(searchParams.get("page") || "1", 10);
     const limit = parseInt(searchParams.get("limit") || "6", 10);
 
-    // Get all products from database
     const allProducts = getAllProducts();
 
-    // Filter products
     const filteredProducts = allProducts.filter((product) => {
       const matchesSearch =
         product.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -40,7 +37,6 @@ export async function GET(request: NextRequest) {
       );
     });
 
-    // Sort products
     filteredProducts.sort((a, b) => {
       switch (sortBy) {
         case "price-asc":
@@ -54,7 +50,6 @@ export async function GET(request: NextRequest) {
       }
     });
 
-    // Pagination
     const totalItems = filteredProducts.length;
     const totalPages = Math.ceil(totalItems / limit);
     const startIndex = (page - 1) * limit;
@@ -90,12 +85,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST endpoint for creating new products
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    // Validate required fields
     const requiredFields = [
       "name",
       "description",
@@ -117,7 +110,6 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Create product in database
     const newProduct = createProduct({
       name: body.name,
       description: body.description,

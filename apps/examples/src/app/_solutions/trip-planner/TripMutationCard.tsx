@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/card";
-import type { Trip } from "@/lib/mock-data";
+import { Card } from "../../../components/ui/card";
+import type { Trip } from "../../../lib/mock-data";
 import { TripCardContent } from "../../trip-planner/trips/_components/TripCardContent";
 import { useDeleteTripMutation } from "./useDeleteTripMutation";
 

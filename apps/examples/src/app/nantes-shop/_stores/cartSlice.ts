@@ -3,7 +3,7 @@ import {
   createSlice,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-import type { Cart } from "@/lib/database";
+import type { Cart } from "../../../lib/database";
 import { addItemToCart } from "../_services/add-item-to-cart";
 import { deleteCartItem } from "../_services/delete-cart-item";
 import { getCart } from "../_services/get-cart";

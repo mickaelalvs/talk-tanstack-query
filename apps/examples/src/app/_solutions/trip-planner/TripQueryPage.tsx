@@ -1,6 +1,7 @@
-import { TripListEmptyState } from "@/app/trip-planner/trips/_components/TripListEmptyState";
-import { TripListSkeleton } from "@/app/trip-planner/trips/_components/TripListSkeleton";
+
 import { Header } from "../../trip-planner/trips/_components/Header";
+import { TripListEmptyState } from "../../trip-planner/trips/_components/TripListEmptyState";
+import { TripListSkeleton } from "../../trip-planner/trips/_components/TripListSkeleton";
 import { TripMutationCard } from "./TripMutationCard";
 import { useListTripQuery } from "./useListTripQuery";
 

@@ -8,7 +8,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { ChartContainer } from "@/components/ui/chart";
+import { ChartContainer } from "../../../../components/ui/chart";
 import { useWaterDataQuery } from "../../_hooks/useWaterDataQuery";
 import { GraphTooltip } from "./GraphTooltip";
 

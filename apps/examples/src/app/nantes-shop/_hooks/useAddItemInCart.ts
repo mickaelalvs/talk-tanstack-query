@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { addItemToCart } from "@/app/nantes-shop/_services/add-item-to-cart";
+import { addItemToCart } from "../_services/add-item-to-cart";
 
 export const useAddItemInCartMutation = () => {
   return useMutation({

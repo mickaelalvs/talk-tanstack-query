@@ -1,4 +1,4 @@
-import { TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { TableHead, TableHeader, TableRow } from "../../../../components/ui/table";
 import { useMetersFilters } from "../../_hooks/useMetersFilters";
 import { SortButton } from "./SortButton";
 

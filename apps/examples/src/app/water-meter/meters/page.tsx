@@ -1,7 +1,7 @@
 "use client";
 
 import { TableIcon } from "lucide-react";
-import { Table } from "@/components/ui/table";
+import { Table } from "../../../components/ui/table";
 import { useWaterMetersQuery } from "../_hooks/useWaterMetersQuery";
 import { MetersFilters } from "./_components/MetersFilters";
 import { MetersTableBody } from "./_components/MetersTableBody";

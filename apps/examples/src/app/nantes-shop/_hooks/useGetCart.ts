@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCart } from "@/app/nantes-shop/_services/get-cart";
+import { getCart } from "../_services/get-cart";
 
 export const useGetCartQuery = () => {
   return useQuery({

@@ -4,9 +4,8 @@ import {
   getOrCreateCart,
   removeFromCart,
   updateCartItemQuantity,
-} from "@/lib/database";
+} from "../../../../../lib/database";
 
-// POST /api/nantes-shop/cart/items - Add item to cart
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -39,7 +38,6 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// PUT /api/nantes-shop/cart/items - Update item quantity
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();
@@ -65,7 +63,6 @@ export async function PUT(request: NextRequest) {
   }
 }
 
-// DELETE /api/nantes-shop/cart/items - Remove item from cart
 export async function DELETE(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);

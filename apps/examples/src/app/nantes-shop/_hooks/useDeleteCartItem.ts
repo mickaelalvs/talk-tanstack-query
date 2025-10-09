@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { deleteCartItem } from "@/app/nantes-shop/_services/delete-cart-item";
+import { deleteCartItem } from "../_services/delete-cart-item";
 
 export const useDeleteCartItemMutation = () => {
   return useMutation({

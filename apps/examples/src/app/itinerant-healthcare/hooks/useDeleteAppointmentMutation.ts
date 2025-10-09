@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import { deleteAppointment } from "@/app/itinerant-healthcare/_services/delete-appointment";
-import type { Appointment } from "@/lib/database";
+import { deleteAppointment } from "../_services/delete-appointment";
+import type { Appointment } from "../../../lib/database";
 
 export const useDeleteAppointmentMutation = () => {
   return useMutation({

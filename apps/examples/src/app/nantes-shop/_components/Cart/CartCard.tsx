@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { CartItem } from "@/lib/database";
+import type { CartItem } from "../../../../lib/database";
 import { CartCardAction } from "./CartCardAction";
 
 interface CartCardProps {

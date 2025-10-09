@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
-import { cityFromRow, getDatabase } from "@/lib/database";
+import { cityFromRow, getDatabase } from "../../../../lib/database";
 
 export async function GET() {
   try {
     const db = getDatabase();
 
-    // Simulate network delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const rows = db.prepare("SELECT * FROM cities ORDER BY name").all();
@@ -25,7 +24,6 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    // Validate required fields
     const requiredFields = [
       "name",
       "country",
@@ -44,7 +42,6 @@ export async function POST(request: Request) {
       }
     }
 
-    // Validate weather object
     if (
       !body.weather.temperature ||
       !body.weather.condition ||
@@ -58,7 +55,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validate attractions array
     if (!Array.isArray(body.attractions) || body.attractions.length === 0) {
       return NextResponse.json(
         { error: "Attractions must be a non-empty array" },
@@ -68,10 +64,8 @@ export async function POST(request: Request) {
 
     const db = getDatabase();
 
-    // Generate unique ID
     const id = `city_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
-    // Insert new city
     const insertCity = db.prepare(`
       INSERT INTO cities (
         id, name, country, description, image,

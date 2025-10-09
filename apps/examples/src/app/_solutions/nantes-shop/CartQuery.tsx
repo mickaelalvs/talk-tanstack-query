@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CartButton } from "@/app/nantes-shop/_components/Cart/CartButton";
-import { CartDropdown } from "@/app/nantes-shop/_components/Cart/CartDropdown";
-import { CartOverlay } from "@/app/nantes-shop/_components/Cart/CartOverlay";
+import { CartButton } from "../../nantes-shop/_components/Cart/CartButton";
+import { CartDropdown } from "../../nantes-shop/_components/Cart/CartDropdown";
+import { CartOverlay } from "../../nantes-shop/_components/Cart/CartOverlay";
 import { useGetCartQuery } from "../../nantes-shop/_hooks/useGetCart";
 
 export const CartQuery = () => {

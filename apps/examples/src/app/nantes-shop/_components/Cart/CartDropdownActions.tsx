@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { Button } from "@/components/ui/button";
-import { useAppSelector } from "@/lib/hooks";
+import { Button } from "../../../../components/ui/button";
+import { useAppSelector } from "../../../../lib/hooks";
 
 export const CartDropdownActions = () => {
   const { cart } = useAppSelector((state) => state.cart);

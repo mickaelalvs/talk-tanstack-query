@@ -4,7 +4,7 @@ import {
   createAppointment,
   deleteAppointment,
   getAllAppointments,
-} from "@/lib/database";
+} from "../../../../lib/database";
 
 export async function GET() {
   try {

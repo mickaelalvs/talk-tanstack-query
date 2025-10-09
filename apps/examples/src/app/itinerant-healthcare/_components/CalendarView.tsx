@@ -1,8 +1,8 @@
 import { useMutationState } from "@tanstack/react-query";
 import { Plus, User } from "lucide-react";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import type { Appointment } from "@/lib/database";
+import { Button } from "../../../components/ui/button";
+import type { Appointment } from "../../../lib/database";
 import { AddAppointmentDialog } from "./AddAppointmentDialog";
 import { AppointmentCalendar } from "./AppointmentCalendar";
 

@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
-import type { City } from "@/lib/mock-data";
-import { selectedCitiesAtom } from "@/lib/store";
+import type { City } from "../../../lib/mock-data";
+import { selectedCitiesAtom } from "../../../lib/store";
 import { listCities } from "../_services/list-cities";
 import { CitiesListError } from "./CitiesListError";
 import { CitiesListSkeleton } from "./CitiesListSkeleton";
