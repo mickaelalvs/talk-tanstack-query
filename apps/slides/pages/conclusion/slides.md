@@ -4,6 +4,11 @@ transition: view-transition
 ---
 
 ---
+src: /pages/conclusion/slides/conclusion-features.md
+transition: view-transition
+---
+
+---
 src: /pages/conclusion/slides/thanks.md
 transition: view-transition
 ---
