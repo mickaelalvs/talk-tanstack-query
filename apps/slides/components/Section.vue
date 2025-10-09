@@ -25,14 +25,13 @@ defineProps({
     border: 1px solid rgba(16, 24, 40, 0.08);
     box-shadow: 0 3px 8px rgba(16, 24, 40, 0.05);
     overflow: hidden;
-    margin-bottom: 20px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform, opacity;
 }
 
 .section-header {
     background: linear-gradient(135deg, #f8f9fa 0%, #e5e7eb 100%);
-    padding: 12px 16px;
+    padding: 8px 16px;
     border-bottom: 1px solid rgba(16, 24, 40, 0.08);
     display: flex;
     align-items: center;
@@ -40,25 +39,25 @@ defineProps({
 }
 
 .section-header h3 {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 700;
     color: #101828;
     margin: 0;
 }
 
 .section-icon {
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .section-content {
-    padding: 20px;
+    padding: 15px 30px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform, opacity;
 }
 
 /* Variant concept avec highlight spécial */
 .section-concept .section-content {
-    padding: 20px;
+    padding: 15px 30px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform, opacity;
 }

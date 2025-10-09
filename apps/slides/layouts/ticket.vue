@@ -264,11 +264,11 @@ const props = defineProps({
 }
 
 .problem-text {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.6;
     color: #374151;
     margin: 0;
-    font-weight: 500;
+    font-weight: 700;
     background: linear-gradient(135deg, #fef3c7 0%, #fef7cd 100%);
     padding: 16px;
     border-radius: 8px;

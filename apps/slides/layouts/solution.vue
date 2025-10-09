@@ -96,7 +96,7 @@ const slots = useSlots()
 /* Header de la solution */
 .solution-header {
     background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    padding: 12px 24px;
+    padding: 10px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;

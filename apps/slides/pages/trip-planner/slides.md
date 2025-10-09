@@ -13,7 +13,7 @@ mdc: true
 
 ::message::
 
-J'ai une application de préparation de voyage, ou l'on peut créer un voyage à partir des différentes villes que l'on veut visiter, et l'application nous permettra de nous aider à préparer ces voyages. Pour l'instant j'ai la liste des villes et des voyages, et j'aimerai bien savoir comment je pourrais inclure TanStack Query dans cette application.
+J'ai une application de préparation de voyage, ou l'on peut créer un voyage à partir des différentes villes que l'on veut visiter, et l'application nous permettra de nous aider à préparer ces voyages. Pour l'instant j'ai la liste des villes et des voyages, et j'aimerai bien savoir comment je pourrais inclure TanStack Query dans cette application qui a un état local et une gestion de données assez simple.
 
 ::problem::
 
@@ -32,7 +32,7 @@ title: Base Case - Solution
 layout: solution
 ticketNumber: "#TSQ-2024-002"
 solutionTitle: "Intégration TanStack Query dans Trip Planner"
-concept: "useQuery + QueryClient"
+concept: "useQuery + useMutation"
 priority: "medium"
 status: "resolved"
 transition: view-transition
@@ -41,14 +41,58 @@ mdc: true
 
 ::content::
 
-Coucou
+<Section v-click="1" v-show="$clicks === 1" title="Explication" icon="💡">
+
+<br />
+
+Pour ce type d'application avec un état local simple et une gestion de données basique, TanStack Query va transformer votre approche !
+
+<br />
+
+**<span style="color: #EF4444;">👎🏼 Avant :</span>** **<code style="font-size: 0.85em; color: #DC2626; background-color: #FEE2E2; padding: 2px 4px; border-radius: 4px;">useEffect</code>** + **<code style="font-size: 0.85em; color: #DC2626; background-color: #FEE2E2; padding: 2px 4px; border-radius: 4px;">useState</code>** pour chaque appel, gestion manuelle des états de chargement, synchronisation manuelle entre les composants...
+
+<br />
+
+**<span style="color: #10B981;">👍🏼 Après :</span>** **<code style="font-size: 0.85em; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">useQuery</code>** pour les lectures, **<code style="font-size: 0.85em; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">useMutation</code>** pour les écritures, et TanStack Query gère tout le reste automatiquement !
+
+<br />
+
+</Section>
+
+<Section v-click="2" v-show="$clicks === 2" title="Concept TanStack Query" icon="⚡" variant="concept">
+
+<div class="concept-description">
+
+**<code style="font-size: 0.85em; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">useQuery</code>** pour récupérer les données :
+
+```tsx{all}{lines:true}
+const { data: trips, isPending } = useQuery({
+  queryKey: ['trips'],
+  queryFn: listTrips
+})
+```
+
+<div style="height: 10px;"></div>
+
+**<code style="color: #10B986; font-size: 0.85em; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">useMutation</code>** pour modifier les données (create/delete) :
+
+```tsx{all}{lines:true}
+const { mutate: createTrip } = useMutation({
+  mutationFn: createTrip,
+  onSuccess: () => {}
+})
+```
+
+</div>
+
+</Section>
 
 ---
 title: Base Case - Solution
 layout: solution
 ticketNumber: "#TSQ-2024-002"
 solutionTitle: "Intégration TanStack Query dans Trip Planner"
-concept: "useQuery + QueryClient"
+concept: "useQuery + useMutation"
 priority: "medium"
 status: "resolved"
 transition: view-transition
@@ -57,45 +101,91 @@ mdc: true
 
 ::content::
 
-<Section title="Explication" icon="💡">
+<Section title="Concept TanStack Query" icon="⚡" variant="concept">
 
-Pour votre application de planification de voyage, TanStack Query va révolutionner la gestion des données !
+**<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">refetchQueries</code>** pour rafraîchir la liste :
 
-Au lieu de gérer manuellement les états de chargement, les erreurs et le cache, vous pourrez simplement utiliser `useQuery` pour récupérer vos villes et voyages.
-
-**Avant :** Gestion manuelle des états, du cache, des erreurs...
-
-**Après :** Une seule ligne de code pour récupérer et gérer vos données !
-
-</Section>
-
-<Section v-click="2" v-show="$clicks === 2" title="Concept TanStack Query" icon="⚡" variant="concept">
-
-<div class="concept-highlight">
-    <span class="concept-label">Concept clé :</span>
-    <span class="concept-name">useQuery + QueryClient</span>
-</div>
-<div class="concept-description">
-
-**useQuery** est le hook principal de TanStack Query. Il gère automatiquement :
-
-- Le cache des données
-- Les états de chargement (isLoading, isFetching)
-- La gestion des erreurs (error)
-- La revalidation automatique
-- L'invalidation intelligente
-
-**QueryClient** centralise la configuration et permet de partager le cache entre tous vos composants.
-
-</div>
+```tsx{all|6}{lines:true}
+const useCreateTripMutation = () => {
+  return useMutation({
+    mutationFn: createTrip,
+    onSuccess: (_data, _variables, _results, context) => {
+      // Refetch la liste des trips
+      context.client.refetchQueries({ queryKey: ['trips'] });
+    }
+  });
+}
+```
 
 </Section>
 
-<Section v-click="3" v-show="$clicks === 3" title="Avantages" icon="🎯" variant="highlight">
+---
+title: Base Case - Solution
+layout: solution
+ticketNumber: "#TSQ-2024-002"
+solutionTitle: "Intégration TanStack Query dans Trip Planner"
+concept: "useQuery + useMutation"
+priority: "medium"
+status: "resolved"
+transition: view-transition
+mdc: true
+---
 
-- **Simplicité** : Plus besoin de gérer manuellement les états
-- **Performance** : Cache intelligent et revalidation optimisée
-- **UX** : États de chargement et erreurs gérés automatiquement
-- **Maintenabilité** : Code plus propre et plus lisible
+::content::
+
+<Section title="Concept TanStack Query" icon="⚡" variant="concept">
+
+**<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">setQueryData</code>** pour mettre à jour le cache directement :
+
+```tsx{all|5-7}{lines:true}
+const useDeleteTripMutation = () => {
+  return useMutation({
+    mutationFn: deleteTrip,
+    onSuccess: (_data, tripId, _results, context) => {
+      context.client.setQueryData(['trips'], (old: Trip[]) => // Met à jour le cache
+        old.filter((trip) => trip.id !== tripId)
+      );
+    }
+  });
+}
+```
+
+<div style="text-align: center; margin-top: 5px;">
+  <small style="font-size: 0.7em;">💡 <strong>Astuce :</strong> Utilisez <strong>setQueryData</strong> quand vous êtes sûr du résultat (<strong>delete</strong>, <strong>toggle</strong>)</small>
+</div>
+
+</Section>
+
+---
+title: Base Case - Solution - Récap
+layout: solution
+ticketNumber: "#TSQ-2024-002"
+solutionTitle: "Intégration TanStack Query dans Trip Planner"
+concept: "useQuery + useMutation"
+priority: "medium"
+status: "resolved"
+transition: view-transition
+mdc: true
+---
+
+::content::
+
+<Section title="Bonnes pratiques" icon="💡" variant="highlight">
+
+<br />
+
+✅ **<span style="color: #00B7D8;">Créer des hooks custom</span>** pour encapsuler la logique et créer une abstraction entre la logique par TanStack Query et l'interface utilisateur.
+
+```tsx{all}{lines:true}
+// useListTripQuery.ts
+export const useListTripQuery = () => {
+  return useQuery({
+    queryFn: listTrips,
+    queryKey: ['trips']
+  });
+};
+```
+
+<br />
 
 </Section>
