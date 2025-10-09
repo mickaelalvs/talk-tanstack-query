@@ -6,7 +6,7 @@ import type { Product } from "@/app/nantes-shop/_components/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { useAddItemInCartMutation } from "./useAddItemInCartMutation";
+import { useAddItemInCartMutation } from "../../nantes-shop/_hooks/useAddItemInCart";
 
 interface ProductCardProps {
   product: Product;

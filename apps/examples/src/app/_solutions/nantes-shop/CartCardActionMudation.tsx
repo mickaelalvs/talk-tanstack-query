@@ -1,8 +1,8 @@
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { CartItem } from "@/lib/database";
-import { useDeleteCartItemMutation } from "./useDeleteCartItemMutation";
-import { useUpdateCartItemMutation } from "./useUpdateCartItemMutation";
+import { useDeleteCartItemMutation } from "../../nantes-shop/_hooks/useDeleteCartItem";
+import { useUpdateCartItemMutation } from "../../nantes-shop/_hooks/useUpdateCartItem";
 
 export const CartCardActionMutation = ({ item }: { item: CartItem }) => {
   const { mutate: updateCartItem } = useUpdateCartItemMutation();
