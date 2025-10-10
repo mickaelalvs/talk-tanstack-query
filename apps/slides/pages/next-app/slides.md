@@ -1,5 +1,5 @@
 ---
-title: Next Js - Call
+title: Next.js - Call
 layout: ticket
 name: "Thomas Rousseau"
 meta: "Développeur full-stack — migration Next.js"
@@ -13,17 +13,17 @@ mdc: true
 
 ::message::
 
-Je suis conquis par TanStack Query, la facilité d'utilisation et la puissance de l'outils ! Après plusieurs application uniquement client side, je suis en train de construire une application avec Next Js et j'aimerai beaucoup pouvoir profiter des React Server Component, du SSR et de TanStack... Dites moi que c'est possible.
+Je suis conquis par TanStack Query, la facilité d'utilisation et la puissance de l'outils ! Après plusieurs application uniquement client side, je suis en train de construire une application avec Next.js et j'aimerai beaucoup pouvoir profiter des React Server Component, du SSR et de TanStack... Dites moi que c'est possible.
 
 ::problem::
 
 Comment intégrer TanStack Query avec Next.js pour profiter des React Server Components et du SSR tout en gardant la puissance de TanStack Query ?
 
 ---
-title: Next Js - useSuspenseQuery
+title: Next.js - useSuspenseQuery
 layout: solution
 ticketNumber: "#TSQ-2025-006"
-solutionTitle: "Utilisation avec Next Js"
+solutionTitle: "Utilisation avec Next.js"
 concept: "Utilisation du Suspense"
 priority: "medium"
 status: "resolved"
@@ -36,7 +36,9 @@ mdc: true
 
 <div class="concept-description">
 
-**<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">UseSuspenseQuery</code>** : Profitez un maximum du router de Next Js !
+**<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">UseSuspenseQuery</code>** : Profitez un maximum du router de **Next.js** !
+
+<div style="height: 10px;"></div>
 
 ```tsx{all|2}{lines:true}
 export function useInvoicesSuspenseQuery(filters: InvoiceFilters) {
@@ -48,18 +50,20 @@ export function useInvoicesSuspenseQuery(filters: InvoiceFilters) {
 ```
 
 <div style="text-align: center; margin-top: 5px;">
-  <small style="font-size: 0.7em;">💡 <strong>Astuce :</strong> Le app router de Next Js est construit autour de l'API suspense !</small>
+  <small style="font-size: 0.7em;">💡 <strong>Astuce :</strong> Le app router de Next.js est construit autour de l'API suspense !</small>
 </div>
+
+<br />
 
 </div>
 
 </Section>
 
 ---
-title: Next Js - Prefetching
+title: Next.js - Prefetching
 layout: solution
 ticketNumber: "#TSQ-2025-006"
-solutionTitle: "Utilisation avec Next Js"
+solutionTitle: "Utilisation avec Next.js"
 concept: "Prefetcher coté serveur"
 priority: "medium"
 status: "resolved"
@@ -72,9 +76,11 @@ mdc: true
 
 <div class="concept-description">
   
-Avec **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">dehydrate</code>** et **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">HydrationBoundary</code>**, fetchez vos donnée coté serveur et hydratez le cache TanStack coté client ! 
+**<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">dehydrate</code>** et **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">HydrationBoundary</code>** pour fetcher vos données coté serveur et hydrater le cache TanStack coté client ! ⛲
 
-```tsx{all|2-4|7-9}{lines:true}
+<div style="height: 10px;"></div>
+
+```tsx{all|2-4|7-9}{lines:true, class: '!children:text-[10px] !m-0'}
 export default async function ServerComponent() {
   const queryClient = getQueryClient();
   await queryClient.fetchQuery({ queryKey: 'list-thumbnail', queryFn: ListThumbnails })
@@ -84,8 +90,7 @@ export default async function ServerComponent() {
     <HydrationBoundary state={dehydrate(queryClient)}>
       <ThumbnailList />
     </HydrationBoundary>
-  );
-}
+)}
 ```
 
 </div>
@@ -93,10 +98,10 @@ export default async function ServerComponent() {
 </Section>
 
 ---
-title: Next Js - Other Framework
+title: Next.js - Other Framework
 layout: solution
 ticketNumber: "#TSQ-2025-006"
-solutionTitle: "Utilisation avec Next Js"
+solutionTitle: "Utilisation avec Next.js"
 concept: "Prefetcher coté serveur"
 priority: "medium"
 status: "resolved"
@@ -108,8 +113,10 @@ mdc: true
 <Section title="Disponible partout !" icon="🌍" variant="highlight">
 
 <div class="concept-description">
-  
-Tout ces concepts sont utilisables dans d'autres **framework** ! 
+
+<div style="height: 10px;"></div>
+
+Tous ces concepts sont utilisables dans d'autres **<span style="color: #10B981;">frameworks</span>** ! 
 
 <style>
 @keyframes popIn {
