@@ -9,6 +9,10 @@ const url = computed(() => {
   return `http://localhost:1234/${path}`
 })
 
+const folderUrl = computed(() => {
+  return `http://localhost:4000?folder=/Users/lucasaudart/Workspace/Perso/Talk/talk-tanstack-query/apps/examples/src/app/${path}`
+})
+
 const showResultIframe = ref(false)
 const zIndex = ref(1)
 
@@ -55,7 +59,7 @@ const resultIframeClass = computed(() => {
         </div>
         <div class="mac-title">Code Editor 💻</div>
       </div>
-      <iframe class="iframe" src="http://localhost:4000" width="100%" height="100%" />
+      <iframe class="iframe" :src="folderUrl" width="100%" height="100%" />
     </div>
 
     <!-- Result iframe with Mac window -->
