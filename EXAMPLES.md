@@ -1,19 +1,5 @@
 # TanStack Use Cases
 
-<!--
-## Template
-
-### Story
-
-### TanStack features highlighted
-
-### Main use cases points
-
-### Notes
--->
-
----
-
 ## Base React Query Case
 
 ### Story

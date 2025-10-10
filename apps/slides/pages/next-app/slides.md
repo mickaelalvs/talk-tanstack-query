@@ -21,25 +21,140 @@ Comment intégrer TanStack Query avec Next.js pour profiter des React Server Com
 
 ---
 title: Next Js - useSuspenseQuery
-transition: view-transition
+layout: solution
+ticketNumber: "#TSQ-2025-006"
+solutionTitle: "Utilisation avec Next Js"
+concept: "Utilisation du Suspense"
+priority: "medium"
+status: "resolved"
+mdc: true
 ---
 
-Montrer un exemple avec useSuspenseQuery, qui permet d'intéragir directement avec les `loading.tsx` et `error.tsx` de NextJs
-Même si ça ne sert pas qu'a ça
+::content::
 
+<Section title="Utilisation de la SuspenseQuery" icon="⏳" variant="default">
+
+<div class="concept-description">
+
+**<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">UseSuspenseQuery</code>** : Profitez un maximum du router de Next Js !
+
+```tsx{all|2}{lines:true}
+export function useInvoicesSuspenseQuery(filters: InvoiceFilters) {
+  return useSuspenseQuery({
+    queryKey: ['invoices-list', { filters }],
+    queryFn: listInvoices,
+  });
+}
+```
+
+<div style="text-align: center; margin-top: 5px;">
+  <small style="font-size: 0.7em;">💡 <strong>Astuce :</strong> Le app router de Next Js est construit autour de l'API suspense !</small>
+</div>
+
+</div>
+
+</Section>
 
 ---
-title: Next Js - Client Hydration
-transition: view-transition
+title: Next Js - Prefetching
+layout: solution
+ticketNumber: "#TSQ-2025-006"
+solutionTitle: "Utilisation avec Next Js"
+concept: "Prefetcher coté serveur"
+priority: "medium"
+status: "resolved"
+mdc: true
 ---
 
-Utilisation du HydrationBoundaries avec le helper dehydrate pour permettre de fetch coté serveur tout en gardant le cache
+::content::
 
-Info importante, possibilité de stream du fait que les query en 'pending' sont serializable 
+<Section title="Prefetcher coté serveur" icon="📡" variant="default">
+
+<div class="concept-description">
+  
+Avec **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">dehydrate</code>** et **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">HydrationBoundary</code>**, fetchez vos donnée coté serveur et hydratez le cache TanStack coté client ! 
+
+```tsx{all|2-4|7-9}{lines:true}
+export default async function ServerComponent() {
+  const queryClient = getQueryClient();
+  await queryClient.fetchQuery({ queryKey: 'list-thumbnail', queryFn: ListThumbnails })
+  queryClient.prefetchQuery({ queryKey: 'list-review', queryFn: ListReviews });
+
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <ThumbnailList />
+    </HydrationBoundary>
+  );
+}
+```
+
+</div>
+
+</Section>
 
 ---
-title: Next Js - Experimental ReactQueryStreamedHydration
-transition: view-transition
+title: Next Js - Other Framework
+layout: solution
+ticketNumber: "#TSQ-2025-006"
+solutionTitle: "Utilisation avec Next Js"
+concept: "Prefetcher coté serveur"
+priority: "medium"
+status: "resolved"
+mdc: true
 ---
 
-Utilisation de ReactQueryStreamedHydration pour une meilleur DX pour faire du fetching de data suspensed coté server (il faut que je creuse la doc j'ai pas full compris encore)
+::content::
+
+<Section title="Disponible partout !" icon="🌍" variant="highlight">
+
+<div class="concept-description">
+  
+Tout ces concepts sont utilisables dans d'autres **framework** ! 
+
+<style>
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  50% {
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.logo-item {
+  animation: popIn 0.6s ease-out both;
+}
+</style>
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin: 20px 0;">
+  <div class="logo-item" style="text-align: center; animation-delay: 0.1s;">
+    <img src="/assets/images/reactRouter.svg" alt="React Router" style="width: 100px; height: 100px; filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.3));" />
+    <div style="font-size: 0.7em; margin-top: 5px;">Remix</div>
+  </div>
+  
+
+  <div class="logo-item" style="text-align: center; animation-delay: 0.1s;">
+    <img src="/assets/images/nuxt.svg" alt="Nuxt" style="width: 100px; height: 100px; filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.3));" />
+    <div style="font-size: 0.7em; margin-top: 5px;">Nuxt</div>
+  </div>
+  
+  <div class="logo-item" style="text-align: center; animation-delay: 0.2s;">
+    <img src="/assets/images/svelte.svg" alt="Svelte Kit" style="width: 75px; height: 100px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
+    <div style="font-size: 0.7em; margin-top: 5px;">Svelte Kit</div>
+  </div>
+  
+  <div class="logo-item" style="text-align: center; animation-delay: 0.3s;">
+    <img src="/assets/images/solidStart.svg" alt="Solid Start" style="width: 100px; height: 100px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
+    <div style="font-size: 0.7em; margin-top: 5px;">Solid Start</div>
+  </div>
+</div>
+
+
+</div>
+
+</Section>
