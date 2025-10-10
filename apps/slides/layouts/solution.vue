@@ -75,7 +75,7 @@ const slots = useSlots()
 .solution-container {
     width: 100%;
     max-width: 1000px;
-    height: 480px;
+    height: 490px;
     margin: 0 100px;
     background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
     border-radius: 20px;
