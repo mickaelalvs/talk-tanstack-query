@@ -13,11 +13,11 @@ mdc: true
 
 ::message::
 
-J'ai besoin de votre aide. Je maintient depuis quelques années un outils comme photoshop en ligne, et j'entend la hype me parler de TanStack Query tout autour de moi. Je ne peux me résoudre à ne pas l'utiliser, pouvez vous m'aider à l'integrer ?
+J'ai besoin de votre aide. Je maintient depuis quelques années un outils comme photoshop en ligne sous Vue.js avec Pinia, et j'entend la hype me parler de TanStack Query tout autour de moi. Je ne peux me résoudre à ne pas l'utiliser, pouvez vous m'aider à l'integrer (si c'est possible) ?
 
 ::problem::
 
-Est-ce que TanStack Query est vraiment adapté pour une application graphique en ligne comme Photoshop, ou est-ce que c'est juste de la hype ?
+Est-ce que TanStack Query est vraiment adapté à une application graphique en ligne comme Photoshop ? Est-ce que ça pose problème que je sois sous Vue.js ? Et surtout, est-ce une bonne idée de migrer de Pinia vers TanStack Query ?
 
 ---
 title: Photopea - Solution
