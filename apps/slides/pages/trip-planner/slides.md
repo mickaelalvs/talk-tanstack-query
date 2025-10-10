@@ -117,42 +117,6 @@ const useCreateTripMutation = () => {
 </Section>
 
 ---
-title: Base Case - Solution
-layout: solution
-ticketNumber: "#TSQ-2024-002"
-solutionTitle: "Intégration TanStack Query dans Trip Planner"
-concept: "useQuery + useMutation"
-priority: "medium"
-status: "resolved"
-mdc: true
----
-
-::content::
-
-<Section title="Concept TanStack Query" icon="⚡" variant="concept">
-
-**<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">setQueryData</code>** pour mettre à jour le cache directement :
-
-```tsx{all|5-7}{lines:true}
-const useDeleteTripMutation = () => {
-  return useMutation({
-    mutationFn: deleteTrip,
-    onSuccess: (_data, tripId, _results, context) => {
-      context.client.setQueryData(['trips'], (old: Trip[]) => // Met à jour le cache
-        old.filter((trip) => trip.id !== tripId)
-      );
-    }
-  });
-}
-```
-
-<div style="text-align: center; margin-top: 5px;">
-  <small style="font-size: 0.7em;">💡 <strong>Astuce :</strong> Utilisez <strong>setQueryData</strong> quand vous êtes sûr du résultat (<strong>delete</strong>, <strong>toggle</strong>)</small>
-</div>
-
-</Section>
-
----
 title: Base Case - Solution - Récap
 layout: solution
 ticketNumber: "#TSQ-2024-002"
