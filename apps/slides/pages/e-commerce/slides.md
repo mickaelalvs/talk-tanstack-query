@@ -35,75 +35,216 @@ solutionTitle: "Migration progressive Redux vers TanStack Query"
 concept: "Server State vs Client State"
 priority: "medium"
 status: "resolved"
-transition: view-transition
 mdc: true
 ---
 
 ::content::
 
-<Section v-click="1" v-show="$clicks === 1" title="Explication" icon="💡">
+<Section title="Le problème du Redux" icon="💡">
 
-TanStack Query ne remplace pas complètement Redux, mais il s'occupe spécifiquement du **server state** (données venant de l'API).
+**<span style="color: #EF4444;">❌</span>** Avec **<code style="font-size: 0.85em; color: #DC2626; background-color: #FEE2E2; padding: 2px 4px; border-radius: 4px;">Redux</code>**, beaucoup de **boilerplate** pour gérer le panier :
 
-Pour votre e-commerce, vous pouvez garder Redux pour le panier (client state) et utiliser TanStack Query pour les produits, commandes, etc.
+<div style="text-align: center; margin-top: 15px;"></div>
 
-**Stratégie hybride :** Le meilleur des deux mondes !
+```tsx{all}{lines:true}
+// Créer un thunk pour chaque action
+export const fetchCart = createAsyncThunk("cart/fetchCart", async () => {
+  return await getCart();
+});
+
+export const addToCart = createAsyncThunk("cart/addToCart", 
+  async ({ productId, quantity = 1 }) => {
+    return await addItemToCart({productId, quantity});
+  }
+);
+```
 
 </Section>
 
-<Section v-click="2" v-show="$clicks === 2" title="Concept TanStack Query" icon="⚡" variant="concept">
+---
+title: Redux - Solution
+layout: solution
+ticketNumber: "#TSQ-2024-004"
+solutionTitle: "Migration progressive Redux vers TanStack Query"
+concept: "Server State vs Client State"
+priority: "medium"
+status: "resolved"
+mdc: true
+---
 
-<div class="concept-highlight">
-    <span class="concept-label">Concept clé :</span>
-    <span class="concept-name">Server State vs Client State</span>
-</div>
+::content::
+
+<Section title="Le problème du Redux" icon="💡">
+
+```tsx{all}{lines:true, class: '!children:text-[10px] !m-0'}
+// Créer le slice avec tous les reducers
+const cartSlice = createSlice({
+  name: "cart",
+  initialState,
+  reducers: { setCart, clearError },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCart.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(...)
+      // ... 50 lignes de plus pour gérer les autres cas
+}});
+```
+
+</Section>
+
+---
+title: Redux - Solution
+layout: solution
+ticketNumber: "#TSQ-2024-004"
+solutionTitle: "Migration progressive Redux vers TanStack Query"
+concept: "Server State vs Client State"
+priority: "medium"
+status: "resolved"
+mdc: true
+---
+
+::content::
+
+<Section title="Simplification du code" icon="📝" variant="tip">
+
+**<span style="color: #EF4444;">👎🏼 Avant (Redux) :</span>** ~150 lignes de boilerplate
+
+<br />
+
+**<span style="color: #10B981;">👍🏼 Après (TanStack Query) :</span>** ~30 lignes au total !
+
+```tsx{all}{lines:true}
+// useGetCart.ts
+export const useGetCartQuery = () => 
+  useQuery({ queryKey: ["cart"], queryFn: getCart });
+
+// Cart.tsx - Direct !
+const { data: cart } = useGetCartQuery();
+```
+
+</Section>
+
+---
+title: Redux - Solution
+layout: solution
+ticketNumber: "#TSQ-2024-004"
+solutionTitle: "Migration progressive Redux vers TanStack Query"
+concept: "Server State vs Client State"
+priority: "medium"
+status: "resolved"
+mdc: true
+---
+
+::content::
+
+<Section title="Concept TanStack Query" icon="⚡" variant="concept">
+
 <div class="concept-description">
 
-**Server State** (TanStack Query) :
-- Données des produits
-- Commandes et historique
-- Profils utilisateurs
-- Données qui changent souvent
+**<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">Server State vs Client State</code>**
 
-**Client State** (Redux/Zustand) :
-- Panier d'achat
-- Préférences UI
-- État local des composants
+<div style="height: 15px;"></div>
+
+**<span style="color: #10B981;">✅ Server State</span>** (TanStack Query) :
+
+• Données du **panier** côté serveur (qui peuvent être partagées entre devices)
+
+• Liste des **produits** et leur disponibilité
+
+• **Commandes** et historique
+
+<div style="height: 10px;"></div>
+
+**<span style="color: #F59E0B;">⚠️ Client State</span>** (Context/Zustand/Redux si vraiment nécessaire) :
+
+• État de l'UI (modals ouvertes, thème...)
+
+• Préférences locales non persistées
+
+• État de formulaire en cours
 
 </div>
 
 </Section>
 
-<Section v-click="3" v-show="$clicks === 3" title="Avantages" icon="🎯" variant="highlight">
+---
+title: Redux - Solution
+layout: solution
+ticketNumber: "#TSQ-2024-004"
+solutionTitle: "Migration progressive Redux vers TanStack Query"
+concept: "Server State vs Client State"
+priority: "medium"
+status: "resolved"
+mdc: true
+---
 
-- **Séparation claire** : Server state vs Client state
-- **Performance** : Cache intelligent pour les données serveur
-- **Simplicité** : Moins de boilerplate pour les appels API
-- **Migration progressive** : Pas besoin de tout refaire d'un coup
+::content::
+
+<Section title="Faut-il migrer depuis Redux ?" icon="🤔" variant="highlight">
+
+<div style="font-size: 0.85em;">
+
+**<span style="color: #10B981;">✅ OUI, si :</span>**
+
+• Vous utilisez Redux **principalement pour les appels API**
+
+• Vous avez beaucoup de **boilerplate** pour gérer le cache
+
+• Votre app fait beaucoup d'**appels serveur**
+
+• Vous voulez une **meilleure DX** (Developer Experience)
+
+<br />
+
+**<span style="color: #EF4444;">❌ NON, si :</span>**
+
+• Redux est **déjà en place et fonctionne bien** et que vous ne ressentez pas de problème pour scaler
+
+• Votre app est **majoritairement client-side** ⏭︎
+
+<div style="background-color: #FFFBEB; border-left: 4px solid #F59E0B; padding: 8px; margin: 10px 0; border-radius: 4px;">
+  <span style="color: #F59E0B; font-weight: bold;">⚠️ Alternative :</span> Si vous voulez rester dans l'écosystème Redux → <code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px; font-weight: bold;">RTK Query</code>
+</div>
+
+</div>
 
 </Section>
 
----
-title: Redux - Faut-il migrer ?
----
-
-Pas forcément + RTK
 
 ---
-title: Redux - Store atomique
-transition: view-transition
+title: Redux - Solution
+layout: solution
+ticketNumber: "#TSQ-2024-004"
+solutionTitle: "Migration progressive Redux vers TanStack Query"
+concept: "Server State vs Client State"
+priority: "medium"
+status: "resolved"
+mdc: true
 ---
 
-L'utilisation de TanStack Query ne veux pas dire plus du tout de stores, certain état doivent être stocké
-=> On peut utiliser une librairie de store atomique / un context react voir l'url (nuqs FTW)
+::content::
 
----
-title: Redux - Conclusion
-transition: view-transition
----
+<Section title="Bonnes pratiques" icon="💡" variant="highlight">
 
-- TanStack Query remplace très bien un Redux / Pinia
-- Si l'application est très historique, pas forcément besoin de migrer
-  - Si ça marche, ça marche
-  - Si vraiment on veux faire quelque chose, des alternatives plus lié a Redux existe comme RTK ou PiniaColada
-- Des librairies de store peuvent toujours être utilisé pour certain état => Context / Store Atomique
+1️⃣ **Ne pas tout mettre dans TanStack Query**
+
+<div style="background-color: #EFF6FF; border-left: 4px solid #00B7D8; padding: 8px; margin: 10px 0; border-radius: 4px; font-size: 0.85em;">
+  <span style="color: #00B7D8; font-weight: bold;">💡 Solution :</span> Analysez votre state et déterminez ce qui est server state et ce qui est client state. Pensez à migrer progressivement !
+</div>
+
+<div style="height: 10px;"></div>
+
+2️⃣ **Combiner plusieurs solutions** si nécessaire
+
+<div style="height: 10px;"></div>
+
+
+3️⃣ **Ne pas sur-ingénierer 🧠**
+
+<div style="background-color: #FFFBEB; border-left: 4px solid #F59E0B; padding: 8px; margin: 10px 0; border-radius: 4px; font-size: 0.85em;">
+  <span style="color: #F59E0B; font-weight: bold;">⚠️ Pas besoin de Redux/Zustand pour tout :</span> Si vous avez <span style="color: #10B981; font-weight: 600;">2-3 états locaux simples</span> → <code style="font-size: 0.85em; color: #F59E0B; background-color: #FEF3C7; padding: 2px 4px; border-radius: 4px; font-weight: bold;">useState</code>, <code style="font-size: 0.85em; color: #F59E0B; background-color: #FEF3C7; padding: 2px 4px; border-radius: 4px; font-weight: bold;">useContext</code> ou autres APIs React suffisent !
+</div>
+
+</Section>
