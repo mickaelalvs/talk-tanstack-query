@@ -8,6 +8,7 @@ ticketNumber: "#TSQ-2024-002"
 priority: "medium"
 status: "open"
 mdc: true
+transition: view-transition
 ---
 
 ::message::
