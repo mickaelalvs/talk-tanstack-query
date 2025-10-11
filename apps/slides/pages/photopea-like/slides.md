@@ -105,33 +105,28 @@ Comme on a indiqué, TanStack Query est conçu **spécifiquement** pour gérer l
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin: 20px 0;">
   <div class="logo-item" style="text-align: center; animation-delay: 0.1s;">
-    <img src="https://pinia.vuejs.org/logo.svg" alt="Pinia" style="width: 50px; height: 50px; filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.3));" />
+    <img src="/assets/images/pinia.svg" alt="Pinia" style="width: 50px; height: 50px; filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.3));" />
     <div style="font-size: 0.7em; margin-top: 5px; color: #10B981; font-weight: bold;">Pinia ✅</div>
   </div>
   
   <div class="logo-item" style="text-align: center; animation-delay: 0.2s;">
-    <img src="https://vuex.vuejs.org/logo.png" alt="Vuex" style="width: 50px; height: 50px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
-    <div style="font-size: 0.7em; margin-top: 5px;">Vuex</div>
+    <img src="/assets/images/xstate.png" alt="Vuex" style="width: 50px; height: 50px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
+    <div style="font-size: 0.7em; margin-top: 5px;">X State</div>
   </div>
   
   <div class="logo-item" style="text-align: center; animation-delay: 0.3s;">
-    <img src="https://user-images.githubusercontent.com/958486/218346783-72be5ae3-b953-4dd7-b239-788a882fdad6.svg" alt="Zustand" style="width: 50px; height: 50px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
+    <img src="/assets/images/zustand.svg" alt="Zustand" style="width: 50px; height: 50px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
     <div style="font-size: 0.7em; margin-top: 5px;">Zustand</div>
   </div>
   
   <div class="logo-item" style="text-align: center; animation-delay: 0.4s;">
-    <img src="https://redux.js.org/img/redux.svg" alt="Redux" style="width: 50px; height: 50px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
+    <img src="/assets/images/redux.webp" alt="Redux" style="width: 50px; height: 50px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
     <div style="font-size: 0.7em; margin-top: 5px;">Redux</div>
   </div>
   
   <div class="logo-item" style="text-align: center; animation-delay: 0.5s;">
-    <img src="https://ngrx.io/assets/images/badge.svg" alt="NgRx" style="width: 50px; height: 50px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
+    <img src="/assets/images/ngrx.png" alt="NgRx" style="width: 50px; height: 50px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
     <div style="font-size: 0.7em; margin-top: 5px;">NgRx</div>
-  </div>
-  
-  <div class="logo-item" style="text-align: center; animation-delay: 0.6s;">
-    <img src="https://svgl.app/library/rxjs.svg" alt="RxJs" style="width: 50px; height: 50px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
-    <div style="font-size: 0.7em; margin-top: 5px;">RxJs</div>
   </div>
 </div>
 

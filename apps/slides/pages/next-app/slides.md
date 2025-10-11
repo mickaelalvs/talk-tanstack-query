@@ -294,6 +294,11 @@ mdc: true
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin: 20px 0;">
   <div class="logo-item" style="text-align: center; animation-delay: 0.1s;">
+    <img src="/assets/images/tanstack.png" alt="TanStack Start" style="width: 70px; height: 70px; filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.3));" />
+    <div style="font-size: 0.7em; margin-top: 5px;">TanStack Start</div>
+  </div>
+
+  <div class="logo-item" style="text-align: center; animation-delay: 0.1s;">
     <img src="/assets/images/reactRouter.svg" alt="React Router" style="width: 70px; height: 70px; filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.3));" />
     <div style="font-size: 0.7em; margin-top: 5px;">Remix</div>
   </div>

@@ -96,23 +96,23 @@ mdc: true
 
 <div class="tech-list">
   <div class="tech-item">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" alt="Redux" class="tech-logo" />
+    <img src="/assets/images/redux.webp" alt="Redux" class="tech-logo" />
     <span class="tech-name">Redux</span>
   </div>
   <div class="tech-item">
-    <div class="zustand-logo">Z</div>
+    <img src="/assets/images/zustand.svg" alt="Zustand" class="tech-logo" />
     <span class="tech-name">Zustand</span>
   </div>
   <div class="tech-item">
-    <div class="recoil-logo">⚛️</div>
+    <img src="/assets/images/recoil.png" alt="Recoil" class="tech-logo" />
     <span class="tech-name">Recoil</span>
   </div>
   <div class="tech-item">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Context" class="tech-logo" />
+    <img src="/assets/images/React.png" alt="React" class="tech-logo" />
     <span class="tech-name">Context</span>
   </div>
   <div class="tech-item">
-    <div class="pinia-logo">🍍</div>
+    <img src="/assets/images/pinia.svg" alt="Pinia" class="tech-logo" />
     <span class="tech-name">Pinia</span>
   </div>
   <div class="tech-item">
