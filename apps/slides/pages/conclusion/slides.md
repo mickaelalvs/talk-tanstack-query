@@ -9,6 +9,11 @@ transition: view-transition
 ---
 
 ---
+src: /pages/conclusion/slides/references.md
+transition: view-transition
+---
+
+---
 src: /pages/conclusion/slides/thanks.md
 transition: view-transition
 ---
