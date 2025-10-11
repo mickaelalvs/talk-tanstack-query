@@ -1,3 +1,4 @@
 - [TanStack Query Docs](https://tanstack.com/query/latest/docs/framework/react/overview)
 - [Inside React Query](https://tkdodo.eu/blog/inside-react-query) - Tk Dodo
 - [Does it replace Redux](https://tanstack.com/query/v5/docs/framework/react/guides/does-this-replace-client-state)
+- [The Most Underrated React Query Feature](https://www.youtube.com/watch?v=QP1_vuzOYJs&t=2s)
