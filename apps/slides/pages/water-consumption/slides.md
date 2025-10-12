@@ -7,7 +7,7 @@ photo: "https://placehold.co/160x160?text=Pierre"
 ticketNumber: "#TSQ-2024-003"
 priority: "high"
 status: "open"
-transition: view-transition
+transition: fade
 mdc: true
 ---
 
@@ -22,7 +22,7 @@ Comment simplifier la gestion des appels réseau et des états de chargement dan
 ---
 title: List - Demo - Data graph
 layout: code-server
-transition: view-transition
+transition: fade
 ---
 
 <CodeServer path="water-meter" />
@@ -35,6 +35,7 @@ solutionTitle: "Simplification de la gestion des données de consommation"
 concept: "Query Keys Dynamiques"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -72,6 +73,7 @@ solutionTitle: "Simplification de la gestion des données de consommation"
 concept: "Query Keys Dynamiques"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -109,6 +111,7 @@ solutionTitle: "Simplification de la gestion des données de consommation"
 concept: "Query Keys Dynamiques"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -146,6 +149,7 @@ solutionTitle: "Simplification de la gestion des données de consommation"
 concept: "Query Keys Dynamiques"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -183,6 +187,7 @@ solutionTitle: "Simplification de la gestion des données de consommation"
 concept: "Query Keys Dynamiques"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 

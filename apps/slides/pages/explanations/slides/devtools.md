@@ -1,7 +1,7 @@
 ---
 title: "🛠️ DevTools - Meilleure DevX"
 layout: basic-title
-transition: view-transition
+transition: fade
 mdc: true
 ---
 

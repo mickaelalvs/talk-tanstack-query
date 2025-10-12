@@ -24,7 +24,7 @@ mdc: true
 ---
 title: "Pourquoi un SAV ?"
 layout: single-fact
-transition: view-transition
+transition: fade
 mdc: true
 ---
 

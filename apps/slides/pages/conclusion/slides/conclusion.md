@@ -1,7 +1,7 @@
 ---
 title: "Conclusion"
 layout: title
-transition: view-transition
+transition: fade
 mdc: true
 ---
 

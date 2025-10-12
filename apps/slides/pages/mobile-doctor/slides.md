@@ -7,7 +7,7 @@ photo: "https://placehold.co/160x160?text=Claire"
 ticketNumber: "#TSQ-2024-006"
 priority: "high"
 status: "open"
-transition: view-transition
+transition: fade
 mdc: true
 ---
 
@@ -22,7 +22,15 @@ Comment gérer les problèmes de connectivité réseau intermittente en zone rur
 ---
 title: Big Latency - Demo - Optimistic update
 layout: code-server
-transition: view-transition
+transition: fade
+---
+
+<CodeServer path="itinerant-healthcare" />
+
+---
+title: Big Latency - Demo - Optimistic update
+layout: code-server
+transition: fade
 ---
 
 <CodeServer path="itinerant-healthcare" />
@@ -35,6 +43,7 @@ solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -75,6 +84,7 @@ solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -114,6 +124,7 @@ solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -146,6 +157,7 @@ solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -190,6 +202,7 @@ solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -235,6 +248,7 @@ solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -277,6 +291,7 @@ solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -315,6 +330,7 @@ solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 

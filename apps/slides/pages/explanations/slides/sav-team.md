@@ -24,7 +24,7 @@ transition: view-transition
 ---
 title: "Équipe SAV TanStack Query"
 layout: basic
-transition: view-transition
+transition: fade
 ---
 
 <div class="flex flex-col items-center justify-center h-full gap-16">
@@ -46,7 +46,7 @@ transition: view-transition
       </div>
       <div class="text-center">
         <h3 class="text-xl font-bold text-[var(--theme-color-cloudBurst)]">Lucas Audart</h3>
-        <p class="text-sm text-[var(--theme-color-roofTerracotta)]">Bg du 69 · Kolecto</p>
+        <p class="text-sm text-[var(--theme-color-roofTerracotta)]">Kolecto</p>
       </div>
     </div>
     <div class="flex flex-col items-center gap-4">
@@ -57,7 +57,7 @@ transition: view-transition
       </div>
       <div class="text-center">
         <h3 class="text-xl font-bold text-[var(--theme-color-cloudBurst)]">Mickaël Alves</h3>
-        <p class="text-sm text-[var(--theme-color-roofTerracotta)]">Bg du 69 · Zenika</p>
+        <p class="text-sm text-[var(--theme-color-roofTerracotta)]">Zenika</p>
       </div>
     </div>
   </div>

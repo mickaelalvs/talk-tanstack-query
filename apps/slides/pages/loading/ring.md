@@ -1,6 +1,7 @@
 ---
 title: "Loading"
 layout: logo-bounce
+transition: fade
 ---
 
 <div class="loading-text">

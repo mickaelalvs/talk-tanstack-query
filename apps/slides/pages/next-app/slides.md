@@ -7,7 +7,7 @@ photo: "https://placehold.co/160x160?text=Thomas"
 ticketNumber: "#TSQ-2024-007"
 priority: "medium"
 status: "open"
-transition: view-transition
+transition: fade
 mdc: true
 ---
 
@@ -27,6 +27,7 @@ solutionTitle: "TanStack Query avec Next.js"
 concept: "SSR + Suspense + Hydration"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -82,6 +83,7 @@ solutionTitle: "TanStack Query avec Next.js"
 concept: "SSR + Suspense + Hydration"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -147,6 +149,7 @@ solutionTitle: "TanStack Query avec Next.js"
 concept: "SSR + Suspense + Hydration"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -186,6 +189,7 @@ solutionTitle: "TanStack Query avec Next.js"
 concept: "SSR + Suspense + Hydration"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -223,6 +227,7 @@ solutionTitle: "TanStack Query avec Next.js"
 concept: "SSR + Suspense + Hydration"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -254,7 +259,6 @@ function ProductsList() {
 
 </Section>
 
-
 ---
 title: Next.js - Solution
 layout: solution
@@ -263,6 +267,7 @@ solutionTitle: "TanStack Query avec Next.js"
 concept: "SSR + Suspense + Hydration"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 

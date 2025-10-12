@@ -1,7 +1,7 @@
 ---
 title: "États d'une requête"
 layout: basic-title
-transition: view-transition
+transition: fade
 mdc: true
 ---
 

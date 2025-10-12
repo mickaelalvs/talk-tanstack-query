@@ -1,5 +1,5 @@
 ---
-title: Base Case - Call 
+title: Base Case - Call
 layout: ticket
 name: "Marie Dubois"
 meta: "Développeuse frontend — application de voyage"
@@ -22,6 +22,7 @@ Comment intégrer TanStack Query dans une application de planification de voyage
 ---
 title: Base Case - Demo
 layout: code-server
+transition: fade
 ---
 
 <CodeServer path="trip-planner" />
@@ -34,6 +35,7 @@ solutionTitle: "Intégration TanStack Query dans Trip Planner"
 concept: "useQuery + useMutation"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -93,6 +95,7 @@ solutionTitle: "Intégration TanStack Query dans Trip Planner"
 concept: "useQuery + useMutation"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -124,6 +127,7 @@ solutionTitle: "Intégration TanStack Query dans Trip Planner"
 concept: "useQuery + useMutation"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Stratégies de cache"
 layout: basic-title
-transition: view-transition
+transition: fade
 mdc: true
 ---
 

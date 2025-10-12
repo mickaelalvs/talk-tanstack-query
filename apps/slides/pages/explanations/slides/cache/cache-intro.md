@@ -1,7 +1,7 @@
 ---
 title: "Système de cache - Introduction"
 layout: basic-title
-transition: view-transition
+transition: fade
 mdc: true
 ---
 

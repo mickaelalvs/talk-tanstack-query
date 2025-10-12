@@ -1,5 +1,5 @@
 ---
-title: Redux - Call 
+title: Redux - Call
 layout: ticket
 name: "Sophie Leroy"
 meta: "Gérante e-commerce — spécialités Nantaises"
@@ -7,7 +7,7 @@ photo: "https://placehold.co/160x160?text=Sophie"
 ticketNumber: "#TSQ-2024-004"
 priority: "medium"
 status: "open"
-transition: view-transition
+transition: fade
 mdc: true
 ---
 
@@ -22,7 +22,7 @@ Comment TanStack Query pourrait-il simplifier notre gestion d'état Redux comple
 ---
 title: Redux - Demo - Remplacement du store de panier
 layout: code-server
-transition: view-transition
+transition: fade
 ---
 
 <CodeServer path="nantes-shop" />
@@ -35,6 +35,7 @@ solutionTitle: "Migration progressive Redux vers TanStack Query"
 concept: "Server State vs Client State"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -69,6 +70,7 @@ solutionTitle: "Migration progressive Redux vers TanStack Query"
 concept: "Server State vs Client State"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -102,6 +104,7 @@ solutionTitle: "Migration progressive Redux vers TanStack Query"
 concept: "Server State vs Client State"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -134,6 +137,7 @@ solutionTitle: "Migration progressive Redux vers TanStack Query"
 concept: "Server State vs Client State"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -177,6 +181,7 @@ solutionTitle: "Migration progressive Redux vers TanStack Query"
 concept: "Server State vs Client State"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -212,7 +217,6 @@ mdc: true
 
 </Section>
 
-
 ---
 title: Redux - Solution
 layout: solution
@@ -221,6 +225,7 @@ solutionTitle: "Migration progressive Redux vers TanStack Query"
 concept: "Server State vs Client State"
 priority: "medium"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 

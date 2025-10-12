@@ -1,7 +1,7 @@
 ---
 title: "Notre solution"
 layout: basic
-transition: view-transition
+transition: fade
 mdc: true
 ---
 

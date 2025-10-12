@@ -7,7 +7,7 @@ photo: "https://placehold.co/160x160?text=Lucas"
 ticketNumber: "#TSQ-2024-008"
 priority: "low"
 status: "open"
-transition: view-transition
+transition: fade
 mdc: true
 ---
 
@@ -17,7 +17,7 @@ Je suis un gros utilisateur de TanStack Query, je l'utilise partout que je peux.
 
 ::problem::
 
-Quels sont les meilleures pratiques et astuces avancées pour optimiser l'utilisation de TanStack Query dans des applications complexes ? 
+Quels sont les meilleures pratiques et astuces avancées pour optimiser l'utilisation de TanStack Query dans des applications complexes ?
 
 ---
 title: Tips & Tricks - useInfiniteQuery
@@ -27,9 +27,9 @@ solutionTitle: "Query infini !"
 concept: "Infinite Query"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
-
 
 ::content::
 
@@ -87,9 +87,9 @@ solutionTitle: "Query infini !"
 concept: "Infinite Query"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
-
 
 ::content::
 
@@ -135,9 +135,9 @@ solutionTitle: "Invalidation automatique"
 concept: "useMutation meta"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
-
 
 ::content::
 
@@ -172,9 +172,9 @@ solutionTitle: "Invalidation automatique"
 concept: "useMutation meta"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
-
 
 ::content::
 
@@ -211,9 +211,9 @@ solutionTitle: "Invalidation automatique"
 concept: "useMutation meta"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
-
 
 ::content::
 
@@ -251,9 +251,9 @@ solutionTitle: "Query Key Factory"
 concept: "Query Key Factory"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
-
 
 ::content::
 
@@ -291,9 +291,9 @@ solutionTitle: "Query Key Factory"
 concept: "Query Key Factory"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
-
 
 ::content::
 
@@ -353,9 +353,9 @@ solutionTitle: "Query Key Factory"
 concept: "Query Key Factory"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
-
 
 ::content::
 
@@ -394,9 +394,9 @@ solutionTitle: "Query Key Factory"
 concept: "Query Key Factory"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
-
 
 ::content::
 

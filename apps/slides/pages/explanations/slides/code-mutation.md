@@ -1,7 +1,7 @@
 ---
 title: "À quoi ça ressemble ?"
 layout: basic-title
-transition: view-transition
+transition: fade
 mdc: true
 ---
 

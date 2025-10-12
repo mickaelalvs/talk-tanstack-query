@@ -1,7 +1,7 @@
 ---
 title: "Problèmes fréquents"
 layout: list
-transition: view-transition
+transition: fade
 mdc: true
 ---
 

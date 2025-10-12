@@ -7,7 +7,7 @@ photo: "https://placehold.co/160x160?text=Alex"
 ticketNumber: "#TSQ-2024-005"
 priority: "low"
 status: "open"
-transition: view-transition
+transition: fade
 mdc: true
 ---
 
@@ -27,6 +27,7 @@ solutionTitle: "Quand NE PAS utiliser TanStack Query"
 concept: "Client State Only"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -64,6 +65,7 @@ solutionTitle: "Quand NE PAS utiliser TanStack Query"
 concept: "Client State Only"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -142,6 +144,7 @@ solutionTitle: "Quand NE PAS utiliser TanStack Query"
 concept: "Client State Only"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 
@@ -177,6 +180,7 @@ solutionTitle: "Quand NE PAS utiliser TanStack Query"
 concept: "Client State Only"
 priority: "low"
 status: "resolved"
+transition: fade
 mdc: true
 ---
 

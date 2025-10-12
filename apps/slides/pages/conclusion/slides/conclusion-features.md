@@ -1,6 +1,7 @@
 ---
 title: "TanStack Query - Toutes ces features !"
 layout: default
+transition: fade
 ---
 
 <div class="features-showcase">

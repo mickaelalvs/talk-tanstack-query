@@ -1,7 +1,7 @@
 ---
 title: "References"
 layout: list
-transition: view-transition
+transition: fade
 mdc: true
 ---
 
