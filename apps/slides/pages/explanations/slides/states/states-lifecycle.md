@@ -86,6 +86,8 @@ mdc: true
   flex-wrap: nowrap;
   overflow-x: auto;
   position: relative;
+  padding-bottom: 10rem;
+  padding-top: 5rem;
 }
 
 .flow-step {
@@ -133,8 +135,8 @@ mdc: true
 
 .flow-step.standalone {
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 4rem;
+  left: 0;
 }
 
 .step-name {
