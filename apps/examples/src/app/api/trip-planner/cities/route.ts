@@ -5,7 +5,7 @@ export async function GET() {
   try {
     const db = getDatabase();
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 200));
 
     const rows = db.prepare("SELECT * FROM cities ORDER BY name").all();
     const cities = rows.map(cityFromRow);
