@@ -17,7 +17,7 @@ mdc: true
 
   <div class="code-container">
 
-```tsx {all|1|3-7|9-10}{lines:true, class: '!children:p-10'}
+```tsx {all|3-7|8-9|11}{lines:true, class: '!children:p-10'}
 import { useQuery } from '@tanstack/react-query'
 
 const { data, isLoading, error } = useQuery({

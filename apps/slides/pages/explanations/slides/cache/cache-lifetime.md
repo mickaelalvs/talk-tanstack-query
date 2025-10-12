@@ -6,11 +6,26 @@ mdc: true
 ---
 
 ::title::
-⏱️ Durée de vie du cache
+⏱️ État de fraîcheur des données
 
 ::default::
 
 <div class="lifetime-container">
+  <div class="timeline-visual">
+    <div class="timeline">
+      <div class="timeline-segment fresh">
+        <span class="timeline-label">Fresh</span>
+        <span class="timeline-duration">staleTime</span>
+      </div>
+      <div class="timeline-segment stale">
+        <span class="timeline-label">Stale</span>
+        <span class="timeline-duration">cacheTime - staleTime</span>
+      </div>
+      <div class="timeline-segment removed">
+        <span class="timeline-label">Removed</span>
+      </div>
+    </div>
+  </div>
   <div class="config-section">
     <div class="config-item" v-click>
       <div class="config-header">
@@ -25,21 +40,6 @@ mdc: true
         <span class="config-badge">Mémoire</span>
       </div>
       <p class="config-desc">Durée pendant laquelle les données "obsolètes" restent en mémoire</p>
-    </div>
-  </div>
-  <div class="timeline-visual" v-click>
-    <div class="timeline">
-      <div class="timeline-segment fresh">
-        <span class="timeline-label">Fresh</span>
-        <span class="timeline-duration">staleTime</span>
-      </div>
-      <div class="timeline-segment stale">
-        <span class="timeline-label">Stale</span>
-        <span class="timeline-duration">cacheTime - staleTime</span>
-      </div>
-      <div class="timeline-segment removed">
-        <span class="timeline-label">Removed</span>
-      </div>
     </div>
   </div>
 </div>
@@ -101,7 +101,6 @@ mdc: true
 .config-desc {
   font-size: 0.9rem;
   color: var(--theme-color-cloudBurst);
-  margin: 0 0 0.75rem 0;
   line-height: 1.4;
 }
 

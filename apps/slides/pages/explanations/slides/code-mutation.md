@@ -17,7 +17,7 @@ mdc: true
 
   <div class="code-container">
 
-```tsx {all|1|3-8|10-11}{lines:true, class: '!children:p-10'}
+```tsx {all|3-9|11,13}{lines:true, class: '!children:p-10'}
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 const mutation = useMutation({
@@ -29,6 +29,7 @@ const mutation = useMutation({
 })
 
 const handleCreate = () => mutation.mutate({ name: 'John' })
+
 return <button onClick={handleCreate}>Créer utilisateur</button>
 ```
 

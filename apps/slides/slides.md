@@ -74,14 +74,6 @@ src: /pages/loading/loading.md
 ---
 
 ---
-src: /pages/next-app/slides.md
----
-
----
-src: /pages/loading/loading.md
----
-
----
 src: /pages/tips/slides.md
 ---
 

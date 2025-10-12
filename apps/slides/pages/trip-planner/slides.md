@@ -41,9 +41,9 @@ mdc: true
 
 ::content::
 
-<Section v-click="1" v-show="$clicks === 1" title="Explication" icon="💡">
+<Section title="Explication" icon="💡" v-show="$clicks < 1">
 
-<br />
+<div style="height: 10px;"></div>
 
 Pour ce type d'application avec un état local simple et une gestion de données basique, TanStack Query va transformer votre approche !
 
@@ -59,13 +59,13 @@ Pour ce type d'application avec un état local simple et une gestion de données
 
 </Section>
 
-<Section v-click="2" v-show="$clicks === 2" title="Concept TanStack Query" icon="⚡" variant="concept">
+<Section v-click="1" v-show="$clicks === 1" title="Concept TanStack Query" icon="⚡" variant="concept">
 
 <div class="concept-description">
 
 **<code style="font-size: 0.85em; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">useQuery</code>** pour récupérer les données :
 
-```tsx{all}{lines:true}
+```tsx{all}{lines:true, class: '!children:text-[11px] !m-0'}
 const { data: trips, isPending } = useQuery({
   queryKey: ['trips'],
   queryFn: listTrips
@@ -76,8 +76,9 @@ const { data: trips, isPending } = useQuery({
 
 **<code style="color: #10B986; font-size: 0.85em; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">useMutation</code>** pour modifier les données (create/delete) :
 
-```tsx{all}{lines:true}
+```tsx{all}{lines:true, class: '!children:text-[11px] !m-0'}
 const { mutate: createTrip } = useMutation({
+  mutationKey: ['createTrip'],
   mutationFn: createTrip,
   onSuccess: () => {}
 })
@@ -105,7 +106,7 @@ mdc: true
 
 **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">refetchQueries</code>** pour rafraîchir la liste :
 
-```tsx{all|6}{lines:true}
+```tsx{all|4-7}{lines:true}
 const useCreateTripMutation = () => {
   return useMutation({
     mutationFn: createTrip,

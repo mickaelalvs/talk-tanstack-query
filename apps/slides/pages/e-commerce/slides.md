@@ -45,86 +45,19 @@ mdc: true
 
 **<span style="color: #EF4444;">❌</span>** Avec **<code style="font-size: 0.85em; color: #DC2626; background-color: #FEE2E2; padding: 2px 4px; border-radius: 4px;">Redux</code>**, beaucoup de **boilerplate** pour gérer le panier :
 
-<div style="text-align: center; margin-top: 15px;"></div>
-
-```tsx{all}{lines:true}
-// Créer un thunk pour chaque action
-export const fetchCart = createAsyncThunk("cart/fetchCart", async () => {
-  return await getCart();
-});
-
-export const addToCart = createAsyncThunk("cart/addToCart", 
-  async ({ productId, quantity = 1 }) => {
-    return await addItemToCart({productId, quantity});
-  }
-);
-```
-
-</Section>
-
----
-title: Redux - Solution
-layout: solution
-ticketNumber: "#TSQ-2024-004"
-solutionTitle: "Migration progressive Redux vers TanStack Query"
-concept: "Server State vs Client State"
-priority: "medium"
-status: "resolved"
-transition: fade
-mdc: true
----
-
-::content::
-
-<Section title="Le problème du Redux" icon="💡">
+<div style="text-align: center; margin-top: 10px;"></div>
 
 ```tsx{all}{lines:true, class: '!children:text-[10px] !m-0'}
+// Créer un thunk pour chaque action
+export const fetchCart = createAsyncThunk("cart/fetchCart", async () => { return await getCart() });
+
 // Créer le slice avec tous les reducers
 const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducers: { setCart, clearError },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchCart.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(...)
-      // ... 50 lignes de plus pour gérer les autres cas
-}});
-```
-
-</Section>
-
----
-title: Redux - Solution
-layout: solution
-ticketNumber: "#TSQ-2024-004"
-solutionTitle: "Migration progressive Redux vers TanStack Query"
-concept: "Server State vs Client State"
-priority: "medium"
-status: "resolved"
-transition: fade
-mdc: true
----
-
-::content::
-
-<Section title="Simplification du code" icon="📝" variant="tip">
-
-**<span style="color: #EF4444;">👎🏼 Avant (Redux) :</span>** ~150 lignes de boilerplate
-
-<br />
-
-**<span style="color: #10B981;">👍🏼 Après (TanStack Query) :</span>** ~30 lignes au total !
-
-```tsx{all}{lines:true}
-// useGetCart.ts
-export const useGetCartQuery = () => 
-  useQuery({ queryKey: ["cart"], queryFn: getCart });
-
-// Cart.tsx - Direct !
-const { data: cart } = useGetCartQuery();
+  reducers: { setCart, clearError, ... },
+  extraReducers: () => {builder.addCase(...).addCase(...).addCase(...)...},
+});
 ```
 
 </Section>

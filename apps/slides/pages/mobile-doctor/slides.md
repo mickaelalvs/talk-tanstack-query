@@ -210,7 +210,7 @@ mdc: true
 
 <Section title="Persist Query Client : sauvegarder le cache pour l'avoir hors connexion" icon="💾" variant="concept">
 
-```tsx{all|1-2,9|11-17}{lines:true, class: '!children:text-[10px] !m-0 '}
+```tsx{all}{lines:true, class: '!children:text-[10px] !m-0 '}
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -258,7 +258,7 @@ mdc: true
 
 <div style="height: 10px;"></div>
 
-```tsx{all|3-10}{lines:true}
+```tsx{all}{lines:true}
 const queryClient = new QueryClient({
   defaultOptions: {
     mutations: {

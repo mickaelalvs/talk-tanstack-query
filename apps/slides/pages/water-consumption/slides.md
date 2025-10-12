@@ -47,10 +47,10 @@ mdc: true
 
 <div style="text-align: center; margin-top: 15px;"></div>
 
-```tsx{all|3,8}{lines:true}
+```tsx{all}{lines:true}
 const setTypeFilter = useCallback((value: string) => {
   setTypeFilterRaw(value);
-  queryClient.removeQueries({ queryKey: ['water-meters'] }); // ❌ À répéter partout !
+  queryClient.removeQueries({ queryKey: ['water-meters'] }); // ❌ À répéter partout
 }, [setTypeFilterRaw, queryClient]);
 
 const setFloorFilter = useCallback((value: string) => {
@@ -58,10 +58,6 @@ const setFloorFilter = useCallback((value: string) => {
   queryClient.removeQueries({ queryKey: ['water-meters'] }); // ❌ Encore !
 }, [setFloorFilterRaw, queryClient]);
 ```
-
-<div style="text-align: center; margin-top: 5px;">
-  <small style="font-size: 0.7em;">💡 <strong>Astuce :</strong> Utilisez <strong>query keys dynamiques</strong> pour inclure les filtres dans la queryKey</small>
-</div>
 
 </Section>
 
@@ -85,7 +81,7 @@ mdc: true
 
 **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">Query Keys Dynamiques</code>** : incluez vos filtres dans la queryKey !
 
-```tsx{all|4,9}{lines:true}
+```tsx{all}{lines:true}
 export const useWaterMetersQuery = () => {
   const { searchTerm, typeFilter, floorFilter, ...others } = useMetersFilters();
 
@@ -117,27 +113,64 @@ mdc: true
 
 ::content::
 
-<Section title="Comment ça marche ?" icon="🔄" variant="concept">
+<Section title="Comment ça marche ?" icon="🔄" variant="concept" class="text-[12px]">
 
-**<span style="color: #EF4444;">👎🏼 Avant :</span>** **<code style="font-size: 0.85em; color: #DC2626; background-color: #FEE2E2; padding: 2px 4px; border-radius: 4px;">removeQueries</code>**
+<div style="display: flex; gap: 98px; align-items: center;">
+
+<div>
+
+**<span style="color: #EF4444; font-size: 1.1em !important;">👎🏼 Avant :</span>** **<code style="font-size: 0.85em !important; color: #DC2626; background-color: #FEE2E2; padding: 2px 4px; border-radius: 4px;">removeQueries</code>**
+
+</div>
+
+<div>
 
 • L'utilisateur change un filtre, on met à jour l'état local
 
-• **On doit manuellement** invalider la query avec **<code style="font-size: 0.85em; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">removeQueries</code>**
+• **On doit manuellement** invalider la query avec **<code style="font-size: 0.85em !important; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">removeQueries</code>**
 
 • La query se refetch avec les nouveaux filtres
 
-<br />
+</div>
 
-**<span style="color: #10B981;">👍🏼 Après :</span>** **<code style="font-size: 0.85em; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">Query Keys Dynamiques</code>**
+</div>
 
-• L'utilisateur change un filtre → l'état du filtre change (via `nuqs`)
+<br /><br />
 
-• Le hook **<code style="font-size: 0.85em; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">useMetersFilters()</code>** retourne la nouvelle valeur
+<v-click>
 
-• La queryKey de **<code style="font-size: 0.85em; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">useWaterMetersQuery</code>** change automatiquement
+<div style="display: flex; gap: 50px; align-items: center;">
+
+<div>
+
+**<span style="color: #10B981; font-size: 1.1em !important;">👍🏼 Après :</span>** **<code style="font-size: 0.85em !important; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">Query Keys Dynamiques</code>**
+
+</div>
+
+<div>
+
+• L'utilisateur change un filtre
+
+• Le hook **<code style="font-size: 0.85em !important; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">useMetersFilters()</code>** retourne la nouvelle valeur
+
+• La queryKey de **<code style="font-size: 0.85em !important; color: #10B986; background-color: #DCFCE7; padding: 2px 4px; border-radius: 4px;">useWaterMetersQuery</code>** change automatiquement
 
 • **TanStack Query détecte le changement et refetch automatiquement !**
+
+</div>
+
+</div>
+
+<br /><br />
+
+**<span style="color: #F59E0B; font-size: 1.1em !important;">💡 Bonnes pratiques :</span>** **Inclure TOUS les paramètres** qui affectent les données dans la **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">queryKey</code>**
+
+```tsx
+queryKey: ['water-meters', { search, type, floor, sort }] // ✅
+
+```
+
+</v-click>
 
 </Section>
 
@@ -174,42 +207,7 @@ mdc: true
 ✅ **Inspecter les données** retournées par chaque query
 
 <div style="text-align: center; margin-top: 10px;">
-  <small style="font-size: 0.7em;">💡 <strong>Astuce :</strong> Les devtools ne sont pas inclus en production par défaut !</small>
+  <small style="font-size: 0.7em;">ℹ️ <strong>Info :</strong> Les devtools ne sont pas inclus en production par défaut !</small>
 </div>
-
-</Section>
-
----
-title: List - Solution
-layout: solution
-ticketNumber: "#TSQ-2024-003"
-solutionTitle: "Simplification de la gestion des données de consommation"
-concept: "Query Keys Dynamiques"
-priority: "high"
-status: "resolved"
-transition: fade
-mdc: true
----
-
-::content::
-
-<Section title="Bonnes pratiques" icon="💡" variant="highlight">
-
-<br />
-
-✅ **Inclure TOUS les paramètres** qui affectent les données dans la **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">queryKey</code>**
-
-```tsx
-queryKey: ['water-meters', { search, type, floor, sort }] // ✅ Bon
-queryKey: ['water-meters'] // ❌ Mauvais si vous avez des filtres
-```
-
-<br />
-
-✅ **Utiliser une librairie de state management pour l'URL** comme **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">nuqs</code>**
-
-<br />
-
-✅ **Réfléchir à la structure des query keys** pour optimiser les performances
 
 </Section>

@@ -12,8 +12,8 @@ mdc: true
 
 <div class="images-container">
   <div class="image-stack">
-    <img src="../assets/devtools.png" alt="DevTools Vue d'ensemble" class="stacked-image image-1" v-click="1" />
-    <img src="../assets/floating-devtools.png" alt="DevTools Détail query" class="stacked-image image-2" v-click="1" />
+    <img src="../assets/devtools.png" alt="DevTools Vue d'ensemble" class="stacked-image image-1" />
+    <img src="../assets/floating-devtools.png" alt="DevTools Détail query" class="stacked-image image-2" />
   </div>
 </div>
 

@@ -11,16 +11,12 @@ Problèmes fréquents rencontrés par nos clients
 
 ::default::
 
-<v-clicks>
-
 - **🛠️ Trop d'outils** → Confusion et complexité
 - **📝 Boilerplate** → Perte de temps et code répétitif
 - **💾 Cache mal géré** → Bugs utilisateur et incohérences
 - **🔄 Effets secondaires dispersés** → Code difficile à maintenir
 - **⚡ Performance dégradée** → Expérience utilisateur médiocre
 - **🐛 Gestion d'erreur incohérente** → Debugging complexe
-
-</v-clicks>
 
 <style scoped>
 .liste ul {
