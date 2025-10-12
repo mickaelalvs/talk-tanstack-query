@@ -4,13 +4,11 @@ layout: logo-bounce
 transition: fade
 ---
 
-<div class="loading-text">
+<div class="loading-text" @click="playAudio">
   <audio 
     ref="ringAudio" 
     loop
     preload="auto"
-    autoplay
-    muted
   >
     <source src="./assets/ring.mp3" type="audio/mpeg">
   </audio>
@@ -29,6 +27,48 @@ transition: fade
     </div>
   </div>
 </div>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import { onSlideLeave, onSlideEnter } from '@slidev/client'
+
+const ringAudio = ref(null)
+
+const playAudio = () => {
+  if (ringAudio.value) {
+    if (ringAudio.value.paused) {
+      ringAudio.value.play()
+    } else {
+      ringAudio.value.pause()
+    }
+  }
+}
+
+const stopAudio = () => {
+  if (ringAudio.value) {
+    ringAudio.value.pause()
+    ringAudio.value.currentTime = 0
+  }
+}
+
+// Arrêter l'audio quand on quitte la slide
+onSlideLeave(() => {
+  console.log('onSlideLeave')
+  stopAudio()
+})
+
+// S'assurer que l'audio est arrêté quand on entre sur la slide
+onSlideEnter(() => {
+  console.log('onSlideEnter')
+  playAudio()
+})
+
+// S'assurer que l'audio est arrêté au montage
+onMounted(() => {
+  console.log('onMounted')
+  stopAudio()
+})
+</script>
 
 
 <style scoped>
