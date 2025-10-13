@@ -109,3 +109,28 @@ export const useDeleteTripMutation = () => {
 
 ## Medecin itinérant - Timé 5:30
 
+- Passer sur l'app, montrer les temps de chargements abusés
+
+- Aller dans le code, regarder la mutation
+
+- Ajouter la possibilité d'avoir de l'optimistic rendering
+
+```tsx
+    onMutate: async (variables, context) => {
+      await context.client.cancelQueries({ queryKey: ["appointments"] });
+
+      context.client.setQueryData(
+        ["appointments"],
+        (old: Appointment[] | undefined) => {
+          return old
+            ? [...old, optimisticAppointment]
+            : [optimisticAppointment];
+          return updated;
+        },
+      );
+    },
+```
+
+- Montrer qu'ajouter un rendez vous l'ajoute automatiquement
+
+- Montrer sur les deux vue potentiellement
