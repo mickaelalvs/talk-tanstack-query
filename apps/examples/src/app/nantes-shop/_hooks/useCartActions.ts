@@ -11,16 +11,16 @@ import {
 export const useCartActions = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const addItemToCart = (product: Product, quantity: number = 1) => {
+  const addItemToCart = ({productId, quantity = 1}: {productId: number, quantity: number}) => {
     return dispatch(
       addToCart({
-        productId: product.id,
+        productId,
         quantity,
       }),
     );
   };
 
-  const updateItemQuantity = (productId: number, quantity: number) => {
+  const updateItemQuantity = ({productId, quantity}: {productId: number, quantity: number}) => {
     return dispatch(
       updateCartItemQuantity({
         productId,

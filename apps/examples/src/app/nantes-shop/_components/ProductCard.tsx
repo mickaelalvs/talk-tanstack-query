@@ -16,7 +16,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const { addItemToCart } = useCartActions();
 
   const handleAddToCart = () => {
-    addItemToCart(product, 1);
+    addItemToCart({ productId: product.id, quantity: 1 });
   };
 
   return (

@@ -7,7 +7,7 @@ export const CartCardAction = ({ item }: { item: CartItem }) => {
   const { updateItemQuantity } = useCartActions();
 
   const handleUpdateQuantity = (productId: number, quantity: number) => {
-    updateItemQuantity(productId, quantity);
+    updateItemQuantity({ productId, quantity });
   };
 
   return (
