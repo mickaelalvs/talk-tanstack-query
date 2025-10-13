@@ -2,11 +2,11 @@
 
 import { TableIcon } from "lucide-react";
 import { Table } from "../../../components/ui/table";
-import { useWaterMetersQuery } from "../_hooks/useWaterMetersQuery";
+import { useWaterMetersQuery } from "../_hooks/queries/useWaterMetersQuery";
 import { MetersFilters } from "./_components/MetersFilters";
-import { MetersTableBody } from "./_components/MetersTableBody";
-import { MetersTableError } from "./_components/MetersTableError";
-import { MetersTableHeader } from "./_components/MetersTableHeader";
+import { MetersTableBody } from "./_components/table/MetersTableBody";
+import { MetersTableError } from "./_components/table/MetersTableError";
+import { MetersTableHeader } from "./_components/table/MetersTableHeader";
 
 export default function MetersPage() {
   const { data: waterMeters, isLoading, error } = useWaterMetersQuery();

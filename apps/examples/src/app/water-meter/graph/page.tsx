@@ -2,12 +2,12 @@
 
 import { BarChart3 } from "lucide-react";
 import { useState } from "react";
-import { useWaterDataQuery } from "../_hooks/useWaterDataQuery";
+import { useWaterDataQuery } from "../_hooks/queries/useWaterDataQuery";
 import { getPeriodLabel } from "../_utils/water-meters.utils";
-import { GraphChart } from "./_components/GraphChart";
-import { GraphErrorState } from "./_components/GraphErrorState";
+import { GraphChart } from "./_components/chart/GraphChart";
+import { GraphErrorState } from "./_components/chart/GraphErrorState";
+import { GraphSummary } from "./_components/chart/GraphSummary";
 import { GraphFilters } from "./_components/GraphFilters";
-import { GraphSummary } from "./_components/GraphSummary";
 
 export default function GraphPage() {
   const [selectedPeriod, setSelectedPeriod] = useState("month");

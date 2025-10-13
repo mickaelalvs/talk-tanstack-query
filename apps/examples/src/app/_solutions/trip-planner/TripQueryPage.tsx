@@ -1,5 +1,4 @@
-
-import { Header } from "../../trip-planner/trips/_components/Header";
+import { Header } from "../../trip-planner/_components/TripHeader";
 import { TripListEmptyState } from "../../trip-planner/trips/_components/TripListEmptyState";
 import { TripListSkeleton } from "../../trip-planner/trips/_components/TripListSkeleton";
 import { TripMutationCard } from "./TripMutationCard";

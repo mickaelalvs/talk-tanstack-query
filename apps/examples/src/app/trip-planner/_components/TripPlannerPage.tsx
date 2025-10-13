@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
+import { CreateTripBanner } from "../trips/_components/CreateTripBanner";
 import { CitiesList } from "./CitiesList";
-import { CreateTripBanner } from "./CreateTripBanner";
 import { Header } from "./Header";
 import { SearchInput } from "./SearchInput";
 

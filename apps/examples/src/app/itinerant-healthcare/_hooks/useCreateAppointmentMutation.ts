@@ -6,7 +6,9 @@ export const useCreateAppointmentMutation = () => {
     mutationFn: createAppointment,
     mutationKey: ["createAppointment"],
     onSuccess: (_data, _variables, _result, context) => {
-      context.client.invalidateQueries({ queryKey: ["appointments"] });
+      context.client.invalidateQueries({
+        queryKey: ["appointments"],
+      });
     },
   });
 };

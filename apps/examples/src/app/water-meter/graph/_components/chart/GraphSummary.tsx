@@ -1,6 +1,6 @@
 import { Loader2, TrendingDown, TrendingUp } from "lucide-react";
-import { useWaterDataQuery } from "../../_hooks/useWaterDataQuery";
-import { getPeriodLabel, getUnit } from "../../_utils/water-meters.utils";
+import { useWaterDataQuery } from "../../../_hooks/queries/useWaterDataQuery";
+import { getPeriodLabel, getUnit } from "../../../_utils/water-meters.utils";
 
 export const GraphSummary = ({ period }: { period: string }) => {
   const { data, isLoading } = useWaterDataQuery(period);

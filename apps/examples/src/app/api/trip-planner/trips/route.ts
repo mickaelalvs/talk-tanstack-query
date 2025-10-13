@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { cityFromRow, getDatabase, tripFromRow } from "../../../../lib/database";
+import {
+  cityFromRow,
+  getDatabase,
+  tripFromRow,
+} from "../../../../lib/database";
 
 export async function GET() {
   try {

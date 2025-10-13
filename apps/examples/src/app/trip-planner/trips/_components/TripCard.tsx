@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { deleteTrip } from "../../_services/delete-trip";
 import { Card } from "../../../../components/ui/card";
 import type { Trip } from "../../../../lib/mock-data";
-import { TripCardContent } from "./TripCardContent";
+import { TripCardContent } from "../../_components/TripCardContent";
+import { deleteTrip } from "../../_services/delete-trip";
 
 export const TripCard = ({
   trip,

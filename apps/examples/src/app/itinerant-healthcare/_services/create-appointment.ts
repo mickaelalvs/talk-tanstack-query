@@ -1,4 +1,7 @@
-import type { Appointment, CreateAppointmentRequest } from "../../../lib/database";
+import type {
+  Appointment,
+  CreateAppointmentRequest,
+} from "../../../lib/database";
 
 type ApiResponse<T> = {
   success: boolean;

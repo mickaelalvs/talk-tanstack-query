@@ -1,5 +1,5 @@
-import { Button } from "../../../../components/ui/button";
-import type { SortField } from "../page";
+import { Button } from "../../../../../components/ui/button";
+import type { SortField } from "../../../_hooks/useMetersFilters";
 
 interface SortButtonProps {
   field: SortField;

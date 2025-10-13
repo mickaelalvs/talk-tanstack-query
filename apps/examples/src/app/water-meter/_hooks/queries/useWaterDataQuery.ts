@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { listWaterData } from "../_services/list-water-data";
+import { listWaterData } from "../../_services/list-water-data";
 
 type GraphApiResponse = {
   data: Array<{

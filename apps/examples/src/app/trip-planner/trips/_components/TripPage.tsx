@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import type { Trip } from "../../../../lib/mock-data";
+import { Header } from "../../_components/TripHeader";
+import { TripListEmptyState } from "../../_components/TripListEmptyState";
+import { TripListSkeleton } from "../../_components/TripListSkeleton";
 import { listTrips } from "../../_services/list-trips";
-import { Header } from "./Header";
 import { TripCard } from "./TripCard";
-import { TripListEmptyState } from "./TripListEmptyState";
-import { TripListSkeleton } from "./TripListSkeleton";
 
 export const TripPage = () => {
   const [trips, setTrips] = useState<Trip[]>([]);

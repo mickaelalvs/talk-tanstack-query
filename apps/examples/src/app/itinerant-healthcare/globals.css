@@ -17,7 +17,7 @@
   --secondary-foreground: oklch(0.25 0 0);
   --muted: oklch(0.98 0.01 15); /* Soft muted background */
   --muted-foreground: oklch(0.45 0 0);
-  --accent: oklch(0.75 0.15 65); /* Amber accent color */
+  --accent: oklch(0.95 0.22 15); /* Amber accent color */
   --accent-foreground: oklch(0.25 0 0);
   --destructive: oklch(0.55 0.22 15);
   --destructive-foreground: oklch(1 0 0);

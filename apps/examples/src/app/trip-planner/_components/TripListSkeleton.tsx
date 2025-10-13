@@ -1,6 +1,6 @@
-import { Card, CardContent, CardHeader } from "../../../../components/ui/card";
-import { Skeleton } from "../../../../components/ui/skeleton";
-import { Header } from "./Header";
+import { Card, CardContent, CardHeader } from "../../../components/ui/card";
+import { Skeleton } from "../../../components/ui/skeleton";
+import { Header } from "./TripHeader";
 
 export const TripListSkeleton = () => {
   return (

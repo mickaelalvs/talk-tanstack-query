@@ -9,10 +9,14 @@ import {
   User,
 } from "lucide-react";
 import { useState } from "react";
-import { useDeleteAppointmentMutation } from "../hooks/useDeleteAppointmentMutation";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -21,7 +25,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../../../components/ui/dialog";
+import { Skeleton } from "../../../components/ui/skeleton";
 import type { Appointment } from "../../../lib/database";
+import { useDeleteAppointmentMutation } from "../_hooks/useDeleteAppointmentMutation";
 import { AddAppointmentDialog } from "./AddAppointmentDialog";
 
 interface HomeViewProps {
@@ -105,10 +111,72 @@ export const HomeView = ({
 
       <main className="p-6 max-w-6xl mx-auto">
         {isAppointmentsLoading ? (
-          <div className="flex items-center justify-center h-64">
-            <div className="text-muted-foreground">
-              Chargement des rendez-vous...
-            </div>
+          <div className="space-y-8">
+            {/* Next Appointment Card Skeleton */}
+            <Card className="border-2 border-primary/20 bg-gradient-to-r from-card to-card/80">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Skeleton className="h-5 w-5" />
+                  <Skeleton className="h-6 w-48" />
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="flex items-center gap-3">
+                    <Skeleton className="h-5 w-5" />
+                    <div className="space-y-2">
+                      <Skeleton className="h-4 w-32" />
+                      <Skeleton className="h-3 w-24" />
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Skeleton className="h-5 w-5" />
+                    <div className="space-y-2">
+                      <Skeleton className="h-4 w-40" />
+                      <Skeleton className="h-3 w-16" />
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Skeleton className="h-5 w-5" />
+                    <div className="space-y-2">
+                      <Skeleton className="h-4 w-36" />
+                      <Skeleton className="h-6 w-20" />
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Upcoming Appointments Card Skeleton */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <Skeleton className="h-6 w-48" />
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {[1, 2, 3].map((item) => (
+                    <div
+                      key={`skeleton-appointment-${item}`}
+                      className="flex items-center justify-between p-4 rounded-lg border border-border bg-muted/30"
+                    >
+                      <div className="flex items-center gap-4">
+                        <Skeleton className="w-16 h-16 rounded-lg" />
+                        <div className="space-y-2">
+                          <Skeleton className="h-4 w-32" />
+                          <Skeleton className="h-3 w-24" />
+                          <Skeleton className="h-3 w-40" />
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Skeleton className="h-6 w-20" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         ) : error ? (
           <div className="flex items-center justify-center h-64">

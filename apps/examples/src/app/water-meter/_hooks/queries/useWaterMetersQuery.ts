@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { listWaterMeter } from "../_services/list-water-meter";
-import { useMetersFilters } from "./useMetersFilters";
+import { listWaterMeter } from "../../_services/list-water-meter";
+import { useMetersFilters } from "../useMetersFilters";
 
 export const useWaterMetersQuery = () => {
   const {

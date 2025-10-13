@@ -2,10 +2,14 @@
 
 import { ChevronLeft, ChevronRight, Clock, MapPin, Trash2 } from "lucide-react";
 import { useState } from "react";
-import { useDeleteAppointmentMutation } from "../hooks/useDeleteAppointmentMutation";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -15,6 +19,7 @@ import {
   DialogTitle,
 } from "../../../components/ui/dialog";
 import type { Appointment } from "../../../lib/database";
+import { useDeleteAppointmentMutation } from "../_hooks/useDeleteAppointmentMutation";
 
 interface AppointmentCalendarProps {
   appointments: Appointment[];

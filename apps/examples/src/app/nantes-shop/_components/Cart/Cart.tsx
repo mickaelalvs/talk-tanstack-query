@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { fetchCart } from "../../_stores/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../../../lib/hooks";
+import { fetchCart } from "../../_stores/cartSlice";
 import { CartButton } from "./CartButton";
 import { CartDropdown } from "./CartDropdown";
 import { CartOverlay } from "./CartOverlay";

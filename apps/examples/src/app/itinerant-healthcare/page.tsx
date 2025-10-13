@@ -3,18 +3,18 @@
 import { useState } from "react";
 import { CalendarView } from "./_components/CalendarView";
 import { HomeView } from "./_components/HomeView";
-import { useAppointmentQuery } from "./hooks/useAppointmentQuery";
+import { useAppointmentQuery } from "./_hooks/useAppointmentQuery";
 
 export default function HomePage() {
   const [currentView, setCurrentView] = useState<"home" | "calendar">("home");
 
-  const { data: appointments = [], isLoading, error } = useAppointmentQuery();
+  const { data: appointments = [], isPending, error } = useAppointmentQuery();
 
   if (currentView === "calendar") {
     return (
       <CalendarView
         setCurrentView={setCurrentView}
-        isLoading={isLoading}
+        isLoading={isPending}
         error={error}
         appointments={appointments}
       />
@@ -24,7 +24,7 @@ export default function HomePage() {
   return (
     <HomeView
       setCurrentView={setCurrentView}
-      isAppointmentsLoading={isLoading}
+      isAppointmentsLoading={isPending}
       error={error}
       appointments={appointments}
     />

@@ -8,8 +8,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { ChartContainer } from "../../../../components/ui/chart";
-import { useWaterDataQuery } from "../../_hooks/useWaterDataQuery";
+import { ChartContainer } from "../../../../../components/ui/chart";
+import { useWaterDataQuery } from "../../../_hooks/queries/useWaterDataQuery";
 import { GraphTooltip } from "./GraphTooltip";
 
 export const GraphChart = ({ period }: { period: string }) => {

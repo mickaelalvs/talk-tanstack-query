@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "../../../components/ui/select";
 import { Textarea } from "../../../components/ui/textarea";
-import { useCreateAppointmentMutation } from "../hooks/useCreateAppointmentMutation";
+import { useCreateAppointmentMutation } from "../_hooks/useCreateAppointmentMutation";
 
 export type Appointment = {
   patient: string;

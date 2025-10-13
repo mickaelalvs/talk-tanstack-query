@@ -1,7 +1,11 @@
 import { Loader2 } from "lucide-react";
-import { Badge } from "../../../../components/ui/badge";
-import { TableBody, TableCell, TableRow } from "../../../../components/ui/table";
-import type { WaterMeter } from "../../_types/water-meter.type";
+import { Badge } from "../../../../../components/ui/badge";
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+} from "../../../../../components/ui/table";
+import type { WaterMeter } from "../../../_types/water-meter.type";
 
 export const MetersTableBody = ({
   isLoading,
