@@ -51,49 +51,6 @@ mdc: true
 
 <Micka />
 
-<Section title="TanStack Query est PARFAIT pour vous ! ✅" icon="💡">
-
-<br /><br />
-
-<div style="display: flex; justify-content: space-between; gap: 0rem; text-align: center;">
-  <div>
-    <div style="font-size: 3rem; margin-bottom: 0.5rem;">⚡</div>
-    <div><strong><span style="color: #10B981; background-color: #D1FAE5; padding: 8px 10px; border-radius: 4px;">Optimistic Updates</span></strong></div>
-  </div>
-  <div>
-    <div style="font-size: 3rem; margin-bottom: 0.5rem;">💾</div>
-    <div><strong><span style="color: #10B981; background-color: #D1FAE5; padding: 8px 10px; border-radius: 4px;">Persist Query Client</span></strong></div>
-  </div>
-  <div>
-    <div style="font-size: 3rem; margin-bottom: 0.5rem;">🔄</div>
-    <div><strong><span style="color: #10B981; background-color: #D1FAE5; padding: 8px 10px; border-radius: 4px;">Mutation Queue + Retry</span></strong></div>
-  </div>
-  <div>
-    <div style="font-size: 3rem; margin-bottom: 0.5rem;">📡</div>
-    <div><strong><span style="color: #10B981; background-color: #D1FAE5; padding: 8px 10px; border-radius: 4px;">Network Mode</span></strong></div>
-  </div>
-</div>
-
-<br /><br />
-
-</Section>
-
----
-title: Big Latency - Solution
-layout: solution
-ticketNumber: "#TSQ-2024-006"
-solutionTitle: "TanStack Query pour les environnements offline"
-concept: "Optimistic Updates + Offline Support"
-priority: "high"
-status: "resolved"
-transition: fade
-mdc: true
----
-
-::content::
-
-<Micka />
-
 <Section title="Optimistic Updates : mettre à jour l'UI avant la réponse du serveur" icon="⚡" variant="concept">
 
 <div class="concept-description">
@@ -216,7 +173,7 @@ mdc: true
 
 ::content::
 
-<Section title="Persist Query Client : sauvegarder le cache pour l'avoir hors connexion" icon="💾" variant="concept">
+<Section title="Pour aller plus loin : Persist Query Client, sauvegarder le cache pour l'avoir hors connexion" icon="💾" variant="highlight">
 
 ```tsx{all}{lines:true, class: '!children:text-[10px] !m-0 '}
 const queryClient = new QueryClient({
@@ -258,7 +215,7 @@ mdc: true
 
 ::content::
 
-<Section title="Mutation Queue + Retry : les mutations se mettent en pause si pas de connexion" icon="💾" variant="concept">
+<Section title="Pour aller plus loin : Mutation Queue + Retry, les mutations se mettent en pause si pas de connexion" icon="💾" variant="highlight">
 
 <div style="height: 10px;"></div>
 
@@ -301,7 +258,7 @@ mdc: true
 
 ::content::
 
-<Section title="Mutation Queue + Retry : les mutations se mettent en pause si pas de connexion" icon="💾" variant="concept">
+<Section title="Pour aller plus loin : Mutation Queue + Retry, les mutations se mettent en pause si pas de connexion" icon="💾" variant="highlight">
 
 <br />
 
@@ -342,7 +299,7 @@ mdc: true
 
 <Micka />
 
-<Section title="NetworkMode : offlineFirst, les 3 modes de réseau disponibles" icon="🌐" variant="tip">
+<Section title="Pour aller plus loin : NetworkMode, offlineFirst, les 3 modes de réseau disponibles" icon="🌐" variant="highlight">
 
 <div style="height: 10px;"></div>
 
