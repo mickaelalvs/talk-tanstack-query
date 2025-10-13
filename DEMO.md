@@ -1,6 +1,6 @@
 # Demos
 
-## Trip-planner - Timé 12:36
+## Trip-planner - Timé 10:15
 
 - Faire un tour de l'app, créer un voyage pour qu'on puisse voir le fonctionnement
 
@@ -136,4 +136,4 @@ export const useDeleteTripMutation = () => {
 - Montrer sur les deux vue potentiellement
 
 
-Total temps : 3:45 + 5:55 + 4:00 + 12:36
+Total temps : 3:45 + 5:55 + 4:00 + 10:15
