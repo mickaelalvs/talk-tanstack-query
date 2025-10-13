@@ -5,6 +5,8 @@ transition: fade
 mdc: true
 ---
 
+<Micka />
+
 <div class="solution-container">
   <h1 class="solution-title">
     TanStack Query <img src="/assets/images/tanstack.png" alt="TanStack Query" class="tanstack-logo" />

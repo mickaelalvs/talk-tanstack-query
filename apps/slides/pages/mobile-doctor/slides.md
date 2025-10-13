@@ -49,6 +49,8 @@ mdc: true
 
 ::content::
 
+<Micka />
+
 <Section title="TanStack Query est PARFAIT pour vous ! ✅" icon="💡">
 
 <br /><br />
@@ -90,6 +92,8 @@ mdc: true
 
 ::content::
 
+<Micka />
+
 <Section title="Optimistic Updates : mettre à jour l'UI avant la réponse du serveur" icon="⚡" variant="concept">
 
 <div class="concept-description">
@@ -130,6 +134,8 @@ mdc: true
 
 ::content::
 
+<Micka />
+
 <Section title="Optimistic Updates : mettre à jour l'UI avant la réponse du serveur" icon="⚡" variant="concept">
 
 <div class="concept-description">
@@ -162,6 +168,8 @@ mdc: true
 ---
 
 ::content::
+
+<Micka />
 
 <Section title="Optimistic Updates : mettre à jour l'UI avant la réponse du serveur" icon="⚡" variant="concept">
 
@@ -225,10 +233,6 @@ const persister = createSyncStoragePersister({ storage: window.localStorage })
   <App />
 </PersistQueryClientProvider>
 ```
-
-<br />
-
-**<span style="color: #10B981;">✅ Le médecin charge les données au bureau et les a partout !</span>**
 
 </Section>
 
@@ -335,6 +339,8 @@ mdc: true
 ---
 
 ::content::
+
+<Micka />
 
 <Section title="NetworkMode : offlineFirst, les 3 modes de réseau disponibles" icon="🌐" variant="tip">
 

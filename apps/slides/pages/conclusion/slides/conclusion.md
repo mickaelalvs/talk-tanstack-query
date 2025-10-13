@@ -7,6 +7,8 @@ mdc: true
 
 <h1>Conclusion</h1>
 
+<Micka />
+
 <style scoped>
 h1 {
   font-size: 6rem;

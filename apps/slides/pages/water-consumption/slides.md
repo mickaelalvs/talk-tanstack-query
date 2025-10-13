@@ -13,6 +13,8 @@ mdc: true
 
 ::message::
 
+<Micka />
+
 Je suis le gérant d'un syndic d'immeuble, et j'ai donc à disposition une application que me permet de suivre la consommation des différents occupants, mais le code devient un peu fouillit avec tout les appels réseaux que je doit gérer, et je ne parle même pas des états de chargement qui arrivent de partout. J'ai cru comprendre que TanStack Query pourrais m'aider, pouvez vous me guider ?
 
 ::problem::
@@ -40,6 +42,8 @@ mdc: true
 ---
 
 ::content::
+
+<Micka />
 
 <Section title="Le problème" icon="💡">
 
@@ -73,7 +77,9 @@ transition: fade
 mdc: true
 ---
 
+
 ::content::
+<Micka />
 
 <Section title="Concept TanStack Query" icon="⚡" variant="concept">
 
@@ -112,6 +118,8 @@ mdc: true
 ---
 
 ::content::
+
+<Micka />
 
 <Section title="Comment ça marche ?" icon="🔄" variant="concept" class="text-[12px]">
 

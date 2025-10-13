@@ -13,6 +13,8 @@ mdc: true
 
 ::message::
 
+<Micka />
+
 Je suis un gros utilisateur de TanStack Query, je l'utilise partout que je peux. J'ai ouï dire que vous etiez des professionnels, avez vous des petits conseil pour améliorer encore l'utilisation de ce super outil ?
 
 ::problem::
@@ -141,6 +143,8 @@ mdc: true
 
 ::content::
 
+<Micka />
+
 <Section title="Trop de clés ..." icon="🔑" variant="default">
 
 <div class="concept-description">
@@ -180,6 +184,8 @@ mdc: true
 ---
 
 ::content::
+
+<Micka />
 
 <Section title="Solution 1 : Séparation + Colocation" icon="🫂" variant="default">
 
@@ -243,6 +249,8 @@ mdc: true
 
 ::content::
 
+<Micka />
+
 <Section title="Solution 2 : Key Factory" icon="🔑" variant="default">
 
 <div class="concept-description">
@@ -283,6 +291,8 @@ mdc: true
 ---
 
 ::content::
+
+<Micka />
 
 <Section title="Solution 2 : Key Factory" icon="🔑" variant="default">
 

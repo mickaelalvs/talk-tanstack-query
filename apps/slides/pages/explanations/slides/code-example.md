@@ -10,6 +10,8 @@ mdc: true
 
 ::default::
 
+<Micka />
+
 <div class="pt-20">
   <div class="section-title text-[var(--theme-color-roofTerracotta)]">
     📥 useQuery - Récupération de données

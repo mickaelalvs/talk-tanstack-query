@@ -76,6 +76,8 @@ mdc: true
 
 ::content::
 
+<Micka />
+
 <Section title="Concept TanStack Query" icon="⚡" variant="concept">
 
 <div class="concept-description">
@@ -163,6 +165,8 @@ mdc: true
 ---
 
 ::content::
+
+<Micka />
 
 <Section title="Bonnes pratiques" icon="💡" variant="highlight">
 

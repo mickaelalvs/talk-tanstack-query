@@ -4,6 +4,8 @@ layout: basic
 transition: view-transition
 ---
 
+<Micka />
+
 <div class="flex flex-col items-center justify-center h-full gap-8">
   <div class="text-center team-title">
     <h1 class="text-6xl font-bold text-[var(--theme-color-cloudBurst)] mb-4">
@@ -26,6 +28,8 @@ title: "Équipe SAV TanStack Query"
 layout: basic
 transition: fade
 ---
+
+<Micka />
 
 <div class="flex flex-col items-center justify-center h-full gap-16">
   <div class="text-center team-title">

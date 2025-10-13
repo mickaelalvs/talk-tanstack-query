@@ -2,6 +2,8 @@
 transition: fade
 ---
 
+<Micka />
+
 <div class="absolute bottom-0 left-0 w-screen h-[200px] pointer-events-none z-1">
   <svg
     class="block"

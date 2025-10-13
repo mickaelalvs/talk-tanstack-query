@@ -4,6 +4,8 @@ layout: default
 transition: fade
 ---
 
+<Micka />
+
 <div class="features-showcase">
   <div class="header">
     <h1>TanStack <span>Query</span></h1>

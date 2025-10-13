@@ -19,6 +19,10 @@ J'ai une application de préparation de voyage, ou l'on peut créer un voyage à
 
 Comment intégrer TanStack Query dans une application de planification de voyage pour gérer efficacement les données des villes et des voyages ?
 
+<!--
+Transition Micka : Cas simple, on a souvent la question je pense on va pouvoir l'aider, je te propose que l'on regarde un peu son code et qu'on essaie d'améliorer ça
+-->
+
 ---
 title: Base Case - Demo
 layout: code-server
@@ -40,6 +44,8 @@ mdc: true
 ---
 
 ::content::
+
+<Micka />
 
 <Section title="Explication" icon="💡" v-show="$clicks < 1">
 
@@ -133,6 +139,8 @@ mdc: true
 ---
 
 ::content::
+
+<Micka />
 
 <Section title="Bonnes pratiques" icon="💡" variant="highlight">
 

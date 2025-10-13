@@ -9,6 +9,7 @@ transition: fade
     ref="ringAudio" 
     loop
     preload="auto"
+    muted
   >
     <source src="./assets/ring.mp3" type="audio/mpeg">
   </audio>
@@ -182,3 +183,12 @@ onMounted(() => {
   }
 }
 </style>
+
+<!--
+1 : Lucas
+2 : Micka
+3 : Lucas
+4 : Micka
+5 : Lucas
+6 : Micka
+-->

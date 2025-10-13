@@ -11,6 +11,8 @@ Références du talk
 
 ::default::
 
+<Micka />
+
 - [**👩‍💻 TanStack Query Docs**](https://tanstack.com/query/latest/docs/framework/react/overview)
 - [**👑 TkDodo's Blog**](https://tkdodo.eu/blog/all) par Dominik Dorfmeister
 - [**🎥 The most underrated React Query Feature**](https://www.youtube.com/watch?v=QP1_vuzOYJs&t=2s) par Youssef Benlemlih

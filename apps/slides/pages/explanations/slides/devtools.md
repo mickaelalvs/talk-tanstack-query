@@ -10,6 +10,8 @@ mdc: true
 
 ::default::
 
+<Micka />
+
 <div class="images-container">
   <div class="image-stack">
     <img src="../assets/devtools.png" alt="DevTools Vue d'ensemble" class="stacked-image image-1" />

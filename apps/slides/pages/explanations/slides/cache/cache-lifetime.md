@@ -11,6 +11,8 @@ mdc: true
 
 ::default::
 
+<Micka /> 
+
 <div class="lifetime-container">
   <!-- Section 1: États de fraîcheur -->
   <div class="states-section" v-click>
@@ -184,6 +186,8 @@ mdc: true
 🔄 Exemple de cycle complet du cache
 
 ::default::
+
+<Micka />
 
 <!-- Flow cycle -->
 <div class="flow-section">

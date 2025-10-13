@@ -13,6 +13,8 @@ mdc: true
 
 ::message::
 
+<Micka />
+
 J'ai besoin de votre aide. Je maintient depuis quelques années un outils comme photoshop en ligne sous Vue.js avec Pinia, et j'entend la hype me parler de TanStack Query tout autour de moi. Je ne peux me résoudre à ne pas l'utiliser, pouvez vous m'aider à l'integrer (si c'est possible) ?
 
 ::problem::
@@ -70,6 +72,8 @@ mdc: true
 ---
 
 ::content::
+
+<Micka />
 
 <Section title="Concept TanStack Query" icon="⚡" variant="concept">
 
@@ -136,6 +140,10 @@ Comme on a indiqué, TanStack Query est conçu **spécifiquement** pour gérer l
 
 </Section>
 
+<!--
+Lucas : Après il y a quand même des ças où elle pourrait arriver à en avoir besoin..
+-->
+
 ---
 title: Photopea - Solution
 layout: solution
@@ -149,6 +157,8 @@ mdc: true
 ---
 
 ::content::
+
+<Micka />
 
 <Section title="Quand utiliser TanStack Query dans cette app ?" icon="🤔" variant="highlight">
 
