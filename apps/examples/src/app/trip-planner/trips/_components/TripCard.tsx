@@ -9,7 +9,7 @@ export const TripCard = ({
   onDelete,
 }: {
   trip: Trip;
-  onDelete: (tripId: string) => void;
+  onDelete?: (tripId: string) => void;
 }) => {
   const [isTripDeleting, setIsTripDeleting] = useState(false);
 
@@ -18,8 +18,8 @@ export const TripCard = ({
       setIsTripDeleting(true);
       const response = await deleteTrip(trip.id);
 
-      if (response.ok) {
-        onDelete(trip.id);
+      if (response.success) {
+        onDelete?.(trip.id);
       } else {
         console.error("Failed to delete trip:", await response.text());
       }
