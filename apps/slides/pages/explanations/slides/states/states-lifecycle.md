@@ -45,18 +45,18 @@ mdc: true
       <span class="step-desc">Données obsolètes (Stale)</span>
     </div>
     <span class="flow-arrow" v-click>→</span>
-    <!-- Étape 4: Refetch -->
-    <div class="flow-step fetching" v-after>
-      <span class="step-name">success</span>
-      <span class="step-plus">+</span>
-      <span class="step-name">fetching</span>
-      <span class="step-desc">Rafraîchissement</span>
-    </div>
-    <span class="flow-arrow" v-click>→</span>
-    <!-- Étape 5: Removed -->
-    <div class="flow-step removed" v-after>
-      <span class="step-name">removed</span>
-      <span class="step-desc">Cache vidé (gcTime)</span>
+    <div class="flow-branch">
+      <div class="flow-step fetching" v-after>
+        <span class="step-name">success</span>
+        <span class="step-plus">+</span>
+        <span class="step-name">fetching</span>
+        <span class="step-desc">Rafraîchissement</span>
+      </div>
+      <span class="branch-separator" v-after>ou</span>
+      <div class="flow-step removed" v-after>
+        <span class="step-name">removed</span>
+        <span class="step-desc">Cache vidé (gcTime)</span>
+      </div>
     </div>
     <!-- Paused en bas -->
     <div class="flow-step paused standalone" v-click>

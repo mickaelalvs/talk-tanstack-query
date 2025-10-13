@@ -21,6 +21,7 @@ mdc: true
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 const mutation = useMutation({
+  mutationKey: ['users'],
   mutationFn: (userData) => fetch('/api/users', {
     method: 'POST',
     body: JSON.stringify(userData)
