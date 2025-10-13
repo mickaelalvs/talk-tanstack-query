@@ -1,4 +1,9 @@
 ---
+src: /pages/water-consumption/loading.md
+transition: fade
+---
+
+---
 title: List - Call
 layout: ticket
 name: "Pierre Martin"

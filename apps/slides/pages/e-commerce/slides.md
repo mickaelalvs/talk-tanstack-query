@@ -1,4 +1,9 @@
 ---
+src: /pages/e-commerce/loading.md
+transition: fade
+---
+
+---
 title: Redux - Call
 layout: ticket
 name: "Sophie Leroy"

@@ -30,15 +30,7 @@ src: /pages/explanations/slides.md
 ---
 
 ---
-src: /pages/loading/loading.md
----
-
----
 src: /pages/trip-planner/slides.md
----
-
----
-src: /pages/loading/loading.md
 ---
 
 ---
@@ -46,15 +38,7 @@ src: /pages/water-consumption/slides.md
 ---
 
 ---
-src: /pages/loading/loading.md
----
-
----
 src: /pages/e-commerce/slides.md
----
-
----
-src: /pages/loading/loading.md
 ---
 
 ---
@@ -62,15 +46,7 @@ src: /pages/photopea-like/slides.md
 ---
 
 ---
-src: /pages/loading/loading.md
----
-
----
 src: /pages/mobile-doctor/slides.md
----
-
----
-src: /pages/loading/loading.md
 ---
 
 ---

@@ -1,4 +1,9 @@
 ---
+src: /pages/photopea-like/loading.md
+transition: fade
+---
+
+---
 title: Photopea - Call
 layout: ticket
 name: "Alexandre Moreau"

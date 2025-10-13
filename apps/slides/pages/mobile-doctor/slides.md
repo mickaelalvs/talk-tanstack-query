@@ -1,4 +1,9 @@
 ---
+src: /pages/mobile-doctor/loading.md
+transition: fade
+---
+
+---
 title: Big Latency - Call
 layout: ticket
 name: "Dr. Claire Bernard"

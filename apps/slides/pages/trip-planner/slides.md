@@ -1,4 +1,9 @@
 ---
+src: /pages/trip-planner/loading.md
+transition: fade
+---
+
+---
 title: Base Case - Call
 layout: ticket
 name: "Marie Dubois"

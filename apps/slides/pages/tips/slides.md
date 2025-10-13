@@ -1,4 +1,9 @@
 ---
+src: /pages/tips/loading.md
+transition: fade
+---
+
+---
 title: Tips & Tricks - Call
 layout: ticket
 name: "Lucas Petit"
