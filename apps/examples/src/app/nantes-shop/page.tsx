@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ErrorPage } from "./_components/ErrorPage";
 import { Header } from "./_components/Header";
 import { ProductGrid } from "./_components/ProductGrid";
-import { useListProductsQuery } from "./_hooks/useListProductsQuery";
+import { useListProductsQuery } from "./_hooks/queries/useListProductsQuery";
 
 export default function NantesShoppingApp() {
   const [searchTerm, setSearchTerm] = useState("");

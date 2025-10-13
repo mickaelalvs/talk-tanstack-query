@@ -2,7 +2,6 @@ import { type NextRequest, NextResponse } from "next/server";
 import {
   addToCart,
   getOrCreateCart,
-  removeFromCart,
   updateCartItemQuantity,
 } from "../../../../../lib/database";
 
@@ -53,6 +52,11 @@ export async function PUT(request: NextRequest) {
     const cart = getOrCreateCart(userId);
     const cartItem = updateCartItemQuantity(cart.id, productId, quantity);
 
+    // If quantity is 0, the item is automatically deleted and cartItem will be null
+    if (quantity === 0) {
+      return NextResponse.json({ success: true, deleted: true });
+    }
+
     return NextResponse.json(cartItem);
   } catch (error) {
     console.error("Error updating cart item:", error);
@@ -63,28 +67,3 @@ export async function PUT(request: NextRequest) {
   }
 }
 
-export async function DELETE(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const userId = searchParams.get("userId") || "default_user";
-    const productId = searchParams.get("productId");
-
-    if (!productId) {
-      return NextResponse.json(
-        { error: "Product ID is required" },
-        { status: 400 },
-      );
-    }
-
-    const cart = getOrCreateCart(userId);
-    removeFromCart(cart.id, parseInt(productId, 10));
-
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Error removing item from cart:", error);
-    return NextResponse.json(
-      { error: "Failed to remove item from cart" },
-      { status: 500 },
-    );
-  }
-}

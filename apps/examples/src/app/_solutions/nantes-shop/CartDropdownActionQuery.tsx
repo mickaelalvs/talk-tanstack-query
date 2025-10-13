@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Button } from "../../../components/ui/button";
-import { useGetCartQuery } from "../../nantes-shop/_hooks/useGetCart";
+import { useGetCartQuery } from "../../nantes-shop/_hooks/queries/useGetCartQuery";
 
 export const CartDropdownActionQuery = () => {
   const { data: cart } = useGetCartQuery();

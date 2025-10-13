@@ -1,5 +1,5 @@
 import { CartCard } from "../../nantes-shop/_components/Cart/CartCard";
-import { useGetCartQuery } from "../../nantes-shop/_hooks/useGetCart";
+import { useGetCartQuery } from "../../nantes-shop/_hooks/queries/useGetCartQuery";
 
 export const CartDropdownContentQuery = () => {
   const { data: cart, error } = useGetCartQuery();

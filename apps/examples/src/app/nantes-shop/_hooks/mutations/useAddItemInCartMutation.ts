@@ -1,10 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
-import { updateCart } from "../_services/update-cart";
+import { addItemToCart } from "../../_services/add-item-to-cart";
 
-export const useUpdateCartItemMutation = () => {
+export const useAddItemInCartMutation = () => {
   return useMutation({
-    mutationKey: ["updateCartItem"],
-    mutationFn: updateCart,
+    mutationKey: ["addItemInCart"],
+    mutationFn: addItemToCart,
     onSuccess: (_data, _variables, _results, context) => {
       context.client.invalidateQueries({ queryKey: ["cart"] });
     },

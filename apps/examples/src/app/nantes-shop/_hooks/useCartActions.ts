@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import type { AppDispatch } from "../../../../lib/store";
+import type { AppDispatch } from "../../../lib/store";
 import type { Product } from "../_components/types";
 import {
   addToCart,
@@ -16,7 +16,6 @@ export const useCartActions = () => {
       addToCart({
         productId: product.id,
         quantity,
-        product,
       }),
     );
   };
