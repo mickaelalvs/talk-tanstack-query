@@ -1,6 +1,6 @@
 # Demos
 
-## Trip-planner - Timé 10:15
+## Trip-planner - Timé 5:35
 
 - Faire un tour de l'app, créer un voyage pour qu'on puisse voir le fonctionnement
 
@@ -87,7 +87,7 @@ export const useDeleteTripMutation = () => {
 
 - Faire pareil pour le graph, le remove query est dans le composant `GraphFilters`
 
-## Nantes shop - Timé 5:55
+## Nantes shop - Timé 3:52
 
 - Passer sur l'app, montrer qu'on peut ajouter une cathédrale au panier
 
@@ -134,6 +134,3 @@ export const useDeleteTripMutation = () => {
 - Montrer qu'ajouter un rendez vous l'ajoute automatiquement
 
 - Montrer sur les deux vue potentiellement
-
-
-Total temps : 3:45 + 5:55 + 4:00 + 10:15

@@ -20,22 +20,24 @@ export const CreateTripBanner = () => {
   }
 
   const onSubmit = async () => {
-    if (newTripName.trim() && hasSelectedCities) {
-      try {
-        const response = await createTrip({
-          name: newTripName.trim(),
-          cityIds: selectedCities.map((city) => city.id),
-        });
+    if (!(newTripName.trim() && hasSelectedCities)) {
+      return;
+    }
 
-        if (response.ok) {
-          clearSelectedCities();
-          setNewTripName("");
-        } else {
-          console.error("Failed to create trip:", await response.text());
-        }
-      } catch (error) {
-        console.error("Error creating trip:", error);
+    try {
+      const response = await createTrip({
+        name: newTripName.trim(),
+        cityIds: selectedCities.map((city) => city.id),
+      });
+
+      if (response.ok) {
+        clearSelectedCities();
+        setNewTripName("");
+      } else {
+        console.error("Failed to create trip:", await response.text());
       }
+    } catch (error) {
+      console.error("Error creating trip:", error);
     }
   };
 
