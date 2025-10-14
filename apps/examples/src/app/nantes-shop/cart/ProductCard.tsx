@@ -5,8 +5,8 @@ import Image from "next/image";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
 import { Card } from "../../../components/ui/card";
+import type { Product } from "../_components/types";
 import { useCartActions } from "../_hooks/useCartActions";
-import { Product } from "../_components/types";
 
 interface ProductCardProps {
   product: Product;

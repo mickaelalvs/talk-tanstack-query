@@ -5,8 +5,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../components/ui/select";
-import { Pagination } from "./Pagination";
 import { ProductCard } from "../cart/ProductCard";
+import { Pagination } from "./Pagination";
 import type { Product } from "./types";
 
 interface ProductGridProps {

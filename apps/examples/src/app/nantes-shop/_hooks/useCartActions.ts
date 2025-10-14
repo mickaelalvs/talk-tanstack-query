@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../../lib/store";
-import type { Product } from "../_components/types";
 import {
   addToCart,
   clearCart,
@@ -11,7 +10,13 @@ import {
 export const useCartActions = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const addItemToCart = ({productId, quantity = 1}: {productId: number, quantity: number}) => {
+  const addItemToCart = ({
+    productId,
+    quantity = 1,
+  }: {
+    productId: number;
+    quantity: number;
+  }) => {
     return dispatch(
       addToCart({
         productId,
@@ -20,7 +25,13 @@ export const useCartActions = () => {
     );
   };
 
-  const updateItemQuantity = ({productId, quantity}: {productId: number, quantity: number}) => {
+  const updateItemQuantity = ({
+    productId,
+    quantity,
+  }: {
+    productId: number;
+    quantity: number;
+  }) => {
     return dispatch(
       updateCartItemQuantity({
         productId,

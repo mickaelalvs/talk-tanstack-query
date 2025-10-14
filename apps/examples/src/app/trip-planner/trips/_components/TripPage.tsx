@@ -23,10 +23,6 @@ export const TripPage = () => {
     fetchTrips();
   }, []);
 
-  const handleDeleteTrip = (tripId: string) => {
-    setTrips(trips.filter((trip) => trip.id !== tripId));
-  };
-
   if (isPending) {
     return <TripListSkeleton />;
   }
@@ -43,11 +39,7 @@ export const TripPage = () => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {trips?.map((trip) => (
-                  <TripCard
-                    key={trip.id}
-                    trip={trip}
-                    onDelete={handleDeleteTrip}
-                  />
+                  <TripCard key={trip.id} trip={trip} />
                 ))}
               </div>
             )}
