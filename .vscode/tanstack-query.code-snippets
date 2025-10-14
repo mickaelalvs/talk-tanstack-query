@@ -1,0 +1,165 @@
+{
+  "Trip Query Hook": {
+    "prefix": "tripQuery",
+    "body": [
+      "import { useQuery } from \"@tanstack/react-query\";",
+      "import { listTrips } from \"../_services/list-trips\";",
+      "",
+      "export const useListTripQuery = () => {",
+      "  return useQuery({",
+      "    queryFn: listTrips,",
+      "    queryKey: [\"trips\"],",
+      "  });",
+      "};"
+    ],
+    "description": "Create the exact trip query hook pattern"
+  },
+  "Trip Mutation Hook": {
+    "prefix": "tripMutation",
+    "body": [
+      "import { useMutation } from \"@tanstack/react-query\";",
+      "import { createTrip } from \"../_services/create-trip\";",
+      "",
+      "export const useCreateTripMutation = () => {",
+      "  return useMutation({",
+      "    mutationFn: createTrip,",
+      "    mutationKey: [\"createTrip\"],",
+      "  });",
+      "};"
+    ],
+    "description": "Create the exact trip mutation hook pattern"
+  },
+  "Trip Mutation with Refetch": {
+    "prefix": "tripOnSuccess",
+    "body": [
+      "onSuccess: (_data, _variables, _results, context) => {",
+      "  context.client.refetchQueries({ queryKey: [\"trips\"] });",
+      "},",
+    ],
+    "description": "Create trip mutation hook with onSuccess refetch"
+  },
+  "Trip Query Usage": {
+    "prefix": "constTripQuery",
+    "body": [
+      "import { useListTripQuery } from \"../../_hooks/useListTripQuery\";",
+      "const { data: trips = [], isPending } = useListTripQuery();"
+    ],
+    "description": "Import and use the trip query hook"
+  },
+  "Trip Mutation Usage": {
+    "prefix": "constTripMutation",
+    "body": [
+      "import { useCreateTripMutation } from \"../../_hooks/useCreateTripMutation\";",
+      "const { mutate: createTrip } = useCreateTripMutation();",
+      "const onSubmit = async () => {",
+      "  if (newTripName.trim() && hasSelectedCities) {",
+      "    return;",
+      "  }",
+      "",
+      "  createTrip({",
+      "    name: newTripName.trim(),",
+      "    cityIds: selectedCities.map((city) => city.id),",
+      "  }, {",
+      "    onSuccess: () => {",
+      "      clearSelectedCities();",
+      "      setNewTripName(\"\");",
+      "    },",
+      "    onError: (error: Error) => {",
+      "      console.error(\"Error creating trip:\", error);",
+      "    },",
+      "  });",
+      "};"
+    ],
+    "description": "Import and use the trip mutation hook with form handling"
+  },
+  "Cart Query Hook": {
+    "prefix": "cartQuery",
+    "body": [
+      "import { useQuery } from \"@tanstack/react-query\";",
+      "import { getCart } from \"../../_services/get-cart\";",
+      "",
+      "export const useGetCartQuery = () => {",
+      "  return useQuery({",
+      "    queryKey: [\"cart\"],",
+      "    queryFn: getCart,",
+      "  });",
+      "};"
+    ],
+    "description": "Create the exact cart query hook pattern"
+  },
+  "Cart Update Mutation Hook": {
+    "prefix": "cartUpdateMutation",
+    "body": [
+      "import { useMutation } from \"@tanstack/react-query\";",
+      "import { updateCart } from \"../../_services/update-cart\";",
+      "",
+      "export const useUpdateCartItemMutation = () => {",
+      "  return useMutation({",
+      "    mutationKey: [\"updateCartItem\"],",
+      "    mutationFn: updateCart,",
+      "    onSuccess: (_data, _variables, _results, context) => {",
+      "      context.client.invalidateQueries({ queryKey: [\"cart\"] });",
+      "    },",
+      "  });",
+      "};"
+    ],
+    "description": "Create the exact cart update mutation hook pattern"
+  },
+  "Add Item to Cart Mutation Hook": {
+    "prefix": "addItemToCartMutation",
+    "body": [
+      "import { useMutation } from \"@tanstack/react-query\";",
+      "import { addItemToCart } from \"../../_services/add-item-to-cart\";",
+      "",
+      "export const useAddItemToCartMutation = () => {",
+      "  return useMutation({",
+      "    mutationKey: [\"addItemToCart\"],",
+      "    mutationFn: addItemToCart,",
+      "    onSuccess: (_data, _variables, _results, context) => {",
+      "      context.client.invalidateQueries({ queryKey: [\"cart\"] });",
+      "    },",
+      "  });",
+      "};"
+    ],
+    "description": "Create the exact add item to cart mutation hook pattern"
+  },
+  "Cart Query Usage": {
+    "prefix": "constCartQuery",
+    "body": [
+      "import { useGetCartQuery } from \"../_hooks/queries/useGetCartQuery\";",
+      "const { data: cart } = useGetCartQuery();"
+    ],
+    "description": "Import and use the cart query hook"
+  },
+  "Cart Update Mutation Usage": {
+    "prefix": "constCartUpdateMutation",
+    "body": [
+      "import { useUpdateCartItemMutation } from \"../_hooks/mutations/useUpdateCartItemMutation\";",
+      "const { mutate: updateItemQuantity } = useUpdateCartItemMutation();"
+    ],
+    "description": "Import and use the cart update mutation hook"
+  },
+  "Add Item to Cart Mutation Usage": {
+    "prefix": "constAddItemToCartMutation",
+    "body": [
+      "import { useAddItemToCartMutation } from \"../_hooks/mutations/useAddItemToCartMutation\";",
+      "const { mutate: addItemToCart } = useAddItemToCartMutation();"
+    ],
+    "description": "Import and use the add item to cart mutation hook"
+  },
+  "Optimistic Update onMutate": {
+    "prefix": "onMutateOptimistic",
+    "body": [
+      "onMutate: async (variables, context) => {",
+      "  await context.client.cancelQueries({ queryKey: [\"appointments\"] })",
+      "",
+      "  context.client.setQueryData(['appointments'], (old: Appointment[] | undefined) => {",
+      "    return old ? [...old, variables] : [variables]",
+      "  })",
+      "",
+      "  return { previousAppointments: context.client.getQueryData(['appointments']) }",
+      "}"
+    ],
+    "description": "Create optimistic update with onMutate pattern"
+  }
+}
