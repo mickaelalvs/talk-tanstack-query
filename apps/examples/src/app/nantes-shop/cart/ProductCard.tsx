@@ -6,7 +6,7 @@ import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
 import { Card } from "../../../components/ui/card";
 import { useCartActions } from "../_hooks/useCartActions";
-import type { Product } from "./types";
+import { Product } from "../_components/types";
 
 interface ProductCardProps {
   product: Product;

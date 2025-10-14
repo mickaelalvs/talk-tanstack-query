@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../lib/hooks";
-import { fetchCart } from "../../_stores/cartSlice";
-import { CartButton } from "./CartButton";
-import { CartDropdown } from "./CartDropdown";
-import { CartOverlay } from "./CartOverlay";
+import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
+import { fetchCart } from "../_stores/cartSlice";
+import { CartButton } from "../_components/Cart/CartButton";
+import { CartDropdown } from "../_components/Cart/CartDropdown";
+import { CartOverlay } from "../_components/Cart/CartOverlay";
 
 export const Cart = () => {
   const dispatch = useAppDispatch();

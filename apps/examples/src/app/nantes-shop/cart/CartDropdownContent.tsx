@@ -1,5 +1,5 @@
-import { useAppSelector } from "../../../../lib/hooks";
-import { CartCard } from "./CartCard";
+import { useAppSelector } from "../../../lib/hooks";
+import { CartCard } from "../_components/Cart/CartCard";
 
 export const CartDropdownContent = () => {
   const { cart, error } = useAppSelector((state) => state.cart);

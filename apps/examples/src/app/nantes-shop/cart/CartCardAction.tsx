@@ -1,7 +1,7 @@
 import { Minus, Plus } from "lucide-react";
-import { Button } from "../../../../components/ui/button";
-import type { CartItem } from "../../../../lib/database";
-import { useCartActions } from "../../_hooks/useCartActions";
+import { Button } from "../../../components/ui/button";
+import type { CartItem } from "../../../lib/database";
+import { useCartActions } from "../_hooks/useCartActions";
 
 export const CartCardAction = ({ item }: { item: CartItem }) => {
   const { updateItemQuantity } = useCartActions();

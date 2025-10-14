@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 import { Input } from "../../../components/ui/input";
-import { Cart } from "./Cart/Cart";
+import { Cart } from "../cart/Cart";
 
 interface HeaderProps {
   searchTerm: string;
