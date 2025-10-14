@@ -21,8 +21,8 @@ mdc: true
        <h3 class="reason-title">Developer eXperience</h3>
      </div>
      <div class="reason-item" v-click>
-       <div class="reason-icon">🔧</div>
-       <h3 class="reason-title">Extensible</h3>
+       <div class="reason-icon">🆓</div>
+       <h3 class="reason-title">Framework agnostic</h3>
      </div>
   </div>
 </div>

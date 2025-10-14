@@ -17,7 +17,7 @@ mdc: true
 
   <div class="code-container">
 
-```tsx {all|3-9|11,13}{lines:true, class: '!children:p-10'}
+```tsx {all|3-9|12,14}{lines:true, class: '!children:p-10'}
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 const mutation = useMutation({

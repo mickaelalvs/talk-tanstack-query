@@ -113,6 +113,12 @@ mdc: true
 
 </Section>
 
+<!--
+- Analysez votre state et déterminez ce qui est server state et ce qui est client state. Pensez à migrer progressivement !
+- Combiner plusieurs solutions si nécessaire
+- Ne pas sur-ingénierer 🧠
+-->
+
 ---
 title: Redux - Solution
 layout: solution
@@ -153,45 +159,6 @@ mdc: true
   <span style="color: #F59E0B; font-weight: bold;">⚠️ Alternative :</span> Si vous voulez rester dans l'écosystème Redux → <code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px; font-weight: bold;">RTK Query</code>
 </div>
 
-</div>
-
-</Section>
-
----
-title: Redux - Solution
-layout: solution
-ticketNumber: "#TSQ-2024-004"
-solutionTitle: "Migration progressive Redux vers TanStack Query"
-concept: "Server State vs Client State"
-priority: "medium"
-status: "resolved"
-transition: fade
-mdc: true
----
-
-::content::
-
-<Micka />
-
-<Section title="Bonnes pratiques" icon="💡" variant="highlight">
-
-1️⃣ **Ne pas tout mettre dans TanStack Query**
-
-<div style="background-color: #EFF6FF; border-left: 4px solid #00B7D8; padding: 8px; margin: 10px 0; border-radius: 4px; font-size: 0.85em;">
-  <span style="color: #00B7D8; font-weight: bold;">💡 Solution :</span> Analysez votre state et déterminez ce qui est server state et ce qui est client state. Pensez à migrer progressivement !
-</div>
-
-<div style="height: 10px;"></div>
-
-2️⃣ **Combiner plusieurs solutions** si nécessaire
-
-<div style="height: 10px;"></div>
-
-
-3️⃣ **Ne pas sur-ingénierer 🧠**
-
-<div style="background-color: #FFFBEB; border-left: 4px solid #F59E0B; padding: 8px; margin: 10px 0; border-radius: 4px; font-size: 0.85em;">
-  <span style="color: #F59E0B; font-weight: bold;">⚠️ Pas besoin de Redux/Zustand pour tout :</span> Si vous avez <span style="color: #10B981; font-weight: 600;">2-3 états locaux simples</span> → <code style="font-size: 0.85em; color: #F59E0B; background-color: #FEF3C7; padding: 2px 4px; border-radius: 4px; font-weight: bold;">useState</code>, <code style="font-size: 0.85em; color: #F59E0B; background-color: #FEF3C7; padding: 2px 4px; border-radius: 4px; font-weight: bold;">useContext</code> ou autres APIs React suffisent !
 </div>
 
 </Section>

@@ -222,49 +222,6 @@ mdc: true
 
 <Section title="Pour aller plus loin : Mutation Queue + Retry, les mutations se mettent en pause si pas de connexion" icon="💾" variant="highlight">
 
-<div style="height: 10px;"></div>
-
-```tsx{all}{lines:true}
-const queryClient = new QueryClient({
-  defaultOptions: {
-    mutations: {
-      // Les mutations échouées sont mises en file d'attente
-      networkMode: 'offlineFirst', // ou 'online' par défaut
-      retry: 3, // Réessayer 3 fois
-      retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
-    },
-  },
-})
-```
-
-<div style="height: 10px;"></div>
-
-</Section>
-
-<!--
-• Mutations en pause si offline
-
-• Relance automatique quand connexion revient
-
-• Fonctionne même après refresh
--->
-
----
-title: Big Latency - Solution
-layout: solution
-ticketNumber: "#TSQ-2024-006"
-solutionTitle: "TanStack Query pour les environnements offline"
-concept: "Optimistic Updates + Offline Support"
-priority: "high"
-status: "resolved"
-transition: fade
-mdc: true
----
-
-::content::
-
-<Section title="Pour aller plus loin : Mutation Queue + Retry, les mutations se mettent en pause si pas de connexion" icon="💾" variant="highlight">
-
 <br />
 
 **<span style="color: #10B981;">Comportement automatique :</span>**

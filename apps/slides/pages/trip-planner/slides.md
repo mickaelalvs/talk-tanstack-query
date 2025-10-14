@@ -117,7 +117,7 @@ mdc: true
 
 **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">refetchQueries</code>** pour rafraîchir la liste :
 
-```tsx{all|4-7}{lines:true}
+```tsx{all}{lines:true}
 const useCreateTripMutation = () => {
   return useMutation({
     mutationFn: createTrip,

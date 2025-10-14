@@ -14,7 +14,7 @@ mdc: true
   <div class="lifecycle-flow">
     <!-- Étape 1: PENDING + FETCHING -->
     <div class="flow-step loading" v-click>
-      <span class="step-name">pending</span>
+      <span class="step-name-main">pending</span>
       <span class="step-plus">+</span>
       <span class="step-name">fetching</span>
       <span class="step-desc">Chargement initial</span>
@@ -23,14 +23,14 @@ mdc: true
     <!-- Étape 2: SUCCESS ou ERROR -->
     <div class="flow-branch">
       <div class="flow-step success" v-after>
-        <span class="step-name">success</span>
+        <span class="step-name-main">success</span>
         <span class="step-plus">+</span>
         <span class="step-name">idle</span>
         <span class="step-desc">Données en cache (Fresh)</span>
       </div>
       <span class="branch-separator" v-after>ou</span>
       <div class="flow-step error" v-after>
-        <span class="step-name">error</span>
+        <span class="step-name-main">error</span>
         <span class="step-plus">+</span>
         <span class="step-name">idle</span>
         <span class="step-desc">Erreur survenue</span>
@@ -39,7 +39,7 @@ mdc: true
     <span class="flow-arrow" v-click>→</span>
     <!-- Étape 3: Après staleTime -->
     <div class="flow-step success-stale" v-after>
-      <span class="step-name">success</span>
+      <span class="step-name-main">success</span>
       <span class="step-plus">+</span>
       <span class="step-name">idle</span>
       <span class="step-desc">Données obsolètes (Stale)</span>
@@ -47,20 +47,20 @@ mdc: true
     <span class="flow-arrow" v-click>→</span>
     <div class="flow-branch">
       <div class="flow-step fetching" v-after>
-        <span class="step-name">success</span>
+        <span class="step-name-main">success</span>
         <span class="step-plus">+</span>
         <span class="step-name">fetching</span>
         <span class="step-desc">Rafraîchissement</span>
       </div>
       <span class="branch-separator" v-after>ou</span>
       <div class="flow-step removed" v-after>
-        <span class="step-name">removed</span>
+        <span class="step-name-main">removed</span>
         <span class="step-desc">Cache vidé (gcTime)</span>
       </div>
     </div>
     <!-- Paused en bas -->
     <div class="flow-step paused standalone" v-click>
-      <span class="step-name">paused</span>
+      <span class="step-name-main">paused</span>
       <span class="step-desc">Pause réseau</span>
       <span class="step-note">Remplace "fetching"</span>
     </div>
@@ -143,6 +143,13 @@ mdc: true
   font-family: 'Fira Code', monospace;
   font-weight: 700;
   color: var(--theme-color-cloudBurst, #2C3E50);
+  font-size: 0.65rem;
+}
+
+.step-name-main {
+  font-family: 'Fira Code', monospace;
+  font-weight: 700;
+  color: var(--theme-color-oasis);
   font-size: 0.65rem;
 }
 
