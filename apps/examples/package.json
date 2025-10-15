@@ -10,7 +10,10 @@
     "format": "biome format --write",
     "db:init": "tsx scripts/init-db.ts",
     "db:reset": "rm -f data/trip-planner.db && npm run db:init",
-    "db:populate-products": "tsx scripts/populate-products.ts"
+    "db:populate-products": "tsx scripts/populate-products.ts",
+    "db:clear-trips": "tsx scripts/clear-trips.ts",
+    "db:clear": "tsx scripts/clear-data.ts",
+    "db:clear-all": "tsx scripts/clear-data.ts --all"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
