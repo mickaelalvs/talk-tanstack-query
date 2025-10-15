@@ -33,14 +33,6 @@ transition: fade
 <CodeServer path="itinerant-healthcare" />
 
 ---
-title: Big Latency - Demo - Optimistic update
-layout: code-server
-transition: fade
----
-
-<CodeServer path="itinerant-healthcare" />
-
----
 title: Big Latency - Solution
 layout: solution
 ticketNumber: "#TSQ-2024-006"
