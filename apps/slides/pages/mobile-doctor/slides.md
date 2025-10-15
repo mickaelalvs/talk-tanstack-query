@@ -9,7 +9,7 @@ layout: ticket
 name: "Dr. Claire Bernard"
 meta: "Développeuse — application santé rurale"
 photo: "https://placehold.co/160x160?text=Claire"
-ticketNumber: "#TSQ-2024-006"
+ticketNumber: "#TSQ-2025-006"
 priority: "high"
 status: "open"
 transition: fade
@@ -35,7 +35,7 @@ transition: fade
 ---
 title: Big Latency - Solution
 layout: solution
-ticketNumber: "#TSQ-2024-006"
+ticketNumber: "#TSQ-2025-006"
 solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
@@ -77,7 +77,7 @@ onMutate: async (variables, context) => {
 ---
 title: Big Latency - Solution
 layout: solution
-ticketNumber: "#TSQ-2024-006"
+ticketNumber: "#TSQ-2025-006"
 solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
@@ -112,7 +112,7 @@ onError: (err, variables, context) => {
 ---
 title: Big Latency - Solution
 layout: solution
-ticketNumber: "#TSQ-2024-006"
+ticketNumber: "#TSQ-2025-006"
 solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
@@ -159,7 +159,7 @@ onSuccess: (data) => {
 ---
 title: Big Latency - Solution
 layout: solution
-ticketNumber: "#TSQ-2024-006"
+ticketNumber: "#TSQ-2025-006"
 solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
@@ -201,7 +201,7 @@ const persister = createSyncStoragePersister({ storage: window.localStorage })
 ---
 title: Big Latency - Solution
 layout: solution
-ticketNumber: "#TSQ-2024-006"
+ticketNumber: "#TSQ-2025-006"
 solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"
@@ -240,7 +240,7 @@ mdc: true
 ---
 title: Big Latency - Solution
 layout: solution
-ticketNumber: "#TSQ-2024-006"
+ticketNumber: "#TSQ-2025-006"
 solutionTitle: "TanStack Query pour les environnements offline"
 concept: "Optimistic Updates + Offline Support"
 priority: "high"

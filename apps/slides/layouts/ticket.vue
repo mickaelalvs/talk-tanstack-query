@@ -21,13 +21,13 @@ const props = defineProps({
                     <h1 class="ticket-title-text">🎫 Ticket Support TanStack Query</h1>
                     <div class="ticket-number">{{ ticketNumber }}</div>
                 </div>
-                <div class="client-info-header">
+                <!-- <div class="client-info-header">
                     <img class="client-avatar-header" :src="photo" :alt="`Photo de ${name}`" />
                     <div class="client-details-header">
                         <div class="client-name-header">{{ name }}</div>
                         <div class="client-meta-header">{{ meta }}</div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="ticket-content">
@@ -136,6 +136,8 @@ const props = defineProps({
     font-weight: 700;
     margin: 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: self-end;
 }
 
 .ticket-number {

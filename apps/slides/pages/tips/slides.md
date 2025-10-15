@@ -9,7 +9,7 @@ layout: ticket
 name: "Lucas Petit"
 meta: "Développeur senior — expert TanStack Query"
 photo: "https://placehold.co/160x160?text=Lucas"
-ticketNumber: "#TSQ-2024-008"
+ticketNumber: "#TSQ-2025-008"
 priority: "low"
 status: "open"
 transition: fade
@@ -330,7 +330,7 @@ queryClient.fetchQueries({ queryKey: totoKeys.details(id), queryFn: () => fetchT
 ---
 title: Next.js - Solution
 layout: solution
-ticketNumber: "#TSQ-2024-007"
+ticketNumber: "#TSQ-2025-007"
 solutionTitle: "TanStack Query avec Next.js"
 concept: "SSR + Suspense + Hydration"
 priority: "medium"
@@ -396,7 +396,7 @@ export default function Loading() {
 ---
 title: Next.js - Solution
 layout: solution
-ticketNumber: "#TSQ-2024-007"
+ticketNumber: "#TSQ-2025-007"
 solutionTitle: "TanStack Query avec Next.js"
 concept: "SSR + Suspense + Hydration"
 priority: "medium"

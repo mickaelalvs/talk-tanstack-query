@@ -2,24 +2,24 @@
 // Run with: node test-add-city.js
 
 const testCity = {
-  name: "Rome",
-  country: "Italy",
+  name: "Nantes",
+  country: "France",
   description:
-    "The Eternal City, known for its ancient history, art, and architecture.",
-  image: "/rome-colosseum-roman-forum.png",
+    "La cité des Ducs de Bretagne, ville historique et créative au bord de la Loire.",
+  image: "/nantes-chateau-ducs.png",
   weather: {
-    temperature: 25,
-    condition: "Ensoleillé",
-    icon: "☀️",
+    temperature: 18,
+    condition: "Nuageux",
+    icon: "☁️",
   },
-  attractions: ["Colisée", "Forum Romain", "Fontaine de Trevi", "Vatican"],
-  bestTimeToVisit: "Avril à juin, septembre à octobre",
+  attractions: ["Château des Ducs de Bretagne", "Passage Pommeraye", "Île de Versailles", "Tour LU"],
+  bestTimeToVisit: "Mai à septembre",
 };
 
 async function addCity() {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/trip-planner/cities",
+      "http://localhost:1234/api/trip-planner/cities",
       {
         method: "POST",
         headers: {
