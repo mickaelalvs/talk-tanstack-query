@@ -1,3 +1,4 @@
+import { Toaster } from "../components/ui/toaster";
 import { Providers } from "./_components/Providers";
 import { RedirectToHome } from "./_components/RedirectToHome";
 
@@ -11,6 +12,7 @@ export default function RootLayout({
       <body>
         <Providers>{children}</Providers>
         <RedirectToHome />
+        <Toaster />
       </body>
     </html>
   );

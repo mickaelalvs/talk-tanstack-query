@@ -4,6 +4,7 @@ import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { useCitySelection } from "../../../../lib/hooks";
+import { useSuccessToast } from "../../_components/useSuccessToast";
 import { createTrip } from "../../_services/create-trip";
 
 export const CreateTripBanner = () => {
@@ -14,6 +15,7 @@ export const CreateTripBanner = () => {
     hasSelectedCities,
   } = useCitySelection();
   const [newTripName, setNewTripName] = useState("");
+  const { addToast } = useSuccessToast();
 
   if (!hasSelectedCities) {
     return null;
@@ -33,6 +35,7 @@ export const CreateTripBanner = () => {
       if (response.ok) {
         clearSelectedCities();
         setNewTripName("");
+        addToast(newTripName.trim(), selectedCities.length);
       } else {
         console.error("Failed to create trip:", await response.text());
       }
