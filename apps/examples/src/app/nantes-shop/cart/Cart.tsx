@@ -17,7 +17,7 @@ export const Cart = () => {
   }, [dispatch]);
 
   const totalItemCount = useMemo(() => {
-    if (!cart) return 0;
+    if (!cart || !cart.items) return 0;
     return cart.items.reduce((total, item) => total + item.quantity, 0);
   }, [cart]);
 

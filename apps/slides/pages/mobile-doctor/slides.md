@@ -18,11 +18,11 @@ mdc: true
 
 ::message::
 
-Je suis le créateur d'une application qui à pour but d'aider les soignants en zone rurale dans la gestion de leur prise de rendez-vous. J'ai déjà TanStack Query dans mon application, cela marche vraiment bien et ça me permet de me passer de store. Cependant, je me suis confronté à un problème, dans des milieux ruraux un peu reculé, l'accès au reseau est parfait un peut chaotique... Vais-je devoir me passer de TanStack Query ?
+Je suis la créatrice d'une application qui a pour but d'aider les soignants en zone rurale dans la gestion de leur prise de rendez-vous. J'ai déjà TanStack Query dans mon application, cela marche vraiment bien et ça me permet de me passer de store. Cependant, je me suis confrontée à un problème, dans des milieux ruraux un peu reculés, l'accès au réseau est parfois chaotique... Vais-je devoir me passer de TanStack Query ?
 
 ::problem::
 
-Comment gérer les problèmes de connectivité réseau intermittente en zone rurale avec TanStack Query sans perdre les données utilisateur ?
+Comment gérer les problèmes de connectivités réseau intermittente en zone rurale avec TanStack Query sans perdre les données utilisateur ?
 
 ---
 title: Big Latency - Demo - Optimistic update

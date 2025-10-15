@@ -18,11 +18,11 @@ transition: view-transition
 
 ::message::
 
-J'ai une application de préparation de voyage, ou l'on peut créer un voyage à partir des différentes villes que l'on veut visiter, et l'application nous permettra de nous aider à préparer ces voyages. Pour l'instant j'ai la liste des villes et des voyages, et j'aimerai bien savoir comment je pourrais inclure TanStack Query dans cette application qui a un état local et une gestion de données assez simple.
+J'ai une application de préparation de voyages, où l'on peut créer un voyage à partir des différentes villes que l'on veut visiter, et l'application nous permettra de nous aider à préparer ces voyages. Pour l'instant j'ai la liste des villes et des voyages, et j'aimerai bien savoir comment je pourrais inclure TanStack Query dans cette application qui a un état local et une gestion de données assez simple.
 
 ::problem::
 
-Comment intégrer TanStack Query dans une application de planification de voyage pour gérer efficacement les données des villes et des voyages ?
+Comment intégrer TanStack Query dans une application de planification de voyages pour gérer efficacement les données des villes et des voyages ?
 
 <!--
 Transition Micka : Cas simple, on a souvent la question je pense on va pouvoir l'aider, je te propose que l'on regarde un peu son code et qu'on essaie d'améliorer ça

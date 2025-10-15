@@ -24,7 +24,7 @@ export default function NantesShoppingApp() {
   });
 
   const paginatedProducts = productsData?.products || [];
-  const totalPages = productsData?.pagination.totalPages || 0;
+  const totalPages = productsData?.pagination?.totalPages || 0;
 
   if (error) {
     return <ErrorPage error={error.message} />;

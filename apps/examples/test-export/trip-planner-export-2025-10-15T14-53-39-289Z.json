@@ -1,0 +1,86 @@
+{
+  "metadata": {
+    "exportedAt": "2025-10-15T14:53:39.289Z",
+    "database": "trip-planner.db",
+    "version": "1.0.0"
+  },
+  "schema": {
+    "cities": "CREATE TABLE cities (\n      id TEXT PRIMARY KEY,\n      name TEXT NOT NULL,\n      country TEXT NOT NULL,\n      description TEXT NOT NULL,\n      image TEXT NOT NULL,\n      weather_temperature INTEGER NOT NULL,\n      weather_condition TEXT NOT NULL,\n      weather_icon TEXT NOT NULL,\n      attractions TEXT NOT NULL, -- JSON array as string\n      best_time_to_visit TEXT NOT NULL\n    )"
+  },
+  "data": {
+    "cities": [
+      {
+        "id": "1",
+        "name": "Paris",
+        "country": "France",
+        "description": "La Ville Lumière, célèbre pour son art, sa mode, sa gastronomie et sa culture.",
+        "image": "/paris-eiffel-cityscape.png",
+        "weather_temperature": 18,
+        "weather_condition": "Partiellement nuageux",
+        "weather_icon": "⛅",
+        "attractions": "[\"Tour Eiffel\",\"Musée du Louvre\",\"Cathédrale Notre-Dame\",\"Champs-Élysées\"]",
+        "best_time_to_visit": "Avril à juin, septembre à octobre"
+      },
+      {
+        "id": "2",
+        "name": "Tokyo",
+        "country": "Japon",
+        "description": "Une métropole animée mêlant culture traditionnelle et technologie de pointe.",
+        "image": "/tokyo-fuji-skyline.png",
+        "weather_temperature": 22,
+        "weather_condition": "Ensoleillé",
+        "weather_icon": "☀️",
+        "attractions": "[\"Temple Senso-ji\",\"Tokyo Skytree\",\"Carrefour de Shibuya\",\"Palais Impérial\"]",
+        "best_time_to_visit": "Mars à mai, septembre à novembre"
+      },
+      {
+        "id": "3",
+        "name": "New York",
+        "country": "États-Unis",
+        "description": "La Grande Pomme, centre mondial de la finance, des arts, de la mode et de la culture.",
+        "image": "/new-york-manhattan-skyline-central-park.png",
+        "weather_temperature": 15,
+        "weather_condition": "Pluvieux",
+        "weather_icon": "🌧️",
+        "attractions": "[\"Statue de la Liberté\",\"Central Park\",\"Times Square\",\"Pont de Brooklyn\"]",
+        "best_time_to_visit": "Avril à juin, septembre à novembre"
+      },
+      {
+        "id": "4",
+        "name": "Barcelone",
+        "country": "Espagne",
+        "description": "Une ville vibrante connue pour son art, son architecture et ses plages méditerranéennes.",
+        "image": "/barcelona-sagrada-familia-gothic-quarter.png",
+        "weather_temperature": 24,
+        "weather_condition": "Ensoleillé",
+        "weather_icon": "☀️",
+        "attractions": "[\"Sagrada Familia\",\"Parc Güell\",\"Las Ramblas\",\"Quartier Gothique\"]",
+        "best_time_to_visit": "Mai à septembre"
+      },
+      {
+        "id": "5",
+        "name": "Sydney",
+        "country": "Australie",
+        "description": "Ville portuaire célèbre pour son Opéra, ses plages et son style de vie décontracté.",
+        "image": "/sydney-opera-house-harbour-bridge.png",
+        "weather_temperature": 20,
+        "weather_condition": "Partiellement nuageux",
+        "weather_icon": "⛅",
+        "attractions": "[\"Opéra de Sydney\",\"Harbour Bridge\",\"Bondi Beach\",\"Jardins Botaniques Royaux\"]",
+        "best_time_to_visit": "Septembre à novembre, mars à mai"
+      },
+      {
+        "id": "6",
+        "name": "Londres",
+        "country": "Royaume-Uni",
+        "description": "Capitale historique avec des palais royaux, des musées de classe mondiale et des monuments emblématiques.",
+        "image": "/london-big-ben-thames-river-red-buses.png",
+        "weather_temperature": 12,
+        "weather_condition": "Nuageux",
+        "weather_icon": "☁️",
+        "attractions": "[\"Big Ben\",\"Tour de Londres\",\"British Museum\",\"Palais de Buckingham\"]",
+        "best_time_to_visit": "Mars à mai, septembre à novembre"
+      }
+    ]
+  }
+}

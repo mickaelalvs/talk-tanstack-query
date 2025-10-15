@@ -20,7 +20,7 @@ mdc: true
 
 <Micka />
 
-Je suis un gros utilisateur de TanStack Query, je l'utilise partout que je peux. J'ai ouï dire que vous etiez des professionnels, avez vous des petits conseil pour améliorer encore l'utilisation de ce super outil ?
+Je suis un gros utilisateur de TanStack Query, je l'utilise partout que je peux. J'ai ouï dire que vous étiez des professionnels, avez vous des petits conseils pour améliorer encore l'utilisation de ce super outil ?
 
 ::problem::
 

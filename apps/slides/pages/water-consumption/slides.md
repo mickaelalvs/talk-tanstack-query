@@ -20,7 +20,7 @@ mdc: true
 
 <Micka />
 
-Je suis le gérant d'un syndic d'immeuble, et j'ai donc à disposition une application que me permet de suivre la consommation des différents occupants, mais le code devient un peu fouillit avec tout les appels réseaux que je doit gérer, et je ne parle même pas des états de chargement qui arrivent de partout. J'ai cru comprendre que TanStack Query pourrais m'aider, pouvez vous me guider ?
+Je suis le gérant d'un syndic d'immeuble, et j'ai donc à disposition une application que me permet de suivre la consommation des différents occupants. J'utilise déjà TanStack Query mais le code devient un peu fouillis avec tout les appels réseaux que je doit gérer, et je ne parle même pas des états de chargement qui arrivent de partout ... Pouvez vous m'aider ?
 
 ::problem::
 

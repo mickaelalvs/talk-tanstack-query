@@ -18,7 +18,7 @@ mdc: true
 
 ::message::
 
-Je suis l'heureux gérant de l'application de e-commerce leader sur la vente de spécialité Nantaises, qui fait fureur en ce moment. L'application commence à être un peut vieille, on ne devient pas leader en un jour ! Bien que nous gardons l'application à jour, nous utilisons un gros store Redux qui nous permet de tout gérer, et j'ai entendu dire que TanStack Query pourrai simplifier tout ça, pouvez vous m'éclairer ?
+Je suis l’heureuse gérante de l'application de e-commerce leader sur la vente de spécialité Nantaises, qui fait fureur en ce moment. L'application commence à être un peu vieille, on ne devient pas leader en un jour ! Bien que nous gardons l'application à jour, nous utilisons un gros store Redux qui nous permet de tout gérer, et j'ai entendu dire que TanStack Query pourrai simplifier tout ça, pouvez vous m'éclairer ?
 
 ::problem::
 
