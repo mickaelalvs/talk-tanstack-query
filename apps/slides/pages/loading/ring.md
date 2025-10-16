@@ -9,7 +9,6 @@ transition: fade
     ref="ringAudio" 
     loop
     preload="auto"
-    muted
   >
     <source src="./assets/ring.mp3" type="audio/mpeg">
   </audio>
