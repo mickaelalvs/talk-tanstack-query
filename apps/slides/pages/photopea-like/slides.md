@@ -20,7 +20,7 @@ mdc: true
 
 <Micka />
 
-J'ai besoin de votre aide. Je maintient depuis quelques années un outils comme photoshop en ligne sous Vue.js avec Pinia, et j'entend la hype me parler de TanStack Query tout autour de moi. Je ne peux me résoudre à ne pas l'utiliser, pouvez vous m'aider à l'integrer (si c'est possible) ?
+J'ai besoin de votre aide. Je maintiens depuis quelques années un outil comme photoshop en ligne sous Vue.js avec Pinia, et j'entends la hype me parler de TanStack Query tout autour de moi. Je ne peux me résoudre à ne pas l'utiliser, pouvez-vous m'aider à l'intégrer (si c'est possible) ?
 
 ::problem::
 

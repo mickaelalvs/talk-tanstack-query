@@ -20,7 +20,7 @@ mdc: true
 
 <Micka />
 
-Je suis un gros utilisateur de TanStack Query, je l'utilise partout que je peux. J'ai ouï dire que vous étiez des professionnels, avez vous des petits conseils pour améliorer encore l'utilisation de ce super outil ?
+Je suis un gros utilisateur de TanStack Query, je l'utilise partout dès que je peux. J'ai ouï dire que vous étiez des professionnels, avez-vous des petits conseils pour améliorer encore l'utilisation de ce super outil ?
 
 ::problem::
 
@@ -112,7 +112,7 @@ L'API de **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EF
 
 <div style="height: 10px;"></div>
 
-•   **data.pages** et **data.pageParams** qui stocke les informations de la query
+•   **data.pages** et **data.pageParams** qui stockent les informations de la query
 
 <div style="height: 10px;"></div>
 

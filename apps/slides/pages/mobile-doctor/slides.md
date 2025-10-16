@@ -22,7 +22,7 @@ Je suis la créatrice d'une application qui a pour but d'aider les soignants en 
 
 ::problem::
 
-Comment gérer les problèmes de connectivités réseau intermittente en zone rurale avec TanStack Query sans perdre les données utilisateur ?
+Comment gérer les problèmes de connectivité réseau intermittente en zone rurale avec TanStack Query sans perdre les données utilisateur ?
 
 ---
 title: Big Latency - Demo - Optimistic update
