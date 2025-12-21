@@ -17,12 +17,12 @@ seoMeta:
   ogTitle: "Révolution TanStack Query : Enfin une bonne gestion d’état 🗂️"
   ogDescription: "Gérer l’état dans une application frontend est un défi quotidien… 🤯 Entre Redux, Zustand, Recoil, les React Context ou encore Pinia côté Vue, les options sont nombreuses, mais parfois trop ! Et quand on y ajoute la gestion des appels réseau, du cache, des états de chargement ou d’erreur, le tout peut vite devenir un vrai casse-tête… 💣"
   ogImage: "/assets/images/og.jpeg"
-  ogUrl: "https://cruuzazul.dev"
+  ogUrl: "https://mickaelalvs.dev"
   twitterCard: summary_large_image
   twitterTitle: "Révolution TanStack Query : Enfin une bonne gestion d’état 🗂️"
   twitterDescription: "Gérer l’état dans une application frontend est un défi quotidien… 🤯 Entre Redux, Zustand, Recoil, les React Context ou encore Pinia côté Vue, les options sont nombreuses, mais parfois trop ! Et quand on y ajoute la gestion des appels réseau, du cache, des états de chargement ou d’erreur, le tout peut vite devenir un vrai casse-tête… 💣"
   twitterImage: "/assets/images/og.jpeg"
-  twitterUrl: "https://cruuzazul.dev"
+  twitterUrl: "https://mickaelalvs.dev"
 ---
 
 ---

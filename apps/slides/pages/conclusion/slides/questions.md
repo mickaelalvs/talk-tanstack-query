@@ -43,8 +43,8 @@ mdc: true
           </div>
           <div class="contact-card">
             <div class="contact-info">
-              <img src="https://github.com/CruuzAzul.png" alt="Mickaël Alves" class="contact-avatar" />
-              <span class="contact-handle">@CruuzAzul</span>
+              <img src="https://github.com/mickaelalvs.png" alt="Mickaël Alves" class="contact-avatar" />
+              <span class="contact-handle">@mickaelalvs</span>
             </div>
             <div class="contact-qr">
               <img src="../assets/micka.png" alt="QR Code Mickaël" class="qr-small" />
