@@ -28,6 +28,12 @@ When code-server is installed, you just need to run this command in the folder y
 code-server . --auth=none --port 4000
 ```
 
+If you have an error, you can try this before the command above
+
+```
+PATH="$HOME/.local/bin:$PATH"
+```
+
 A server on the 4000 port should be running, and you can see it in every slides with the `<CodeServer />` component
 
 ### App
