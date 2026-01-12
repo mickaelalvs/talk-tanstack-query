@@ -4,7 +4,7 @@ layout: logo-bounce
 transition: fade
 ---
 
-<WordsPop :words="['E-commerce Nantais', 'Store Redux', 'Complexité', 'Simplifier ?']" :interval="800" :duration="4000" />
+<WordsPop :words="['E-commerce Grenoblois', 'Store Redux', 'Complexité', 'Simplifier ?']" :interval="800" :duration="4000" />
 
 <div class="loading-text">
   <div class="sav-waiting">

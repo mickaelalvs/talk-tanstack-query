@@ -2,18 +2,23 @@
 // Run with: node test-add-city.js
 
 const testCity = {
-  name: "Nantes",
+  name: "Grenoble",
   country: "France",
   description:
-    "La cité des Ducs de Bretagne, ville historique et créative au bord de la Loire.",
-  image: "/nantes-chateau-ducs.png",
+    "Capitale des Alpes, ville universitaire dynamique entourée de montagnes, réputée pour la recherche et l’innovation.",
+  image: "/grenoble-bastille.jpg",
   weather: {
-    temperature: 18,
-    condition: "Nuageux",
-    icon: "☁️",
+    temperature: 20,
+    condition: "Ensoleillé",
+    icon: "☀️",
   },
-  attractions: ["Château des Ducs de Bretagne", "Passage Pommeraye", "Île de Versailles", "Tour LU"],
-  bestTimeToVisit: "Mai à septembre",
+  attractions: [
+    "La Bastille",
+    "Musée de Grenoble",
+    "Téléphérique de Grenoble",
+    "Place Victor Hugo"
+  ],
+  bestTimeToVisit: "Mai à octobre",
 };
 
 async function addCity() {

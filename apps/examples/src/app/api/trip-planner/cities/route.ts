@@ -100,3 +100,46 @@ export async function POST(request: Request) {
     );
   }
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const cityName = searchParams.get("name");
+
+    if (!cityName) {
+      return NextResponse.json(
+        { error: "City name is required as query parameter" },
+        { status: 400 },
+      );
+    }
+
+    const db = getDatabase();
+
+    // Check if city exists
+    const cityRow = db
+      .prepare("SELECT * FROM cities WHERE name = ?")
+      .get(cityName);
+
+    if (!cityRow) {
+      return NextResponse.json(
+        { error: `City "${cityName}" not found` },
+        { status: 404 },
+      );
+    }
+
+    // Delete the city
+    const deleteCity = db.prepare("DELETE FROM cities WHERE name = ?");
+    deleteCity.run(cityName);
+
+    return NextResponse.json({
+      success: true,
+      message: `City "${cityName}" deleted successfully`,
+    });
+  } catch (error) {
+    console.error("Database error:", error);
+    return NextResponse.json(
+      { error: "Failed to delete city" },
+      { status: 500 },
+    );
+  }
+}

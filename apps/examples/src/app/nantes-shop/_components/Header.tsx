@@ -13,7 +13,7 @@ export function Header({ searchTerm, setSearchTerm }: HeaderProps) {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-2xl font-bold text-primary">
-            Spécialités Nantaises
+            Spécialités Grenobloises
           </h1>
           <Cart />
         </div>

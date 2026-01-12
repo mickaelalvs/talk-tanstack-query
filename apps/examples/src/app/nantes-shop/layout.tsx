@@ -6,9 +6,9 @@ import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Spécialités Nantaises - Boutique en ligne",
+  title: "Spécialités Grenobloises - Boutique en ligne",
   description:
-    "Découvrez les meilleures spécialités culinaires de Nantes : Muscadet, Petit Beurre, Gâteau Nantais et bien plus encore.",
+    "Découvrez les meilleures spécialités culinaires de Grenoble : Chartreuse, Biscuits de la Montagne et bien plus encore.",
   generator: "v0.app",
 };
 
