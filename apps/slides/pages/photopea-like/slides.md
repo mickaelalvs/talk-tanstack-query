@@ -9,7 +9,7 @@ layout: ticket
 name: "Alexandre Moreau"
 meta: "Développeur — outil graphique en ligne"
 photo: "https://placehold.co/160x160?text=Alex"
-ticketNumber: "#TSQ-2025-005"
+ticketNumber: "#TSQ-2026-005"
 priority: "low"
 status: "open"
 transition: fade
@@ -29,7 +29,7 @@ Est-ce que TanStack Query est vraiment adapté à une application graphique en l
 ---
 title: Photopea - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-005"
+ticketNumber: "#TSQ-2026-005"
 solutionTitle: "Quand NE PAS utiliser TanStack Query"
 concept: "Client State Only"
 priority: "low"
@@ -67,7 +67,7 @@ Votre application d'édition graphique est **100% client-side** :
 ---
 title: Photopea - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-005"
+ticketNumber: "#TSQ-2026-005"
 solutionTitle: "Quand NE PAS utiliser TanStack Query"
 concept: "Client State Only"
 priority: "low"
@@ -152,7 +152,7 @@ Lucas : Après il y a quand même des ças où elle pourrait arriver à en avoir
 ---
 title: Photopea - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-005"
+ticketNumber: "#TSQ-2026-005"
 solutionTitle: "Quand NE PAS utiliser TanStack Query"
 concept: "Client State Only"
 priority: "low"
@@ -190,7 +190,7 @@ Même dans une app d'édition graphique, **quelques fonctionnalités** pourraien
 ---
 title: Photopea - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-005"
+ticketNumber: "#TSQ-2026-005"
 solutionTitle: "Quand NE PAS utiliser TanStack Query"
 concept: "Client State Only"
 priority: "low"

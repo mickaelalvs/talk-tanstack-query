@@ -9,7 +9,7 @@ layout: ticket
 name: "Pierre Martin"
 meta: "Gérant syndic d'immeuble — gestion consommation"
 photo: "https://placehold.co/160x160?text=Pierre"
-ticketNumber: "#TSQ-2025-003"
+ticketNumber: "#TSQ-2026-003"
 priority: "high"
 status: "open"
 transition: fade
@@ -37,7 +37,7 @@ transition: fade
 ---
 title: List - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-003"
+ticketNumber: "#TSQ-2026-003"
 solutionTitle: "Simplification de la gestion des données de consommation"
 concept: "Query Keys Dynamiques"
 priority: "high"
@@ -114,7 +114,7 @@ queryKey: ['water-meters', { search, type, floor, sort }] // ✅
 ---
 title: List - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-003"
+ticketNumber: "#TSQ-2026-003"
 solutionTitle: "Simplification de la gestion des données de consommation"
 concept: "Query Keys Dynamiques"
 priority: "high"

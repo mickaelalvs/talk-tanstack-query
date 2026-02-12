@@ -1,6 +1,7 @@
 # Demos
 
 ## Trip-planner - Timé 5:35
+***Timing DevFest Nantes : 7:00***
 
 - Faire un tour de l'app, créer un voyage pour qu'on puisse voir le fonctionnement
 
@@ -70,6 +71,8 @@ export const useDeleteTripMutation = () => {
 - Montrer sur l'app
 
 ## Water Meters - Timé 4:00
+***Timing DevFest Nantes : 4:20***
+
 
 - Passer sur l'app, montrer rapidement les filtres sur le graph et le tableau
 
@@ -88,6 +91,7 @@ export const useDeleteTripMutation = () => {
 - Faire pareil pour le graph, le remove query est dans le composant `GraphFilters`
 
 ## Nantes shop - Timé 3:52
+***Timing DevFest Nantes : 7:20***
 
 - Passer sur l'app, montrer qu'on peut ajouter une cathédrale au panier
 
@@ -108,6 +112,7 @@ export const useDeleteTripMutation = () => {
 - Montrer que tout marche
 
 ## Medecin itinérant - Timé 3:45
+***Timing DevFest Nantes : 3:00***
 
 - Passer sur l'app, montrer les temps de chargements abusés
 

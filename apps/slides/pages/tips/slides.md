@@ -9,7 +9,7 @@ layout: ticket
 name: "Lucas Petit"
 meta: "Développeur senior — expert TanStack Query"
 photo: "https://placehold.co/160x160?text=Lucas"
-ticketNumber: "#TSQ-2025-008"
+ticketNumber: "#TSQ-2026-008"
 priority: "low"
 status: "open"
 transition: fade
@@ -29,7 +29,7 @@ Quels sont les meilleures pratiques et astuces avancées pour optimiser l'utilis
 ---
 title: Tips & Tricks - useInfiniteQuery
 layout: solution
-ticketNumber: "#TSQ-2025-007"
+ticketNumber: "#TSQ-2026-007"
 solutionTitle: "Query infini !"
 concept: "Infinite Query"
 priority: "low"
@@ -89,7 +89,7 @@ async function listProject({pageParam}) => {
 ---
 title: Tips & Tricks - useInfiniteQuery
 layout: solution
-ticketNumber: "#TSQ-2025-007"
+ticketNumber: "#TSQ-2026-007"
 solutionTitle: "Query infini !"
 concept: "Infinite Query"
 priority: "low"
@@ -137,7 +137,7 @@ L'API de **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EF
 ---
 title: Tips & Tricks - query key factory
 layout: solution
-ticketNumber: "#TSQ-2025-007"
+ticketNumber: "#TSQ-2026-007"
 solutionTitle: "Query Key Factory"
 concept: "Query Key Factory"
 priority: "low"
@@ -179,7 +179,7 @@ Dans un cas réel, le nombre de query peut grandir très vite, avec le nombre de
 ---
 title: Tips & Tricks - query key factory
 layout: solution
-ticketNumber: "#TSQ-2025-007"
+ticketNumber: "#TSQ-2026-007"
 solutionTitle: "Query Key Factory"
 concept: "Query Key Factory"
 priority: "low"
@@ -243,7 +243,7 @@ const TRANSACTIONS_QUERY_KEYS = {
 ---
 title: Tips & Tricks - query key factory
 layout: solution
-ticketNumber: "#TSQ-2025-007"
+ticketNumber: "#TSQ-2026-007"
 solutionTitle: "Query Key Factory"
 concept: "Query Key Factory"
 priority: "low"
@@ -286,7 +286,7 @@ const todoKeys = {
 ---
 title: Tips & Tricks - query key factory
 layout: solution
-ticketNumber: "#TSQ-2025-007"
+ticketNumber: "#TSQ-2026-007"
 solutionTitle: "Query Key Factory"
 concept: "Query Key Factory"
 priority: "low"
@@ -330,7 +330,7 @@ queryClient.fetchQueries({ queryKey: totoKeys.details(id), queryFn: () => fetchT
 ---
 title: Next.js - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-007"
+ticketNumber: "#TSQ-2026-007"
 solutionTitle: "TanStack Query avec Next.js"
 concept: "SSR + Suspense + Hydration"
 priority: "medium"
@@ -396,7 +396,7 @@ export default function Loading() {
 ---
 title: Next.js - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-007"
+ticketNumber: "#TSQ-2026-007"
 solutionTitle: "TanStack Query avec Next.js"
 concept: "SSR + Suspense + Hydration"
 priority: "medium"

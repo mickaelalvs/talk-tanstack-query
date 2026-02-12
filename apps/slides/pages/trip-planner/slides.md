@@ -9,7 +9,7 @@ layout: ticket
 name: "Marie Dubois"
 meta: "Développeuse frontend — application de voyage"
 photo: "https://placehold.co/160x160?text=Marie"
-ticketNumber: "#TSQ-2025-002"
+ticketNumber: "#TSQ-2026-002"
 priority: "medium"
 status: "open"
 mdc: true
@@ -39,7 +39,7 @@ transition: fade
 ---
 title: Base Case - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-002"
+ticketNumber: "#TSQ-2026-002"
 solutionTitle: "Intégration TanStack Query dans Trip Planner"
 concept: "useQuery + useMutation"
 priority: "medium"
@@ -102,7 +102,7 @@ const { mutate: createTrip } = useMutation({
 ---
 title: Base Case - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-002"
+ticketNumber: "#TSQ-2026-002"
 solutionTitle: "Intégration TanStack Query dans Trip Planner"
 concept: "useQuery + useMutation"
 priority: "medium"
@@ -134,7 +134,7 @@ const useCreateTripMutation = () => {
 ---
 title: Base Case - Solution - Récap
 layout: solution
-ticketNumber: "#TSQ-2025-002"
+ticketNumber: "#TSQ-2026-002"
 solutionTitle: "Intégration TanStack Query dans Trip Planner"
 concept: "useQuery + useMutation"
 priority: "medium"

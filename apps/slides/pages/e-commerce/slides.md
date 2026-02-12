@@ -9,7 +9,7 @@ layout: ticket
 name: "Sophie Leroy"
 meta: "Gérante e-commerce — spécialités Nantaises"
 photo: "https://placehold.co/160x160?text=Sophie"
-ticketNumber: "#TSQ-2025-004"
+ticketNumber: "#TSQ-2026-004"
 priority: "medium"
 status: "open"
 transition: fade
@@ -35,7 +35,7 @@ transition: fade
 ---
 title: Redux - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-004"
+ticketNumber: "#TSQ-2026-004"
 solutionTitle: "Migration progressive Redux vers TanStack Query"
 concept: "Server State vs Client State"
 priority: "medium"
@@ -70,7 +70,7 @@ const cartSlice = createSlice({
 ---
 title: Redux - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-004"
+ticketNumber: "#TSQ-2026-004"
 solutionTitle: "Migration progressive Redux vers TanStack Query"
 concept: "Server State vs Client State"
 priority: "medium"
@@ -122,7 +122,7 @@ mdc: true
 ---
 title: Redux - Solution
 layout: solution
-ticketNumber: "#TSQ-2025-004"
+ticketNumber: "#TSQ-2026-004"
 solutionTitle: "Migration progressive Redux vers TanStack Query"
 concept: "Server State vs Client State"
 priority: "medium"
