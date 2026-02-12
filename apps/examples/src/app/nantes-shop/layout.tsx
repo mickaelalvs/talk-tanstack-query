@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Spécialités Nantaises - Boutique en ligne",
+  title: "Spécialités de Tours - Boutique en ligne",
   description:
     "Découvrez les meilleures spécialités culinaires de Tours : Vouvray, Rillettes, Cathédrale Saint-Gatien et bien plus encore.",
   generator: "v0.app",

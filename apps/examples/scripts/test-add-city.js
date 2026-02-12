@@ -6,7 +6,7 @@ const testCity = {
   country: "France",
   description:
     "Ville historique au cœur de la Touraine, capitale de la région Centre-Val de Loire, célèbre pour sa cathédrale gothique et sa proximité avec les châteaux de la Loire.",
-  image: "/tours-cathedrale.png",
+  image: "/tours.jpg",
   weather: {
     temperature: 20,
     condition: "Ensoleillé",
