@@ -11,8 +11,8 @@ export default function Home() {
     },
     {
       href: "/nantes-shop",
-      title: "Shop de Nantes",
-      description: "Découvrez les spécialités de Nantes et commandez en ligne.",
+      title: "Shop de Tours",
+      description: "Découvrez les spécialités de Tours et commandez en ligne.",
     },
     {
       href: "water-meter",

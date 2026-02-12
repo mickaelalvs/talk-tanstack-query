@@ -8,7 +8,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Spécialités Nantaises - Boutique en ligne",
   description:
-    "Découvrez les meilleures spécialités culinaires de Nantes : Muscadet, Petit Beurre, Gâteau Nantais et bien plus encore.",
+    "Découvrez les meilleures spécialités culinaires de Tours : Vouvray, Rillettes, Cathédrale Saint-Gatien et bien plus encore.",
   generator: "v0.app",
 };
 

@@ -2,18 +2,18 @@
 // Run with: node test-add-city.js
 
 const testCity = {
-  name: "Nantes",
+  name: "Tours",
   country: "France",
   description:
-    "La cité des Ducs de Bretagne, ville historique et créative au bord de la Loire.",
-  image: "/nantes-chateau-ducs.png",
+    "Ville historique au cœur de la Touraine, capitale de la région Centre-Val de Loire, célèbre pour sa cathédrale gothique et sa proximité avec les châteaux de la Loire.",
+  image: "/tours-cathedrale.png",
   weather: {
-    temperature: 18,
-    condition: "Nuageux",
-    icon: "☁️",
+    temperature: 20,
+    condition: "Ensoleillé",
+    icon: "☀️",
   },
-  attractions: ["Château des Ducs de Bretagne", "Passage Pommeraye", "Île de Versailles", "Tour LU"],
-  bestTimeToVisit: "Mai à septembre",
+  attractions: ["Cathédrale Saint-Gatien", "Place Plumereau", "Musée des Beaux-Arts", "Basilique Saint-Martin"],
+  bestTimeToVisit: "Avril à octobre",
 };
 
 async function addCity() {
