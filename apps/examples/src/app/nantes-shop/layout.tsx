@@ -6,9 +6,9 @@ import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Spécialités de Tours - Boutique en ligne",
+  title: "Spécialités de Paris - Boutique en ligne",
   description:
-    "Découvrez les meilleures spécialités culinaires de Tours : Vouvray, Rillettes, Cathédrale Saint-Gatien et bien plus encore.",
+    "Découvrez les meilleures spécialités parisiennes : Glace Berthillon, Paris-Brest, Macarons, Jambon-beurre et bien plus encore.",
   generator: "v0.app",
 };
 

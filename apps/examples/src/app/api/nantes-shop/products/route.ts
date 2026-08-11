@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     const showPromotions = searchParams.get("showPromotions") === "true";
     const showInStock = searchParams.get("showInStock") === "true";
     const page = parseInt(searchParams.get("page") || "1", 10);
-    const limit = parseInt(searchParams.get("limit") || "6", 10);
+    const limit = parseInt(searchParams.get("limit") || "10", 10);
 
     const allProducts = getAllProducts();
 
