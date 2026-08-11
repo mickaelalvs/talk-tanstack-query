@@ -9,7 +9,7 @@ mdc: true
 
 <div class="solution-container">
   <h1 class="solution-title">
-    TanStack Query <img src="/assets/images/tanstack.png" alt="TanStack Query" class="tanstack-logo" />
+    TanStack Query <img src="/assets/images/tanstack-logo.svg" alt="TanStack Query" class="tanstack-logo" />
   </h1>
   <div class="reasons-container">
      <div class="reason-item" v-click>
@@ -55,8 +55,8 @@ mdc: true
 }
 
 .tanstack-logo {
-  width: 80px;
-  height: 80px;
+  width: 65px;
+  height: 65px;
   object-fit: contain;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
 }

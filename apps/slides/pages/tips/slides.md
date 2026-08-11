@@ -433,7 +433,7 @@ mdc: true
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin: 20px 0;">
   <div class="logo-item" style="text-align: center; animation-delay: 0.1s;">
-    <img src="/assets/images/tanstack.png" alt="TanStack Start" style="width: 70px; height: 70px; filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.3));" />
+    <img src="/assets/images/tanstack-logo.svg" alt="TanStack Start" style="width: 70px; height: 70px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));" />
     <div style="font-size: 0.7em; margin-top: 5px;">TanStack Start</div>
   </div>
 

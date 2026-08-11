@@ -58,8 +58,8 @@ transition: fade
 
 <div class="absolute top-6 left-8 z-10">
   <img 
-    src="https://tanstack.com/images/logos/logo-color-100.png" 
+    src="/assets/images/tanstack-logo.svg" 
     alt="TanStack Logo" 
-    class="h-10 w-auto"
+    class="h-15 w-auto"
   />
 </div>

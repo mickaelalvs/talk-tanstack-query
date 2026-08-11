@@ -7,7 +7,7 @@ transition: fade
 title: Redux - Call
 layout: ticket
 name: "Sophie Leroy"
-meta: "Gérante e-commerce — spécialités de Tours"
+meta: "Gérante e-commerce — spécialités de Paris"
 photo: "https://placehold.co/160x160?text=Sophie"
 ticketNumber: "#TSQ-2026-004"
 priority: "medium"
@@ -18,11 +18,11 @@ mdc: true
 
 ::message::
 
-Je suis l’heureuse gérante de l'application de e-commerce leader sur la vente de spécialités de Tours, qui fait fureur en ce moment. L'application commence à être un peu vieille, on ne devient pas leader en un jour ! Bien que nous gardons l'application à jour, nous utilisons un gros store Redux qui nous permet de tout gérer, et j'ai entendu dire que TanStack Query pourrait simplifier tout ça, pouvez-vous m'éclairer ?
+Je suis l’heureuse gérante de l'application de e-commerce leader sur la vente de spécialités de Paris, qui fait fureur en ce moment. L'application commence à être un peu vieille, on ne devient pas leader en un jour ! Bien que nous gardons l'application à jour, nous utilisons un gros store Redux qui nous permet de tout gérer, et j'ai entendu dire que TanStack Query pourrait simplifier tout ça, pouvez-vous m'éclairer ?
 
 ::problem::
 
-Comment TanStack Query pourrait-il simplifier notre gestion d'état Redux complexe dans notre application e-commerce de spécialités de Tours ?
+Comment TanStack Query pourrait-il simplifier notre gestion d'état Redux complexe dans notre application e-commerce de spécialités de Paris ?
 
 ---
 title: Redux - Demo - Remplacement du store de panier
