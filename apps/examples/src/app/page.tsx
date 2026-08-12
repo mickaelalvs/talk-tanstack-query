@@ -11,8 +11,8 @@ export default function Home() {
     },
     {
       href: "/nantes-shop",
-      title: "Shop de Paris",
-      description: "Découvrez les spécialités de Paris et commandez en ligne.",
+      title: "Shop de Bordeaux",
+      description: "Découvrez les spécialités de Bordeaux et commandez en ligne.",
     },
     {
       href: "water-meter",

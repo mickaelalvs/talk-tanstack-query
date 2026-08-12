@@ -6,9 +6,9 @@ import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Spécialités de Paris - Boutique en ligne",
+  title: "Spécialités de Bordeaux - Boutique en ligne",
   description:
-    "Découvrez les meilleures spécialités parisiennes : Glace Berthillon, Paris-Brest, Macarons, Jambon-beurre et bien plus encore.",
+    "Découvrez les meilleures spécialités bordelaises : Cannelé, Saint-Émilion, Huîtres d'Arcachon, Foie gras et bien plus encore.",
   generator: "v0.app",
 };
 

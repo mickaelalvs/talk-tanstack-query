@@ -2,18 +2,18 @@
 // Run with: node test-add-city.js
 
 const testCity = {
-  name: "Tours",
+  name: "Bordeaux",
   country: "France",
   description:
-    "Ville historique au cœur de la Touraine, capitale de la région Centre-Val de Loire, célèbre pour sa cathédrale gothique et sa proximité avec les châteaux de la Loire.",
-  image: "/tours.jpg",
+    "Capitale mondiale du vin au bord de la Garonne, classée au patrimoine mondial de l'UNESCO pour son architecture du XVIIIe siècle et ses quais réaménagés.",
+  image: "/miroir-eau.jpeg",
   weather: {
-    temperature: 20,
+    temperature: 22,
     condition: "Ensoleillé",
     icon: "☀️",
   },
-  attractions: ["Cathédrale Saint-Gatien", "Place Plumereau", "Musée des Beaux-Arts", "Basilique Saint-Martin"],
-  bestTimeToVisit: "Avril à octobre",
+  attractions: ["Place de la Bourse", "Cité du Vin", "Grosse Cloche", "Basilique Saint-Michel"],
+  bestTimeToVisit: "Mai à septembre",
 };
 
 async function addCity() {

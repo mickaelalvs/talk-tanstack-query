@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
 
 import { closeDatabase, createProduct, getDatabase } from "../src/lib/database";
-import { products } from "./mock-paris-data";
+import { products } from "./mock-bordeaux-data";
 
 async function populateProducts() {
   console.log("🚀 Starting to populate products database...");
