@@ -10,7 +10,7 @@ const url = computed(() => {
 })
 
 const folderUrl = computed(() => {
-  return `http://localhost:4000?folder=/Users/lucasaudart/Workspace/Perso/Talk/talk-tanstack-query/apps/examples/src/app/${path}`
+  return `http://localhost:4000?folder=/Users/lucas/Workspace/Perso/Talks/talk-tanstack-query/apps/examples/src/app/${path}`
 })
 
 const showResultIframe = ref(false)
