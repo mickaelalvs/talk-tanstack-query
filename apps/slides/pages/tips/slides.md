@@ -202,7 +202,8 @@ mdc: true
 
 <div class="flex gap-4 mt-2">
 
-<div class="flex-1">
+<div class="flex-1 relative">
+<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#EF4444" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; top: 6px; right: 8px; z-index: 10;"><path d="M6 6l12 12M18 6L6 18"/></svg>
 ```tsx{all}{class: '!children:text-[10px] !m-0'}
 // query-keys.ts
 const QUERY_KEYS = {
@@ -210,13 +211,14 @@ const QUERY_KEYS = {
     invoice: ({invoiceId}) =>  ['invoices', invoiceId],
     transactions: () => ['transactions'],
     transaction: (transId) => ['transactions', transId],
-    client: () => ['clients'],
+    clients: () => ['clients'],
     client: (clientId) => ['clients', clientId],
     // 234 keys more ...
 }
 ```
 </div>
-<div class="flex-1 flex flex-col gap-1">
+<div class="flex-1 flex flex-col gap-1 relative">
+<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; top: 6px; right: 8px; z-index: 10;"><path d="M5 13l4 4L19 7"/></svg>
 ```tsx{all}{class: '!children:text-[10px] !m-0'}
 // invoices.keys.ts
 const INVOICES_QUERY_KEYS = {
@@ -322,6 +324,46 @@ queryClient.fetchQueries({ queryKey: totoKeys.details(id), queryFn: () => fetchT
   <small style="font-size: 0.7em;">💡 <strong>Et c'est complétement utilisable avec la colocation !</strong></small>
 </div>
 
+
+</div>
+
+</Section>
+
+---
+title: Tips & Tricks - query key factory + queryOptions
+layout: solution
+ticketNumber: "#TSQ-2026-007"
+solutionTitle: "Query Key Factory"
+concept: "Key Factory + queryOptions"
+priority: "low"
+status: "resolved"
+transition: fade
+mdc: true
+---
+
+::content::
+
+<Micka />
+
+<Section title="Solution 2 : Key Factory + queryOptions" icon="🔑" variant="default">
+
+<div class="concept-description">
+
+Ça fonctionne pareil, mais avec les avantages de **<code style="font-size: 0.85em; color: #00B7D8; background-color: #EFF6FF; padding: 2px 4px; border-radius: 4px;">queryOptions</code>** en plus : clé, fonction et typage au même endroit !
+
+<div style="height: 10px" />
+
+```tsx{all}{lines:true, class: '!children:text-[10px] !m-0'}
+const todoQueries = {
+  detail: (id: number) => queryOptions({
+    queryKey: todoKeys.detail(id),
+    queryFn: () => fetchTodo(id),
+  }),
+}
+
+useQuery(todoQueries.detail(id))
+queryClient.prefetchQuery(todoQueries.detail(id))
+```
 
 </div>
 

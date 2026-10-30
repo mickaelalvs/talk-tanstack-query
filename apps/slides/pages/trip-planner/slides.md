@@ -166,3 +166,40 @@ export const useListTripQuery = () => {
 <br />
 
 </Section>
+
+---
+title: Base Case - Solution - queryOptions
+layout: solution
+ticketNumber: "#TSQ-2026-002"
+solutionTitle: "Intégration TanStack Query dans Trip Planner"
+concept: "queryOptions"
+priority: "medium"
+status: "resolved"
+transition: fade
+mdc: true
+---
+
+::content::
+
+<Micka />
+
+<Section title="Bonnes pratiques" icon="💡" variant="highlight">
+
+<br />
+
+✅ **<span style="color: #00B7D8;">Utiliser queryOptions</span>** pour définir la clé et la fonction de la query une seule fois, avec un typage partagé, et la réutiliser partout (hook, prefetch, invalidation...).
+
+```tsx{all}{lines:true}
+export const listTripsOptions = () => queryOptions({
+  queryKey: ['trips'],
+  queryFn: listTrips
+});
+
+export const useListTripQuery = () => useQuery(listTripsOptions());
+
+queryClient.prefetchQuery(listTripsOptions());
+```
+
+<br />
+
+</Section>
