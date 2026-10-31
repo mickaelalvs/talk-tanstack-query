@@ -22,10 +22,6 @@ export const CreateTripBanner = () => {
   }
 
   const onSubmit = async () => {
-    if (!(newTripName.trim() && hasSelectedCities)) {
-      return;
-    }
-
     try {
       const response = await createTrip({
         name: newTripName.trim(),
